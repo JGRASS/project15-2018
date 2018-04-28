@@ -27,25 +27,6 @@ public class Artikal {
 	private String zemljaPoreklaArtikla;
 
 	/**
-	 * Konstruktor klase Artikal
-	 * 
-	 * @param {@link
-	 * 			#sifraArtikla} - Sifra artikla
-	 * @param {@link
-	 * 			#nazivArtikla} - Naziv artikla
-	 * @param {@link
-	 * 			#cenaArtikla} - Cena artikla
-	 * @param {@link
-	 * 			#zemljaPoreklaArtikla} - Zemlja porekla artikla
-	 */
-	public Artikal(String sifraArtikla, String nazivArtikla, double cenaArtikla, String zemljaPoreklaArtikla) {
-		this.sifraArtikla = sifraArtikla;
-		this.nazivArtikla = nazivArtikla;
-		this.cenaArtikla = cenaArtikla;
-		this.zemljaPoreklaArtikla = zemljaPoreklaArtikla;
-	}
-
-	/**
 	 * Prazan konstruktor za klasu {@link #Artikal}
 	 */
 	public Artikal() {
@@ -112,8 +93,8 @@ public class Artikal {
 	 *             koji nije slovo
 	 */
 	public void setNazivArtikla(String nazivArtikla) throws Exception {
-		if (nazivArtikla.length() < 1)
-			throw new Exception("Naziv artikla mora imati vise od 0 karaktera !");
+		if (nazivArtikla == null || nazivArtikla.length() < 2 || nazivArtikla.length() > 40)
+			throw new Exception("Naziv artikla mora imati vise od jednog, a manje od 40 karaktera !");
 		this.nazivArtikla = nazivArtikla;
 	}
 
@@ -139,7 +120,8 @@ public class Artikal {
 	 * @param zemljaPoreklaArtikla
 	 * @throws Exception
 	 *             u slucaju da parametar zemljaPoreklaArtikla sadrzi bar jedan
-	 *             karakter koji nije slovni ili je uneti parametar prazan String ili null
+	 *             karakter koji nije slovni ili je uneti parametar prazan String
+	 *             ili null
 	 */
 	public void setZemljaPoreklaArtikla(String zemljaPoreklaArtikla) throws Exception {
 		if (zemljaPoreklaArtikla.length() < 1 || !sadrziSamoSlova(zemljaPoreklaArtikla))
@@ -189,8 +171,8 @@ public class Artikal {
 	 *            objekat koji poredimo sa objektom koji poziva ovu metodu
 	 * @return
 	 *         <ul>
-	 *         <li>true ako su svi atributi artikla jednaki</li>
-	 *         <li>false ako se jedan od atributa razlikuje</li>
+	 *         <li>true ako su sifre artikala jednake</li>
+	 *         <li>false ako se sifre razlikuju</li>
 	 *         </ul>
 	 */
 	@Override
@@ -202,23 +184,13 @@ public class Artikal {
 		if (getClass() != obj.getClass())
 			return false;
 		Artikal other = (Artikal) obj;
-		if (Double.doubleToLongBits(cenaArtikla) != Double.doubleToLongBits(other.cenaArtikla))
-			return false;
-		if (nazivArtikla == null) {
-			if (other.nazivArtikla != null)
-				return false;
-		} else if (!nazivArtikla.equals(other.nazivArtikla))
-			return false;
+
 		if (sifraArtikla == null) {
 			if (other.sifraArtikla != null)
 				return false;
 		} else if (!sifraArtikla.equals(other.sifraArtikla))
 			return false;
-		if (zemljaPoreklaArtikla == null) {
-			if (other.zemljaPoreklaArtikla != null)
-				return false;
-		} else if (!zemljaPoreklaArtikla.equals(other.zemljaPoreklaArtikla))
-			return false;
+
 		return true;
 	}
 
