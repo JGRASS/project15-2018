@@ -3,6 +3,8 @@ package kafic;
 import kafic.sistemskeoperacije.SOSadrziSamoSlova;
 
 /**
+ * Klasa radnik predstavlja klasu sa statickim metodama koje pozivaju sistemske
+ * operacije
  * 
  * @author Nikola Vujic
  * @version 0.0.1
