@@ -80,6 +80,7 @@ public class Artikal {
 	public void setSifraArtikla(String sifraArtikla) throws Exception {
 		if (sifraArtikla.length() != 6)
 			throw new Exception("Sifra artikla mora imati tacno 6 karaktera !");
+		// TODO: proveriti da li je jedinstvena
 		this.sifraArtikla = sifraArtikla;
 	}
 
