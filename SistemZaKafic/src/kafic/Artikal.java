@@ -1,7 +1,5 @@
 package kafic;
 
-import com.sun.org.apache.bcel.internal.classfile.Attribute;
-
 /**
  * 
  * Artikal predstavlja jedan od objekata liste u klasi Racun
@@ -31,14 +29,14 @@ public class Artikal {
 	/**
 	 * Konstruktor klase Artikal
 	 * 
-	 * @param {@link #sifraArtikla}
-	 *            - Sifra artikla
-	 * @param {@link #nazivArtikla}
-	 *            - Naziv artikla
-	 * @param {@link #cenaArtikla}
-	 *            - Cena artikla
-	 * @param {@link #zemljaPoreklaArtikla}
-	 *            - Zemlja porekla artikla
+	 * @param {@link
+	 * 			#sifraArtikla} - Sifra artikla
+	 * @param {@link
+	 * 			#nazivArtikla} - Naziv artikla
+	 * @param {@link
+	 * 			#cenaArtikla} - Cena artikla
+	 * @param {@link
+	 * 			#zemljaPoreklaArtikla} - Zemlja porekla artikla
 	 */
 	public Artikal(String sifraArtikla, String nazivArtikla, double cenaArtikla, String zemljaPoreklaArtikla) {
 		this.sifraArtikla = sifraArtikla;
@@ -114,8 +112,8 @@ public class Artikal {
 	 *             koji nije slovo
 	 */
 	public void setNazivArtikla(String nazivArtikla) throws Exception {
-		if (!sadrziSamoSlova(nazivArtikla))
-			throw new Exception("Naziv artikla ne sme da sadrzi brojeve !");
+		if (nazivArtikla.length() < 1)
+			throw new Exception("Naziv artikla mora imati vise od 0 karaktera !");
 		this.nazivArtikla = nazivArtikla;
 	}
 
@@ -124,8 +122,13 @@ public class Artikal {
 	 * parametra
 	 * 
 	 * @param cenaArtikla
+	 * @throws Exception
+	 *             u slucaju da je parametar cenaArtikla manji od 0
 	 */
-	public void setCenaArtikla(double cenaArtikla) {
+
+	public void setCenaArtikla(double cenaArtikla) throws Exception {
+		if (cenaArtikla < 1)
+			throw new Exception("Cena artikla mora biti veca od 1 !");
 		this.cenaArtikla = cenaArtikla;
 	}
 
@@ -134,14 +137,19 @@ public class Artikal {
 	 * vrednost parametra
 	 * 
 	 * @param zemljaPoreklaArtikla
+	 * @throws Exception
+	 *             u slucaju da parametar zemljaPoreklaArtikla sadrzi bar jedan
+	 *             karakter koji nije slovni ili je uneti parametar prazan String ili null
 	 */
-	public void setZemljaPoreklaArtikla(String zemljaPoreklaArtikla) {
+	public void setZemljaPoreklaArtikla(String zemljaPoreklaArtikla) throws Exception {
+		if (zemljaPoreklaArtikla.length() < 1 || !sadrziSamoSlova(zemljaPoreklaArtikla))
+			throw new Exception("Zemlja porekla mora sadrzati samo slovne karaktere !");
 		this.zemljaPoreklaArtikla = zemljaPoreklaArtikla;
 	}
 
 	/**
-	 * Metoda koja vraca <code>true</code> ako parametar metode
-	 * {@link #setNazivArtikla(String)} sadrzi samo slovne karaktere
+	 * Metoda koja vraca <code>true</code> ako uneti parametar sadrzi samo slovne
+	 * karaktere
 	 * 
 	 * @param nazivArtikla
 	 * @return
@@ -158,6 +166,59 @@ public class Artikal {
 				return false;
 		}
 
+		return true;
+	}
+
+	/**
+	 * Metoda koja vraca podatke o artiklu. <br>
+	 * Primer:<br>
+	 * Artikal: Sifra artikla: sar32fds Naziv artikla: Coca-cola Cena artikla:
+	 * 175.00 Zemlja porekla artila: USA
+	 * 
+	 */
+	@Override
+	public String toString() {
+		return "\nArtikal:\nSifra artikla: " + sifraArtikla + "\nNaziv artikla: " + nazivArtikla + "\nCena artikla: "
+				+ cenaArtikla + "\nZemlja porekla artikla: " + zemljaPoreklaArtikla + "\n";
+	}
+
+	/**
+	 * Metoda koja proverava parametar metode jednak objektu koji poziva ovu metodu
+	 * 
+	 * @param obj
+	 *            objekat koji poredimo sa objektom koji poziva ovu metodu
+	 * @return
+	 *         <ul>
+	 *         <li>true ako su svi atributi artikla jednaki</li>
+	 *         <li>false ako se jedan od atributa razlikuje</li>
+	 *         </ul>
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Artikal other = (Artikal) obj;
+		if (Double.doubleToLongBits(cenaArtikla) != Double.doubleToLongBits(other.cenaArtikla))
+			return false;
+		if (nazivArtikla == null) {
+			if (other.nazivArtikla != null)
+				return false;
+		} else if (!nazivArtikla.equals(other.nazivArtikla))
+			return false;
+		if (sifraArtikla == null) {
+			if (other.sifraArtikla != null)
+				return false;
+		} else if (!sifraArtikla.equals(other.sifraArtikla))
+			return false;
+		if (zemljaPoreklaArtikla == null) {
+			if (other.zemljaPoreklaArtikla != null)
+				return false;
+		} else if (!zemljaPoreklaArtikla.equals(other.zemljaPoreklaArtikla))
+			return false;
 		return true;
 	}
 
