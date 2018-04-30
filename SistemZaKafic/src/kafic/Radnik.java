@@ -53,7 +53,7 @@ public class Radnik {
 	 *             </ul>
 	 */
 	public void setIme(String ime) throws Exception {
-		if (ime == null || ime == "" || !Kafic.sadrziSamoSlova(ime))
+		if (ime == null || ime.isEmpty() || !Kafic.sadrziSamoSlova(ime))
 			throw new Exception("ime mora da se sastoji samo iz slova i ne moze biti prazan String");
 		if (ime.length() <= 1 || ime.length() > 20)
 			throw new Exception("ime mora imati od 2 do 20 slova");
@@ -83,7 +83,7 @@ public class Radnik {
 	 *             </ul>
 	 */
 	public void setPrezime(String prezime) throws Exception {
-		if (prezime == null || prezime == "" || !Kafic.sadrziSamoSlova(prezime))
+		if (prezime == null || prezime.isEmpty() || !Kafic.sadrziSamoSlova(prezime))
 			throw new Exception("prezime mora da se sastoji samo iz slova i ne moze biti prazan String");
 		if (prezime.length() <= 1 || prezime.length() > 20)
 			throw new Exception("prezime mora imati od 2 do 20 slova");
@@ -114,7 +114,7 @@ public class Radnik {
 	 *             </ul>
 	 */
 	public void setUsername(String username) throws Exception {
-		if (username == null || username == "" || username.contains(" "))
+		if (username == null || username.isEmpty() || username.contains(" "))
 			throw new Exception("usename ne sme da bude prazan ili da sadrzi razmake");
 
 		char[] nizKaraktera = username.toCharArray();
@@ -150,7 +150,7 @@ public class Radnik {
 	 *             </ul>
 	 */
 	public void setPassword(String password) throws Exception {
-		if (password == null || password == "")
+		if (password == null || password.isEmpty())
 			throw new Exception("password ne sme biti prazan");
 		if (password.length() <= 4 || password.length() > 30)
 			throw new Exception("password mora biti od 5 do 30 karaktera dugacak");

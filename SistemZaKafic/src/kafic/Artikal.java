@@ -27,13 +27,6 @@ public class Artikal {
 	private String zemljaPoreklaArtikla;
 
 	/**
-	 * Prazan konstruktor za klasu {@link #Artikal}
-	 */
-	public Artikal() {
-
-	}
-
-	/**
 	 * Metoda koja vraca sifru artikla u vidu integer-a
 	 * 
 	 * @return sifraArtikla
@@ -76,8 +69,12 @@ public class Artikal {
 	 * @param sifraArtikla
 	 * @throws Exception
 	 *             - ako je duzina String parametra razlicita od 6 karaktera
+	 *             - ako je dat prazan String
 	 */
 	public void setSifraArtikla(String sifraArtikla) throws Exception {
+		if (sifraArtikla == null || sifraArtikla.isEmpty()) {
+			throw new Exception("Sifra ne sme da bude prazna");
+		}
 		if (sifraArtikla.length() != 6)
 			throw new Exception("Sifra artikla mora imati tacno 6 karaktera !");
 		// TODO: proveriti da li je jedinstvena
@@ -95,7 +92,7 @@ public class Artikal {
 	 */
 	public void setNazivArtikla(String nazivArtikla) throws Exception {
 		if (nazivArtikla == null || nazivArtikla.length() < 2 || nazivArtikla.length() > 40)
-			throw new Exception("Naziv artikla mora imati vise od jednog, a manje od 40 karaktera !");
+			throw new Exception("Naziv artikla mora imati vise od jednog, a manje od 40 karaktera!");
 		this.nazivArtikla = nazivArtikla;
 	}
 
@@ -110,7 +107,7 @@ public class Artikal {
 
 	public void setCenaArtikla(double cenaArtikla) throws Exception {
 		if (cenaArtikla < 1)
-			throw new Exception("Cena artikla mora biti veca od 1 !");
+			throw new Exception("Cena artikla mora biti veca od 1!");
 		this.cenaArtikla = cenaArtikla;
 	}
 
@@ -125,31 +122,9 @@ public class Artikal {
 	 *             ili null
 	 */
 	public void setZemljaPoreklaArtikla(String zemljaPoreklaArtikla) throws Exception {
-		if (zemljaPoreklaArtikla.length() < 1 || !sadrziSamoSlova(zemljaPoreklaArtikla))
-			throw new Exception("Zemlja porekla mora sadrzati samo slovne karaktere !");
+		if (zemljaPoreklaArtikla.length() < 1 || !Kafic.sadrziSamoSlova(zemljaPoreklaArtikla))
+			throw new Exception("Zemlja porekla mora sadrzati samo slovne karaktere!");
 		this.zemljaPoreklaArtikla = zemljaPoreklaArtikla;
-	}
-
-	/**
-	 * Metoda koja vraca <code>true</code> ako uneti parametar sadrzi samo slovne
-	 * karaktere
-	 * 
-	 * @param nazivArtikla
-	 * @return
-	 *         <ul>
-	 *         <li>true ako su svi karakteri String parametra slovni karakteri</li>
-	 *         <li>false ako bar jedan karakter parametra nije slovni</li>
-	 *         </ul>
-	 */
-	public static boolean sadrziSamoSlova(String nazivArtikla) {
-		char[] nizKaraktera = nazivArtikla.toCharArray();
-
-		for (int i = 0; i < nizKaraktera.length; i++) {
-			if (!Character.isLetter(nizKaraktera[i]))
-				return false;
-		}
-
-		return true;
 	}
 
 	/**
@@ -162,7 +137,7 @@ public class Artikal {
 	@Override
 	public String toString() {
 		return "\nArtikal:\nSifra artikla: " + sifraArtikla + "\nNaziv artikla: " + nazivArtikla + "\nCena artikla: "
-				+ cenaArtikla + "\nZemlja porekla artikla: " + zemljaPoreklaArtikla + "\n";
+				+ cenaArtikla + "\nZemlja porekla artikla: " + zemljaPoreklaArtikla;
 	}
 
 	/**

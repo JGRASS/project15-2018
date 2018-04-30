@@ -144,12 +144,12 @@ public class Racun {
 	 * @throws Exception
 	 *             Ako je:
 	 *             <ul>
-	 *             <li>Broj stola veci od 8.</li>
+	 *             <li>Broj stola veci od 8 ili manji od 1.</li>
 	 *             </ul>
 	 */
 	public void setBrojStola(int brojStola) throws Exception {
-		if (brojStola > 8)
-			throw new Exception("Broj stolova je osam!");
+		if (brojStola > 8 || brojStola <= 0)
+			throw new Exception("Broj stola je van granica!");
 
 		this.brojStola = brojStola;
 	}
@@ -240,32 +240,23 @@ public class Racun {
 	/**
 	 * 
 	 * Metoda vraca string koji predstavlja racun, primer: 
-	 * 		"Paradiso Cafe"
-	 * 
 	 * Datum: 30.04.2018. 14:28 
 	 * Broj stola: 5 
 	 * Sifra racuna: 578941
-	 * 
 	 * Radnik: Marko Markovic
-	 * 
-	 * 
+	 * Stavke racuna:
 	 * Coca-Cola 130 Domaca kafa 100
-	 * 
 	 * Za uplatu: 230 
-	 * Uplaceno je: 300 
-	 * Za povracaj: 70
-	 * 
-	 * Dodjite nam ponovo! Prijatan dan. :)
-	 * 
+	 * Uplaceno je: 300
 	 * 
 	 * @return String koji prestavlja racun
 	 */
 	@Override
 	public String toString() {
-		return "\t\"" + nazivLokala + "\"\t\n\n" + "Datum: " + datum + "\nBroj stola: " + brojStola + "\nSifra racuna: "
-				+ sifraRacuna + "\n\nRadnik: " + radnik.getIme() + " " + radnik.getPrezime() + "\n\n"
-				+ SOIspisiStavkeListe.izvrsi(stavkeRacuna) + "\n\nZa uplatu: " + zaUplatu + "\nUplaceno je: "
-				+ jeUplaceno + "\nZa povracaj: " + kusur + "\nDodjite nam ponovo!" + "\nPrijatan dan. :)\n";
+		return "Datum: " + datum + "\nBroj stola: " + brojStola + "\nSifra racuna: "
+				+ sifraRacuna + "\nRadnik: " + radnik.getIme() + " " + radnik.getPrezime() + "\nStavke racuna:\n"
+				+ SOIspisiStavkeListe.izvrsi(stavkeRacuna) + "\nZa uplatu: " + zaUplatu + "\nUplaceno je: "
+				+ jeUplaceno + "\nZa povracaj: " + kusur;
 	}
 
 	/**
