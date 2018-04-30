@@ -1,0 +1,23 @@
+[
+  {
+    "ime": "Nikola",
+    "prezime": "Vujic",
+    "username": "nikvujic",
+    "password": "lozinka123",
+    "admin": true
+  },
+  {
+    "ime": "Nikola",
+    "prezime": "Bakic",
+    "username": "nikbakic",
+    "password": "bestpassever",
+    "admin": false
+  },
+  {
+    "ime": "Uros",
+    "prezime": "Veljkovic",
+    "username": "urvelj",
+    "password": "ilikedolphins",
+    "admin": false
+  }
+]
