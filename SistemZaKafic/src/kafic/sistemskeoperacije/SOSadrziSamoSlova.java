@@ -1,6 +1,8 @@
 package kafic.sistemskeoperacije;
 
 /**
+ * Klasa koja izvrsava operaciju provere da li se data
+ * rec sastoji samo iz slova
  * 
  * @author Nikola Vujic; Uros Veljkovic
  * @version 0.0.1
