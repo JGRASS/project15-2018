@@ -12,7 +12,7 @@ import kafic.Artikal;
  *
  */
 
-public class SOIspisiStavkeListe {
+public class SOIspisiStavkeListeArtikala {
 
 	public static String izvrsi(LinkedList<Artikal> artikli) {
 		String stavke = null;

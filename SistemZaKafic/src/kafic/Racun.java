@@ -3,7 +3,7 @@ package kafic;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
-import kafic.sistemskeoperacije.SOIspisiStavkeListe;
+import kafic.sistemskeoperacije.SOIspisiStavkeListeArtikala;
 
 /**
  * 
@@ -255,7 +255,7 @@ public class Racun {
 	public String toString() {
 		return "Datum: " + datum + "\nBroj stola: " + brojStola + "\nSifra racuna: "
 				+ sifraRacuna + "\nRadnik: " + radnik.getIme() + " " + radnik.getPrezime() + "\nStavke racuna:\n"
-				+ SOIspisiStavkeListe.izvrsi(stavkeRacuna) + "\nZa uplatu: " + zaUplatu + "\nUplaceno je: "
+				+ SOIspisiStavkeListeArtikala.izvrsi(stavkeRacuna) + "\nZa uplatu: " + zaUplatu + "\nUplaceno je: "
 				+ jeUplaceno + "\nZa povracaj: " + kusur;
 	}
 

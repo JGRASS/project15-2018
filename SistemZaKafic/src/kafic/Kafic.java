@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 import kafic.sistemskeoperacije.SOAzurirajRadniciJson;
 import kafic.sistemskeoperacije.SODodajRadnika;
-import kafic.sistemskeoperacije.SONapuniListu;
+import kafic.sistemskeoperacije.SONapuniListuRadnika;
 import kafic.sistemskeoperacije.SOSadrziSamoSlova;
 
 /**
@@ -42,8 +42,8 @@ public class Kafic {
 	 * Metoda koja bi trebalo da se <b>pokrece na pocetku programa</b>, koja puni
 	 * listu radnici sa radnicima iz fajl radnici.json u podaci folderu
 	 */
-	public static void napuniListu() {
-		SONapuniListu.izvrsi(radnici);
+	public static void napuniListuRadnika() {
+		SONapuniListuRadnika.izvrsi(radnici);
 	}
 
 	/**

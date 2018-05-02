@@ -10,7 +10,7 @@ import com.google.gson.JsonObject;
 
 import kafic.Radnik;
 
-public class SONapuniListu {
+public class SONapuniListuRadnika {
 
 	public static void izvrsi(LinkedList<Radnik> radnici) {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
