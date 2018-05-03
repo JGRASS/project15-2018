@@ -45,11 +45,15 @@ public class Racun {
 	/**
 	 * Integer koji predstavlja kusur.
 	 */
-	private int kusur = jeUplaceno - zaUplatu;
+	private int kusur;
 	/**
 	 * String koji predstavlja sifru racuna.
 	 */
 	private String sifraRacuna;
+	
+	public Racun() {
+		// TODO: POSTAVITI SIFRU RACUNA KADA SE RACUN KREIRA
+	}
 
 	/**
 	 * 
@@ -225,6 +229,10 @@ public class Racun {
 	 */
 	public int getKusur() {
 		return kusur;
+	}
+	
+	public void kalkulisiKusur() {
+		this.kusur = this.jeUplaceno - this.zaUplatu;
 	}
 
 	/**
