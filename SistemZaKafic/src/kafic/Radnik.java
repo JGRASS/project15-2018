@@ -83,8 +83,24 @@ public class Radnik {
 	 *             </ul>
 	 */
 	public void setPrezime(String prezime) throws Exception {
-		if (prezime == null || prezime.isEmpty() || !Kafic.sadrziSamoSlova(prezime))
-			throw new Exception("prezime mora da se sastoji samo iz slova i ne moze biti prazan String");
+		if (prezime == null || prezime.isEmpty())
+			throw new Exception("prezime ne moze biti prazan String");
+		String[] prezimeNiz = prezime.split(" ");
+		
+		int brojRazmaka = 0;
+		
+		for(int i = 0; i < prezime.length(); i++) {
+			if (prezime.charAt(i) == ' ')
+				brojRazmaka++;
+			if (brojRazmaka > 2)
+				throw new Exception("prezime ne moze da se sastoji od vise od dve reci");
+		}
+		
+		for (int i = 0; i < prezimeNiz.length; i++) {
+			if (!Kafic.sadrziSamoSlova(prezimeNiz[i]))
+				throw new Exception("prezime mora da sadrzi samo slova");
+		}
+		
 		if (prezime.length() <= 1 || prezime.length() > 20)
 			throw new Exception("prezime mora imati od 2 do 20 slova");
 		this.prezime = prezime;
@@ -123,6 +139,7 @@ public class Radnik {
 
 		if (username.length() <= 3 || username.length() > 20)
 			throw new Exception("username mora biti od 4 do 20 karatera dugacak");
+		
 		this.username = username;
 	}
 
@@ -177,8 +194,6 @@ public class Radnik {
 	 *            boolean vrednost koja pokazuje da li je radnik administrator
 	 */
 	public void setAdmin(boolean isAdmin) {
-		// TODO: proveriti da li vec postoji radnik koji je admin, to cemo kasnije kad
-		// serijalizujemo radnike
 		this.isAdmin = isAdmin;
 	}
 
@@ -186,7 +201,7 @@ public class Radnik {
 	 * vraca String sa podacima o radniku, primer:
 	 * Ime: Nikola
 	 * Prezime: Vujic
-	 * Usename: nikvujic
+	 * Username: nikvujic
 	 * Admin: da
 	 * 
 	 * @return String sa podacima o radniku
