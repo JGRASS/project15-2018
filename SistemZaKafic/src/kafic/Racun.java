@@ -1,6 +1,7 @@
 package kafic;
 
-import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 import kafic.sistemskeoperacije.SOIspisiStavkeListeArtikala;
@@ -9,7 +10,7 @@ import kafic.sistemskeoperacije.SOIspisiStavkeListeArtikala;
  * 
  * Klasa koja predstavlja racun za narucene proizvode u kaficu.
  * 
- * @author Nikola Bakic
+ * @author Nikola Bakic; Nikola Vujic
  *
  */
 
@@ -21,7 +22,7 @@ public class Racun {
 	/**
 	 * Atribut koji predstavlja datum i vreme na koje se racun izdaje.
 	 */
-	private GregorianCalendar datum;
+	private Date datum;
 	/**
 	 * Lista artikala koje je gost narucio.
 	 */
@@ -35,24 +36,32 @@ public class Racun {
 	 */
 	private int brojStola;
 	/**
-	 * Integer koji predstavlja potroseni iznos za odredjeni sto.
+	 * Integer koji predstavlja potroseni iznos za odredjeni sto, tj. cenu svih
+	 * artikala
 	 */
-	private int zaUplatu;
+	private double zaUplatu;
 	/**
 	 * Integer koji prestavlja iznos koji gost uplatio.
 	 */
-	private int jeUplaceno;
+	private double jeUplaceno;
 	/**
 	 * Integer koji predstavlja kusur.
 	 */
-	private int kusur;
+	private double kusur;
 	/**
 	 * String koji predstavlja sifru racuna.
 	 */
 	private String sifraRacuna;
-	
+
 	public Racun() {
-		// TODO: POSTAVITI SIFRU RACUNA KADA SE RACUN KREIRA
+		Date datum = new Date();
+		try {
+			setDatum(datum);
+		} catch (Exception e) {
+			System.out.println("neocekivana greska: " + e.getMessage());
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat("YYMMddHHmmssSSS");
+		sifraRacuna = "PC" + sdf.format(datum);
 	}
 
 	/**
@@ -71,29 +80,20 @@ public class Racun {
 	 * 
 	 * @return datum
 	 */
-	public GregorianCalendar getDatum() {
+	public Date getDatum() {
 		return datum;
 	}
 
 	/**
 	 *
-	 * Metoda kojom se postavlja datum racuna.
-	 * 
-	 * @param datum
-	 *            Predstavlja datum racuna.
-	 * 
-	 * @throws Exception
-	 *             Ako je:
-	 *             <ul>
-	 *             <li>Unet datum koji se odnosi na proslost</li>
-	 *             </ul>
+	 * Metoda kojom se postavlja datum racuna. Napomena: Datum se automatski
+	 * generise u konstruktoru
 	 * 
 	 */
-	public void setDatum(GregorianCalendar datum) throws Exception {
-		if (datum.before(new GregorianCalendar())) {
+	public void setDatum(Date datum) throws Exception {
+		if (datum.before(new Date())) {
 			throw new Exception("Racun ne moze biti izdat za prethodni period!");
 		}
-
 		this.datum = datum;
 	}
 
@@ -105,6 +105,16 @@ public class Racun {
 	 */
 	public LinkedList<Artikal> getStavkeRacuna() {
 		return stavkeRacuna;
+	}
+
+	/**
+	 * seter za stavke racuna, prima vec postojecu listu racuna svako dodavanje
+	 * artikla se vrsi van klase
+	 * 
+	 * @param stavkeRacuna
+	 */
+	public void setStavkeRacuna(LinkedList<Artikal> stavkeRacuna) {
+		this.stavkeRacuna = stavkeRacuna;
 	}
 
 	/**
@@ -124,7 +134,6 @@ public class Racun {
 	 * @param radnik
 	 */
 	public void setRadnik(Radnik radnik) {
-		// TODO : Uraditi proveru za unos radnika
 		this.radnik = radnik;
 	}
 
@@ -164,7 +173,7 @@ public class Racun {
 	 * 
 	 * @return zaUplatu
 	 */
-	public int getZaUplatu() {
+	public double getZaUplatu() {
 		return zaUplatu;
 	}
 
@@ -174,16 +183,22 @@ public class Racun {
 	 * 
 	 * @param zaUplatu
 	 *            Predstavlja potroseni iznos.
+	 * @
 	 * 
-	 * @throws Exception
-	 *             Ako je:
-	 *             <ul>
-	 *             <li>Iznos za uplatu manji od 0.</li>
-	 *             </ul>
+	 * 		@throws
+	 *       Exception Ako je:
+	 *       <ul>
+	 *       <li>Iznos za uplatu manji od 0.</li>
+	 *       </ul>
 	 */
-	public void setZaUplatu(int zaUplatu) throws Exception {
-		if (zaUplatu < 0)
-			throw new Exception("Iznos ne moze biti negativan!");
+	public void updateZaUplatu() throws Exception {
+		double zaUplatu = 0;
+		if (stavkeRacuna == null || stavkeRacuna.size() == 0)
+			throw new Exception("moraju postojati stavke racuna pre racunanja uplate");
+
+		for (int i = 0; i < stavkeRacuna.size(); i++) {
+			zaUplatu += stavkeRacuna.get(i).getCenaArtikla();
+		}
 
 		this.zaUplatu = zaUplatu;
 	}
@@ -194,13 +209,14 @@ public class Racun {
 	 * 
 	 * @return jeUplaceno
 	 */
-	public int getJeUplaceno() {
+	public double getJeUplaceno() {
 		return jeUplaceno;
 	}
 
 	/**
 	 * 
-	 * Metoda koja postavlja iznos koji je uplacen za odredjeni sto.
+	 * Metoda koja postavlja iznos koji je uplacen za odredjeni sto i izracunava
+	 * kusur
 	 * 
 	 * @param jeUplaceno
 	 *            Predstavlja uplacen iznos.
@@ -212,12 +228,15 @@ public class Racun {
 	 *             <li>Uplaceni iznos manji od potrosenog iznosa.</li>
 	 *             </ul>
 	 */
-	public void setJeUplaceno(int jeUplaceno) throws Exception {
+	public void setJeUplaceno(double jeUplaceno) throws Exception {
+		if (stavkeRacuna == null || stavkeRacuna.size() == 0)
+			throw new Exception("Moraju postojati stavke racuna pre uplate");
 		if (jeUplaceno < 0)
 			throw new Exception("Iznos ne moze biti negativan!");
 		if (jeUplaceno < zaUplatu)
 			throw new Exception("Ne moze biti uplaceno manje od potrosenog iznosa!");
 
+		this.kusur = jeUplaceno - zaUplatu;
 		this.jeUplaceno = jeUplaceno;
 	}
 
@@ -227,12 +246,8 @@ public class Racun {
 	 * 
 	 * @return kusur
 	 */
-	public int getKusur() {
+	public double getKusur() {
 		return kusur;
-	}
-	
-	public void kalkulisiKusur() {
-		this.kusur = this.jeUplaceno - this.zaUplatu;
 	}
 
 	/**
@@ -244,27 +259,41 @@ public class Racun {
 	public String getSifraRacuna() {
 		return sifraRacuna;
 	}
+	
+	public void setSifraRacuna(String sifraRacuna) throws Exception {
+		if (sifraRacuna.length() != 17)
+			throw new Exception("nova sifra mora biti 14 karaktera dugacka");
+		this.sifraRacuna = sifraRacuna;
+	}
 
 	/**
 	 * 
-	 * Metoda vraca string koji predstavlja racun, primer: 
-	 * Datum: 30.04.2018. 14:28 
-	 * Broj stola: 5 
-	 * Sifra racuna: 578941
-	 * Radnik: Marko Markovic
-	 * Stavke racuna:
-	 * Coca-Cola 130 Domaca kafa 100
-	 * Za uplatu: 230 
-	 * Uplaceno je: 300
+	 * Metoda vraca string koji predstavlja racun, primer: Datum: 30.04.2018 14:28
+	 * Broj stola: 5 Sifra racuna: 578941 Radnik: Marko Markovic Stavke racuna:
+	 * Coca-Cola 130 Domaca kafa 100 Za uplatu: 230 Uplaceno je: 300
 	 * 
 	 * @return String koji prestavlja racun
 	 */
 	@Override
 	public String toString() {
-		return "Datum: " + datum + "\nBroj stola: " + brojStola + "\nSifra racuna: "
-				+ sifraRacuna + "\nRadnik: " + radnik.getIme() + " " + radnik.getPrezime() + "\nStavke racuna:\n"
-				+ SOIspisiStavkeListeArtikala.izvrsi(stavkeRacuna) + "\nZa uplatu: " + zaUplatu + "\nUplaceno je: "
-				+ jeUplaceno + "\nZa povracaj: " + kusur;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.mm.yyyy HH:mm");
+		String stavke = "";
+
+		for (int i = 0; i < stavkeRacuna.size(); i++) {
+			stavke += ">" + stavkeRacuna.get(i).getNazivArtikla() + "\n";
+		}
+
+		return "Datum: " + sdf.format(datum) + "\nBroj stola: " + brojStola + "\n" + "Sifra racuna: " + sifraRacuna
+				+ "\n" + "Radnik: " + radnik.getIme() + " " + radnik.getPrezime() + "\n" + "Stavke racuna:\n" + stavke
+				+ "Za uplatu: " + zaUplatu + "\n" + "Uplaceno je: " + jeUplaceno + "\n" + "Za povracaj: " + kusur;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((sifraRacuna == null) ? 0 : sifraRacuna.hashCode());
+		return result;
 	}
 
 	/**
@@ -276,8 +305,7 @@ public class Racun {
 	 * @return
 	 *         <ul>
 	 *         <li><b>true</b> ako su racuni isti, tj. imaju iste sifre</li>
-	 *         <li><b>false</b> ako su racuni razliciti, tj. nemaju iste
-	 *         sifre</li>
+	 *         <li><b>false</b> ako su racuni razliciti, tj. nemaju iste sifre</li>
 	 *         </ul>
 	 */
 	@Override
