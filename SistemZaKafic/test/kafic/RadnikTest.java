@@ -62,14 +62,6 @@ public class RadnikTest {
 	}
 
 	/**
-	 * Test method for {@link kafic.Radnik#isAdmin()}.
-	 */
-	@Test
-	public void testIsAdmin() {
-		fail("Not yet implemented");
-	}
-
-	/**
 	 * Test method for {@link kafic.Radnik#setAdmin(boolean)}.
 	 */
 	@Test
