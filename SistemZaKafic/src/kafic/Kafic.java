@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import kafic.sistemskeoperacije.SOAzurirajArtikliJson;
 import kafic.sistemskeoperacije.SOAzurirajRadniciJson;
-import kafic.sistemskeoperacije.SODaLiJeUListiRadnik;
 import kafic.sistemskeoperacije.SODodajArtikal;
 import kafic.sistemskeoperacije.SODodajRadnika;
 import kafic.sistemskeoperacije.SONapuniListuArtikli;
@@ -42,22 +41,6 @@ public class Kafic {
 	 */
 	public static void dodajRadnika(Radnik radnik) throws Exception {
 		SODodajRadnika.izvrsi(radnik, radnici);
-	}
-
-	/**
-	 * Proverava da li je radnik u listi na osnovu naziva naloga
-	 * 
-	 * @param username
-	 *            naziv naloga
-	 * @return
-	 *         <ul>
-	 *         <li><b>True</b ako jeste u listi></li>
-	 *         <li><b>False</b> ako nije u listi</li>
-	 *         </ul>
-	 */
-	public static boolean daLiJeUListiRadnik(String username) {
-		napuniListuRadnika();
-		return SODaLiJeUListiRadnik.izvrsi(username, radnici);
 	}
 
 	/**
