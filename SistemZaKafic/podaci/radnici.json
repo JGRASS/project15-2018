@@ -1,23 +1,9 @@
 [
   {
-    "ime": "Nikola",
-    "prezime": "Vujic",
-    "username": "nikvujic",
+    "ime": "Marko",
+    "prezime": "Petrovic",
+    "username": "marko.petrovic",
     "password": "lozinka123",
-    "admin": true
-  },
-  {
-    "ime": "Nikola",
-    "prezime": "Bakic",
-    "username": "nikbakic",
-    "password": "bestpassever",
-    "admin": false
-  },
-  {
-    "ime": "Uros",
-    "prezime": "Veljkovic",
-    "username": "urvelj",
-    "password": "ilikedolphins",
     "admin": false
   }
 ]

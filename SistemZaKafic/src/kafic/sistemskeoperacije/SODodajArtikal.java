@@ -20,7 +20,7 @@ public class SODodajArtikal {
 	public static void izvrsi(LinkedList<Artikal> artikli, Artikal artikal) throws Exception {
 		for (int i = 0; i < artikli.size(); i++) {
 			if (artikli.get(i).equals(artikal))
-				throw new Exception("radnik je vec u listi");
+				throw new Exception("artikal je vec u listi");
 		}
 		artikli.add(artikal);
 		

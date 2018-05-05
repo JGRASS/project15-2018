@@ -136,8 +136,8 @@ public class Artikal {
 	 */
 	@Override
 	public String toString() {
-		return "\nArtikal:\nSifra artikla: " + sifraArtikla + "\nNaziv artikla: " + nazivArtikla + "\nCena artikla: "
-				+ cenaArtikla + "\nZemlja porekla artikla: " + zemljaPoreklaArtikla;
+		return "Sifra artikla: " + sifraArtikla + "\nNaziv artikla: " + nazivArtikla + "\nCena artikla: "
+				+ cenaArtikla + "\nZemlja porekla: " + zemljaPoreklaArtikla;
 	}
 
 	/**
