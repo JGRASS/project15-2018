@@ -3,7 +3,7 @@ package kafic.gui.kontroler;
 import java.awt.EventQueue;
 
 import kafic.Kafic;
-import kafic.gui.GlavniProzor;
+import kafic.gui.LogInProzor;
 
 public class GUIKontroler {
 	/**
@@ -13,8 +13,8 @@ public class GUIKontroler {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GlavniProzor frame = new GlavniProzor();
-					frame.setVisible(true);
+					LogInProzor login = new LogInProzor();
+					login.setVisible(true);
 					Kafic.napuniListuRadnika();
 					Kafic.napuniListuArtikli();
 				} catch (Exception e) {

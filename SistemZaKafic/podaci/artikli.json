@@ -1,8 +1,20 @@
 [
   {
-    "sifra": "BSHKSR",
-    "naziv": "Banana shake",
-    "cena": 200.0,
+    "sifra": "qwerty",
+    "naziv": "Coca-Cola",
+    "cena": 150.0,
+    "zemljaPorekla": "Mogolija"
+  },
+  {
+    "sifra": "qwertu",
+    "naziv": "Pepsi",
+    "cena": 140.0,
+    "zemljaPorekla": "Nepal"
+  },
+  {
+    "sifra": "qwerti",
+    "naziv": "Limunada",
+    "cena": 160.0,
     "zemljaPorekla": "Zimbabve"
   }
 ]
