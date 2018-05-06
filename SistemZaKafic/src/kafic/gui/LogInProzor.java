@@ -108,6 +108,7 @@ public class LogInProzor extends JFrame {
 					if (!pronadjenRadnik) {
 						JOptionPane.showMessageDialog(contentPane,
 								"Pogresan username ili lozinka", "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
+						passwordField.setText("");
 					}
 					
 					System.out.println(radnik.toString());
