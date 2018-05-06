@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import javafx.scene.layout.Border;
+import kafic.Radnik;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -44,7 +45,7 @@ public class GlavniProzor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GlavniProzor() {
+	public GlavniProzor(Radnik radnik) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1600, 1000);
@@ -55,6 +56,9 @@ public class GlavniProzor extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(getPanel_1(), BorderLayout.NORTH);
 		contentPane.add(getPanel_2(), BorderLayout.CENTER);
+		lblRealIme.setText(radnik.getIme());
+		lblNewLabel.setText(radnik.getPrezime());
+		label.setText(radnik.getUsername());
 	}
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {

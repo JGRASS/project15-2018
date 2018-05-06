@@ -15,8 +15,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.sun.java.swing.plaf.windows.resources.windows;
+
 import kafic.Kafic;
 import kafic.Radnik;
+import kafic.gui.kontroler.GUIKontroler;
 
 public class LogInProzor extends JFrame {
 
@@ -33,7 +36,7 @@ public class LogInProzor extends JFrame {
 	public LogInProzor() {
 		setResizable(false);
 		setTitle("Login");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 280);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -111,7 +114,10 @@ public class LogInProzor extends JFrame {
 						passwordField.setText("");
 					}
 					
-					System.out.println(radnik.toString());
+					if (pronadjenRadnik) {
+						GUIKontroler.adminIliRadnikPaDalje(radnik);
+						dispose();
+					}
 				}
 			});
 			btnNewButton.setBounds(117, 176, 168, 43);
