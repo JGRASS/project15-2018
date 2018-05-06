@@ -125,6 +125,13 @@ public class Artikal {
 		if (zemljaPoreklaArtikla.length() < 1 || !Kafic.sadrziSamoSlova(zemljaPoreklaArtikla))
 			throw new Exception("Zemlja porekla mora sadrzati samo slovne karaktere!");
 		this.zemljaPoreklaArtikla = zemljaPoreklaArtikla;
+		
+		String[] zemljaPoreklaNiz = zemljaPoreklaArtikla.split(" ");
+		
+		for (int i = 0; i < zemljaPoreklaNiz.length; i++) {
+			if (!Kafic.sadrziSamoSlova(zemljaPoreklaNiz[i]))
+				throw new Exception("zemlja porekla ne sme da sadrzi karaktere");
+		}
 	}
 
 	/**
