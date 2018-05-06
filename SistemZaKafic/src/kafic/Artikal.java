@@ -122,7 +122,7 @@ public class Artikal {
 	 *             ili null
 	 */
 	public void setZemljaPoreklaArtikla(String zemljaPoreklaArtikla) throws Exception {
-		if (zemljaPoreklaArtikla.length() < 1 || !Kafic.sadrziSamoSlova(zemljaPoreklaArtikla))
+		if (zemljaPoreklaArtikla.length() < 1)
 			throw new Exception("Zemlja porekla mora sadrzati samo slovne karaktere!");
 		this.zemljaPoreklaArtikla = zemljaPoreklaArtikla;
 		

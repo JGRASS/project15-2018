@@ -129,32 +129,98 @@ public class ArtikalTest {
 	 */
 	@Test
 	public void testSetCenaArtikla() throws Exception {
+		artikal.setCenaArtikla(55.66);
+		assertEquals(55.66, artikal.getCenaArtikla(), 0);
+	}
+	
+	/**
+	 * Test method for {@link kafic.Artikal#setCenaArtikla(double)}.
+	 * @throws Exception 
+	 */
+	@Test(expected = java.lang.Exception.class)
+	public void testSetCenaArtiklaManjaOdJedan() throws Exception {
+		artikal.setCenaArtikla(-1.0);
+	}
+	
+	/**
+	 * Test method for
+	 * {@link kafic.Artikal#setZemljaPoreklaArtikla(java.lang.String)}.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testSetZemljaPoreklaArtikla() throws Exception {
 
+		artikal.setZemljaPoreklaArtikla("Bosna");
+		assertEquals("Bosna", artikal.getZemljaPoreklaArtikla());
 	}
 
 	/**
 	 * Test method for
 	 * {@link kafic.Artikal#setZemljaPoreklaArtikla(java.lang.String)}.
+	 * @throws Exception 
 	 */
 	@Test
-	public void testSetZemljaPoreklaArtikla() {
-		fail("Not yet implemented");
+	public void testSetZemljaPoreklaArtiklaRazmak() throws Exception {
+
+		artikal.setZemljaPoreklaArtikla("Bosna i Hercegovina");
+		assertEquals("Bosna i Hercegovina", artikal.getZemljaPoreklaArtikla());
 	}
 
 	/**
 	 * Test method for {@link kafic.Artikal#toString()}.
+	 * @throws Exception 
 	 */
 	@Test
-	public void testToString() {
-		fail("Not yet implemented");
+	public void testToString() throws Exception {
+		artikal.setCenaArtikla(55.66);
+		artikal.setNazivArtikla("Coca-cola");
+		artikal.setSifraArtikla("543sfd");
+		artikal.setZemljaPoreklaArtikla("Bosna");
+		
+		System.out.println(artikal.toString());
+		
+		assertEquals("Sifra artikla: 543sfd\n" + 
+				"Naziv artikla: Coca-cola\n" + 
+				"Cena artikla: 55.66\n" + 
+				"Zemlja porekla: Bosna", artikal.toString());
+		
 	}
 
 	/**
 	 * Test method for {@link kafic.Artikal#equals(java.lang.Object)}.
+	 * @throws Exception 
 	 */
 	@Test
-	public void testEqualsObject() {
-		fail("Not yet implemented");
+	public void testEqualsObject() throws Exception {
+
+		artikal.setCenaArtikla(55.66);
+		artikal.setNazivArtikla("Coca-cola");
+		artikal.setSifraArtikla("543sfd");
+		artikal.setZemljaPoreklaArtikla("Bosna");
+		
+		Artikal artikal2 = new Artikal();
+		artikal2 = artikal;
+		
+		assertTrue(artikal.equals(artikal2));	
+	}
+	
+	/**
+	 * Test method for {@link kafic.Artikal#equals(java.lang.Object)}.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testEqualsObjectFalse() throws Exception {
+
+		artikal.setCenaArtikla(55.66);
+		artikal.setNazivArtikla("Coca-cola");
+		artikal.setSifraArtikla("543sfd");
+		artikal.setZemljaPoreklaArtikla("Bosna");
+		
+		Artikal artikal2 = new Artikal();
+		artikal2 = artikal;
+		artikal2.setSifraArtikla("322ggg");
+		
+		assertTrue(artikal.equals(artikal2));	
 	}
 
 }
