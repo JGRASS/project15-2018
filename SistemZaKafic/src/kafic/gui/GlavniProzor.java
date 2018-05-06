@@ -7,12 +7,17 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import javafx.scene.layout.Border;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Component;
+
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 
 public class GlavniProzor extends JFrame {
@@ -26,7 +31,15 @@ public class GlavniProzor extends JFrame {
 	private JLabel lblNewLabel;
 	private JButton btnLogOut;
 	private JLabel label;
-	private JButton btnNewButton;
+	private JButton btnPrviSto;
+	private JButton btnDrugiSto;
+	private JButton btnTreciSto;
+	private JButton btnCetvrtiSto;
+	private JButton btnPetiSto;
+	private JButton btnSestiSto;
+	private JButton btnSedmiSto;
+	private JButton btnOsmiSto;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Create the frame.
@@ -64,7 +77,15 @@ public class GlavniProzor extends JFrame {
 			panel = new JPanel();
 			panel.setBackground(new Color(237, 187, 153));
 			panel.setLayout(null);
-			panel.add(getBtnNewButton());
+			panel.add(getBtnPrviSto());
+			panel.add(getBtnDrugiSto());
+			panel.add(getBtnTreciSto());
+			panel.add(getBtnCetvrtiSto());
+			panel.add(getBtnPetiSto());
+			panel.add(getBtnSestiSto());
+			panel.add(getBtnSedmiSto());
+			panel.add(getBtnOsmiSto());
+			panel.add(getLblNewLabel_1());
 		}
 		return panel;
 	}
@@ -121,16 +142,96 @@ public class GlavniProzor extends JFrame {
 		}
 		return label;
 	}
-	private JButton getBtnNewButton() {
-		if (btnNewButton == null) {
-			btnNewButton = new JButton("New button");
-			btnNewButton.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
-			btnNewButton.addActionListener(new ActionListener() {
+	private JButton getBtnPrviSto() {
+		if (btnPrviSto == null) {
+			btnPrviSto = new JButton("");
+			btnPrviSto.setBackground(new Color(237, 187, 153));
+			btnPrviSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
+			btnPrviSto.setBorder(null);
+			btnPrviSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			btnNewButton.setBounds(100, 98, 247, 137);
+			btnPrviSto.setBounds(100, 127, 247, 137);
 		}
-		return btnNewButton;
+		return btnPrviSto;
+	}
+	private JButton getBtnDrugiSto() {
+		if (btnDrugiSto == null) {
+			btnDrugiSto = new JButton("");
+			btnDrugiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
+			btnDrugiSto.setBackground(new Color(237, 187, 153));
+			btnDrugiSto.setBounds(100, 360, 247, 137);
+			btnDrugiSto.setBorder(null);
+		}
+		return btnDrugiSto;
+	}
+	private JButton getBtnTreciSto() {
+		if (btnTreciSto == null) {
+			btnTreciSto = new JButton("");
+			btnTreciSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
+			btnTreciSto.setBackground(new Color(237, 187, 153));
+			btnTreciSto.setBounds(100, 607, 247, 137);
+			btnTreciSto.setBorder(null);
+		}
+		return btnTreciSto;
+	}
+	private JButton getBtnCetvrtiSto() {
+		if (btnCetvrtiSto == null) {
+			btnCetvrtiSto = new JButton("");
+			btnCetvrtiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
+			btnCetvrtiSto.setBackground(new Color(237, 187, 153));
+			btnCetvrtiSto.setBounds(483, 607, 247, 137);
+			btnCetvrtiSto.setBorder(null);
+		}
+		return btnCetvrtiSto;
+	}
+	private JButton getBtnPetiSto() {
+		if (btnPetiSto == null) {
+			btnPetiSto = new JButton("");
+			btnPetiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
+			btnPetiSto.setBackground(new Color(237, 187, 153));
+			btnPetiSto.setBounds(859, 607, 247, 137);
+			btnPetiSto.setBorder(null);
+		}
+		return btnPetiSto;
+	}
+	private JButton getBtnSestiSto() {
+		if (btnSestiSto == null) {
+			btnSestiSto = new JButton("");
+			btnSestiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
+			btnSestiSto.setBackground(new Color(237, 187, 153));
+			btnSestiSto.setBounds(1227, 607, 247, 137);
+			btnSestiSto.setBorder(null);
+		}
+		return btnSestiSto;
+	}
+	private JButton getBtnSedmiSto() {
+		if (btnSedmiSto == null) {
+			btnSedmiSto = new JButton("");
+			btnSedmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
+			btnSedmiSto.setBackground(new Color(237, 187, 153));
+			btnSedmiSto.setBounds(1227, 360, 247, 137);
+			btnSedmiSto.setBorder(null);
+		}
+		return btnSedmiSto;
+	}
+	private JButton getBtnOsmiSto() {
+		if (btnOsmiSto == null) {
+			btnOsmiSto = new JButton("");
+			btnOsmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
+			btnOsmiSto.setBackground(new Color(237, 187, 153));
+			btnOsmiSto.setBounds(1227, 127, 247, 137);
+			btnOsmiSto.setBorder(null);
+		}
+		return btnOsmiSto;
+	}
+	private JLabel getLblNewLabel_1() {
+		if (lblNewLabel_1 == null) {
+			lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/barTable.png")));
+			lblNewLabel_1.setBounds(581, 109, 407, 368);
+		}
+		return lblNewLabel_1;
 	}
 }
