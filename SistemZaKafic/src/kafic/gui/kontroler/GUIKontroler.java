@@ -48,8 +48,10 @@ public class GUIKontroler {
 		if (radnik.isAdmin()) {
 			// TODO: otvori admin prozor
 		} else {
+			
 			GlavniProzor glavniProzor = new GlavniProzor(radnik);
 			glavniProzor.setVisible(true);
+			
 		}		
 	}
 }

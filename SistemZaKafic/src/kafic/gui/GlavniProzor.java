@@ -29,9 +29,9 @@ public class GlavniProzor extends JFrame {
 	private JLabel lblIme;
 	private JLabel lblPrezime;
 	private JLabel lblRealIme;
-	private JLabel lblNewLabel;
+	private JLabel lblRealPrezime;
 	private JButton btnLogOut;
-	private JLabel label;
+	private JLabel lblRealUserName;
 	private JButton btnPrviSto;
 	private JButton btnDrugiSto;
 	private JButton btnTreciSto;
@@ -57,8 +57,8 @@ public class GlavniProzor extends JFrame {
 		contentPane.add(getPanel_1(), BorderLayout.NORTH);
 		contentPane.add(getPanel_2(), BorderLayout.CENTER);
 		lblRealIme.setText(radnik.getIme());
-		lblNewLabel.setText(radnik.getPrezime());
-		label.setText(radnik.getUsername());
+		lblRealPrezime.setText(radnik.getPrezime());
+		lblRealUserName.setText(radnik.getUsername());
 	}
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
@@ -70,9 +70,9 @@ public class GlavniProzor extends JFrame {
 			panel_1.add(getLblPrezime());
 			panel_1.add(getLblRealIme());
 			panel_1.setBackground(new Color(200,200,200));
-			panel_1.add(getLblNewLabel());
+			panel_1.add(getLblRealPrezime());
 			panel_1.add(getBtnLogOut());
-			panel_1.add(getLabel());
+			panel_1.add(getLblRealUserName());
 		}
 		return panel_1;
 	}
@@ -105,7 +105,7 @@ public class GlavniProzor extends JFrame {
 		if (lblPrezime == null) {
 			lblPrezime = new JLabel("Prezime:");
 			lblPrezime.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			lblPrezime.setBounds(15, 69, 100, 20);
+			lblPrezime.setBounds(15, 73, 100, 20);
 		}
 		return lblPrezime;
 	}
@@ -114,17 +114,17 @@ public class GlavniProzor extends JFrame {
 		if (lblRealIme == null) {
 			lblRealIme = new JLabel("");
 			lblRealIme.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			lblRealIme.setBounds(147, 37, 198, 20);
+			lblRealIme.setBounds(147, 25, 198, 36);
 		}
 		return lblRealIme;
 	}
-	private JLabel getLblNewLabel() {
-		if (lblNewLabel == null) {
-			lblNewLabel = new JLabel("");
-			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			lblNewLabel.setBounds(147, 73, 198, 20);
+	private JLabel getLblRealPrezime() {
+		if (lblRealPrezime == null) {
+			lblRealPrezime = new JLabel("");
+			lblRealPrezime.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			lblRealPrezime.setBounds(147, 68, 198, 31);
 		}
-		return lblNewLabel;
+		return lblRealPrezime;
 	}
 	private JButton getBtnLogOut() {
 		if (btnLogOut == null) {
@@ -138,13 +138,13 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnLogOut;
 	}
-	private JLabel getLabel() {
-		if (label == null) {
-			label = new JLabel("");
-			label.setAlignmentX(Component.RIGHT_ALIGNMENT);
-			label.setBounds(1259, 50, 150, 20);
+	private JLabel getLblRealUserName() {
+		if (lblRealUserName == null) {
+			lblRealUserName = new JLabel("");
+			lblRealUserName.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			lblRealUserName.setBounds(1259, 48, 150, 28);
 		}
-		return label;
+		return lblRealUserName;
 	}
 	private JButton getBtnPrviSto() {
 		if (btnPrviSto == null) {
