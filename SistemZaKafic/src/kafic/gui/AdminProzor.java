@@ -59,7 +59,7 @@ public class AdminProzor extends JFrame {
 	private JLabel getLblAdminName() {
 		if (lblAdminName == null) {
 			lblAdminName = new JLabel("");
-			lblAdminName.setFont(new Font("DialogInput", Font.BOLD, 16));
+			lblAdminName.setFont(new Font("DialogInput", Font.BOLD, 24));
 			lblAdminName.setHorizontalAlignment(SwingConstants.LEFT);
 		}
 		return lblAdminName;
