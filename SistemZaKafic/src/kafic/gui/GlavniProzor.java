@@ -20,6 +20,7 @@ import java.awt.Component;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class GlavniProzor extends JFrame {
 
@@ -46,6 +47,8 @@ public class GlavniProzor extends JFrame {
 	 * Create the frame.
 	 */
 	public GlavniProzor(Radnik radnik) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/icons/ParadisoCaffee.jpeg")));
+		setTitle("Paradiso Caffee");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1600, 1000);
