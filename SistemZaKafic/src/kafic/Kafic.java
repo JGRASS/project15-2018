@@ -29,6 +29,11 @@ public class Kafic {
 	 * Lista koja se pri pokretanju programa puni artiklima iz foldera podaci
 	 */
 	public static LinkedList<Artikal> artikli = new LinkedList<Artikal>();
+	
+	/**
+	 * Lista koja sadze sve transakcije u vidu racuna
+	 */
+	public static LinkedList<Racun> racuni = new LinkedList<Racun>();
 
 	/**
 	 * Metoda koja se koristi za dodavanje novog radnika u listu radnika i json fajl
