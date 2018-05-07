@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import kafic.Kafic;
 import kafic.Radnik;
+import kafic.gui.AdminProzor;
 import kafic.gui.GlavniProzor;
 import kafic.gui.LogInProzor;
 import kafic.gui.UvodniProzor;
@@ -34,7 +35,7 @@ public class GUIKontroler {
 		start.setVisible(true);
 		
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1500);
 		} catch (InterruptedException e) {
 			System.out.println("Greska, " + e.getMessage());
 		}
@@ -47,7 +48,9 @@ public class GUIKontroler {
 		radnik = noviRadnik;
 		
 		if (radnik.isAdmin()) {
-			// TODO: otvori admin prozor
+			AdminProzor adminProzor = new AdminProzor(radnik);
+			adminProzor.setVisible(true);
+			start.dispose();
 		} else {
 			GlavniProzor glavniProzor = new GlavniProzor(radnik);
 			glavniProzor.setVisible(true);
