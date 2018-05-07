@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 import javafx.scene.layout.Border;
 import kafic.Radnik;
+import kafic.gui.kontroler.GUIKontroler;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -21,6 +22,7 @@ import java.awt.Component;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import javax.swing.SwingConstants;
 
 public class GlavniProzor extends JFrame {
 
@@ -47,7 +49,8 @@ public class GlavniProzor extends JFrame {
 	 * Create the frame.
 	 */
 	public GlavniProzor(Radnik radnik) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/icons/ParadisoCaffee.jpeg")));
+		setIconImage(
+				Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/icons/ParadisoCaffee.jpeg")));
 		setTitle("Paradiso Caffee");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,22 +66,24 @@ public class GlavniProzor extends JFrame {
 		lblRealPrezime.setText(radnik.getPrezime());
 		lblRealUserName.setText(radnik.getUsername());
 	}
+
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
 			panel_1.setForeground(new Color(255, 0, 0));
-			panel_1.setPreferredSize(new Dimension(120, 120));
+			panel_1.setPreferredSize(new Dimension(120, 100));
 			panel_1.setLayout(null);
 			panel_1.add(getLblIme());
 			panel_1.add(getLblPrezime());
 			panel_1.add(getLblRealIme());
-			panel_1.setBackground(new Color(200,200,200));
+			panel_1.setBackground(new Color(235, 237, 239));
 			panel_1.add(getLblRealPrezime());
 			panel_1.add(getBtnLogOut());
 			panel_1.add(getLblRealUserName());
 		}
 		return panel_1;
 	}
+
 	private JPanel getPanel_2() {
 		if (panel == null) {
 			panel = new JPanel();
@@ -96,59 +101,69 @@ public class GlavniProzor extends JFrame {
 		}
 		return panel;
 	}
+
 	private JLabel getLblIme() {
 		if (lblIme == null) {
 			lblIme = new JLabel("Ime:");
-			lblIme.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			lblIme.setBounds(15, 33, 69, 20);
+			lblIme.setFont(new Font("DialogInput", Font.BOLD, 24));
+			lblIme.setBounds(12, 20, 120, 20);
 		}
 		return lblIme;
 	}
+
 	private JLabel getLblPrezime() {
 		if (lblPrezime == null) {
 			lblPrezime = new JLabel("Prezime:");
-			lblPrezime.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			lblPrezime.setBounds(15, 73, 100, 20);
+			lblPrezime.setFont(new Font("DialogInput", Font.BOLD, 24));
+			lblPrezime.setBounds(12, 60, 120, 20);
 		}
 		return lblPrezime;
 	}
-	
+
 	private JLabel getLblRealIme() {
 		if (lblRealIme == null) {
 			lblRealIme = new JLabel("");
-			lblRealIme.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			lblRealIme.setBounds(147, 25, 198, 36);
+			lblRealIme.setFont(new Font("DialogInput", Font.PLAIN, 24));
+			lblRealIme.setBounds(144, 12, 198, 36);
 		}
 		return lblRealIme;
 	}
+
 	private JLabel getLblRealPrezime() {
 		if (lblRealPrezime == null) {
 			lblRealPrezime = new JLabel("");
-			lblRealPrezime.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			lblRealPrezime.setBounds(147, 68, 198, 31);
+			lblRealPrezime.setFont(new Font("DialogInput", Font.PLAIN, 24));
+			lblRealPrezime.setBounds(144, 55, 198, 31);
 		}
 		return lblRealPrezime;
 	}
+
 	private JButton getBtnLogOut() {
 		if (btnLogOut == null) {
 			btnLogOut = new JButton("Log out");
 			btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btnLogOut.setBackground(new Color(234, 236, 238));
 			btnLogOut.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.startovanjePrograma();
+					dispose();
 				}
 			});
-			btnLogOut.setBounds(1442, 33, 115, 50);
+			btnLogOut.setBounds(1439, 24, 115, 50);
 		}
 		return btnLogOut;
 	}
+
 	private JLabel getLblRealUserName() {
 		if (lblRealUserName == null) {
 			lblRealUserName = new JLabel("");
+			lblRealUserName.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblRealUserName.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			lblRealUserName.setBounds(1259, 48, 150, 28);
+			lblRealUserName.setBounds(1184, 33, 245, 28);
 		}
 		return lblRealUserName;
 	}
+
 	private JButton getBtnPrviSto() {
 		if (btnPrviSto == null) {
 			btnPrviSto = new JButton("");
@@ -163,6 +178,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnPrviSto;
 	}
+
 	private JButton getBtnDrugiSto() {
 		if (btnDrugiSto == null) {
 			btnDrugiSto = new JButton("");
@@ -173,6 +189,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnDrugiSto;
 	}
+
 	private JButton getBtnTreciSto() {
 		if (btnTreciSto == null) {
 			btnTreciSto = new JButton("");
@@ -183,6 +200,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnTreciSto;
 	}
+
 	private JButton getBtnCetvrtiSto() {
 		if (btnCetvrtiSto == null) {
 			btnCetvrtiSto = new JButton("");
@@ -193,6 +211,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnCetvrtiSto;
 	}
+
 	private JButton getBtnPetiSto() {
 		if (btnPetiSto == null) {
 			btnPetiSto = new JButton("");
@@ -203,6 +222,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnPetiSto;
 	}
+
 	private JButton getBtnSestiSto() {
 		if (btnSestiSto == null) {
 			btnSestiSto = new JButton("");
@@ -213,6 +233,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnSestiSto;
 	}
+
 	private JButton getBtnSedmiSto() {
 		if (btnSedmiSto == null) {
 			btnSedmiSto = new JButton("");
@@ -223,6 +244,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnSedmiSto;
 	}
+
 	private JButton getBtnOsmiSto() {
 		if (btnOsmiSto == null) {
 			btnOsmiSto = new JButton("");
@@ -233,11 +255,12 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnOsmiSto;
 	}
+
 	private JLabel getLblNewLabel_1() {
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("");
 			lblNewLabel_1.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/barTable.png")));
-			lblNewLabel_1.setBounds(581, 109, 407, 368);
+			lblNewLabel_1.setBounds(594, 110, 407, 368);
 		}
 		return lblNewLabel_1;
 	}

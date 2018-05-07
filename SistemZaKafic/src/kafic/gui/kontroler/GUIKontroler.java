@@ -10,6 +10,7 @@ import kafic.gui.UvodniProzor;
 
 public class GUIKontroler {
 	public static Radnik radnik;
+	public static UvodniProzor start;
 	/**
 	 * Launch the application.
 	 */
@@ -20,7 +21,7 @@ public class GUIKontroler {
 					Kafic.napuniListuRadnika();
 					Kafic.napuniListuArtikli();
 					
-					startovanjePrograma();	
+					startovanjePrograma();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -29,7 +30,7 @@ public class GUIKontroler {
 	}
 	
 	public static void startovanjePrograma() {
-		UvodniProzor start = new UvodniProzor();
+		start = new UvodniProzor();
 		start.setVisible(true);
 		
 		try {
@@ -48,10 +49,9 @@ public class GUIKontroler {
 		if (radnik.isAdmin()) {
 			// TODO: otvori admin prozor
 		} else {
-			
 			GlavniProzor glavniProzor = new GlavniProzor(radnik);
 			glavniProzor.setVisible(true);
-			
+			start.dispose();
 		}		
 	}
 }

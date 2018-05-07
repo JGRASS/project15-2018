@@ -4,7 +4,7 @@
     "prezime": "Vujic",
     "username": "nikola.vujic",
     "password": "lozinka",
-    "admin": false
+    "admin": true
   },
   {
     "ime": "Uros",
