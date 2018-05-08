@@ -31,7 +31,7 @@ public class Kafic {
 	public static LinkedList<Artikal> artikli = new LinkedList<Artikal>();
 	
 	/**
-	 * Lista koja sadze sve transakcije u vidu racuna
+	 * Lista koja sadzi sve transakcije u vidu racuna
 	 */
 	public static LinkedList<Racun> racuni = new LinkedList<Racun>();
 
