@@ -147,7 +147,7 @@ public class GUIKontroler {
 					radnici.get(i).getIme() + " " + radnici.get(i).getPrezime() + ", " + radnici.get(i).getUsername());
 			button.setBackground(new Color(242, 243, 244));
 			button.setActionCommand(radnici.get(i).getUsername());
-			button.setPreferredSize(new Dimension(350, 50));
+			button.setPreferredSize(new Dimension(400, 50));
 			button.setHorizontalAlignment(SwingConstants.LEFT);
 			button.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
 			button.addActionListener(new ActionListener() {

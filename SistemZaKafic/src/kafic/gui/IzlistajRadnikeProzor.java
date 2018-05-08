@@ -17,14 +17,13 @@ import javax.swing.ScrollPaneConstants;
 public class IzlistajRadnikeProzor extends JFrame {
 
 	private JPanel contentPane;
-	private JScrollPane scrollPane;
 	
 	public IzlistajRadnikeProzor izlistajRadnikeProzor = this;
-	private JPanel panel;
 	
 	public JPanel buttonGrid = new JPanel(new GridLayout(0, 10));
 	
 	private ArrayList<JButton> buttons = new ArrayList<JButton>();
+	private JPanel panel;
 
 	/**
 	 * Create the frame.
@@ -33,14 +32,13 @@ public class IzlistajRadnikeProzor extends JFrame {
 		setResizable(false);
 		setTitle("Lista Radnika");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 350, 500);
+		setBounds(100, 100, 443, 594);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		contentPane.add(getScrollPane(), BorderLayout.CENTER);
-		panel.setPreferredSize(new Dimension(350, 500));
+		contentPane.add(getPanel_1(), BorderLayout.WEST);
 		
 		this.buttons = GUIKontroler.listButtonsRadnici(izlistajRadnikeProzor);
 		
@@ -48,18 +46,10 @@ public class IzlistajRadnikeProzor extends JFrame {
 			panel.add(buttons.get(i));
 		}
 	}
-
-	private JScrollPane getScrollPane() {
-		if (scrollPane == null) {
-			scrollPane = new JScrollPane();
-			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-			scrollPane.setViewportView(getPanel());
-		}
-		return scrollPane;
-	}
-	private JPanel getPanel() {
+	private JPanel getPanel_1() {
 		if (panel == null) {
 			panel = new JPanel();
+			panel.setPreferredSize(new Dimension(443, 594));
 		}
 		return panel;
 	}
