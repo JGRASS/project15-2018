@@ -27,7 +27,7 @@ public class SODodajRadnika {
 	 *            predstavlja objekat radnika koji se treba dodati
 	 * @param radnici
 	 *            predstavlja listu u koju se treba dodati
-	 * @throws Exception ukoliko je radnik vec u listi
+	 * @throws Exception ukoliko je radnik vec u listi ili ako vec ima 10 radnika
 	 */
 	public static void izvrsi(Radnik radnik, LinkedList<Radnik> radnici) throws Exception {
 		if (radnici.size() >= 10)
