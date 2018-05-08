@@ -61,9 +61,8 @@ public class GUIKontroler {
 		}		
 	}
 	
-	public static void prikaziIzvestajProzor(JPanel contentPane) {
+	public static void prikaziIzvestajProzor() {
 		IzvestajProzor prozor = new IzvestajProzor();
-		prozor.setLocationRelativeTo(contentPane);
 		prozor.setVisible(true);
 	}
 }

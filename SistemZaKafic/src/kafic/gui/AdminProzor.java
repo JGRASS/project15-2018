@@ -150,7 +150,7 @@ public class AdminProzor extends JFrame {
 			btnGenerisiIzvestaj.setBackground(new Color(242, 243, 244));
 			btnGenerisiIzvestaj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.prikaziIzvestajProzor(contentPane);
+					GUIKontroler.prikaziIzvestajProzor();
 				}
 			});
 			btnGenerisiIzvestaj.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
