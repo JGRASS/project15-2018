@@ -32,7 +32,7 @@ public class SODodajRadnika {
 	public static void izvrsi(Radnik radnik, LinkedList<Radnik> radnici) throws Exception {
 		for (int i = 0; i < radnici.size(); i++) {
 			if (radnici.get(i).equals(radnik))
-				throw new Exception("radnik je vec u listi");
+				throw new Exception("Username vec postoji");
 		}
 		radnici.add(radnik);
 		

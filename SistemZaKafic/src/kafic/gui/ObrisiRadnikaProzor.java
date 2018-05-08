@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -15,9 +16,11 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import kafic.Kafic;
+import kafic.Radnik;
 import kafic.gui.kontroler.GUIKontroler;
 
-public class DodajRadnikaProzor extends JFrame {
+public class ObrisiRadnikaProzor extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblImeRadnika;
@@ -28,18 +31,19 @@ public class DodajRadnikaProzor extends JFrame {
 	private JLabel lblPassword;
 	public JTextField textUsername;
 	public JTextField textPassword;
-	public JCheckBox chckbxAdmin;
+	public JCheckBox chckbxPotvrda;
 	private JSeparator separator;
-	private JButton btnDodajRadnika;
+	private JButton btnObrisiRadnika;
 	private JButton btnOdustani;
 	
-	private DodajRadnikaProzor dodajRadnikaProzor = this;
+	private ObrisiRadnikaProzor obrisiRadnikaProzor = this;
+	private Radnik radnik = new Radnik();
 	
 	/**
 	 * Create the frame.
 	 * @param adminProzor 
 	 */
-	public DodajRadnikaProzor() {
+	public ObrisiRadnikaProzor(String username) {
 		setResizable(false);
 		setTitle("Dodaj Radnika");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -57,11 +61,22 @@ public class DodajRadnikaProzor extends JFrame {
 		contentPane.add(getLblPassword());
 		contentPane.add(getTextUsername());
 		contentPane.add(getTextPassword());
-		contentPane.add(getChckbxAdmin());
+		contentPane.add(getChckbxPotvrda());
 		contentPane.add(getSeparator());
-		contentPane.add(getBtnDodajRadnika());
+		contentPane.add(getBtnObrisiRadnika());
 		contentPane.add(getBtnOdustani());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		LinkedList<Radnik> radnici = Kafic.radnici;
+		
+		for (int i = 0; i < radnici.size(); i++) {
+			if (radnici.get(i).getUsername().equals(username)) {
+				radnik = radnici.get(i);
+				break;
+			}
+		}
+		
+		GUIKontroler.napuniObrisiProzor(obrisiRadnikaProzor, radnik);
 	}
 
 	private JLabel getLblImeRadnika() {
@@ -81,6 +96,7 @@ public class DodajRadnikaProzor extends JFrame {
 	private JTextField getTextImeRadnika() {
 		if (textImeRadnika == null) {
 			textImeRadnika = new JTextField();
+			textImeRadnika.setEditable(false);
 			textImeRadnika.setFont(new Font("DialogInput", Font.PLAIN, 16));
 			textImeRadnika.setColumns(10);
 		}
@@ -89,6 +105,7 @@ public class DodajRadnikaProzor extends JFrame {
 	private JTextField getTextPrezimeRadnika() {
 		if (textPrezimeRadnika == null) {
 			textPrezimeRadnika = new JTextField();
+			textPrezimeRadnika.setEditable(false);
 			textPrezimeRadnika.setFont(new Font("DialogInput", Font.PLAIN, 16));
 			textPrezimeRadnika.setText("");
 			textPrezimeRadnika.setColumns(10);
@@ -112,6 +129,7 @@ public class DodajRadnikaProzor extends JFrame {
 	private JTextField getTextUsername() {
 		if (textUsername == null) {
 			textUsername = new JTextField();
+			textUsername.setEditable(false);
 			textUsername.setFont(new Font("DialogInput", Font.PLAIN, 16));
 			textUsername.setColumns(10);
 		}
@@ -120,18 +138,19 @@ public class DodajRadnikaProzor extends JFrame {
 	private JTextField getTextPassword() {
 		if (textPassword == null) {
 			textPassword = new JTextField();
+			textPassword.setEditable(false);
 			textPassword.setFont(new Font("DialogInput", Font.PLAIN, 16));
 			textPassword.setText("");
 			textPassword.setColumns(10);
 		}
 		return textPassword;
 	}
-	private JCheckBox getChckbxAdmin() {
-		if (chckbxAdmin == null) {
-			chckbxAdmin = new JCheckBox("Admin");
-			chckbxAdmin.setFont(new Font("DialogInput", Font.BOLD, 16));
+	private JCheckBox getChckbxPotvrda() {
+		if (chckbxPotvrda == null) {
+			chckbxPotvrda = new JCheckBox("Potvrda za brisanje");
+			chckbxPotvrda.setFont(new Font("DialogInput", Font.BOLD, 16));
 		}
-		return chckbxAdmin;
+		return chckbxPotvrda;
 	}
 	private JSeparator getSeparator() {
 		if (separator == null) {
@@ -140,18 +159,18 @@ public class DodajRadnikaProzor extends JFrame {
 		}
 		return separator;
 	}
-	private JButton getBtnDodajRadnika() {
-		if (btnDodajRadnika == null) {
-			btnDodajRadnika = new JButton("Dodaj Radnika");
-			btnDodajRadnika.setFont(new Font("DialogInput", Font.BOLD, 16));
-			btnDodajRadnika.setBackground(new Color(242, 243, 244));
-			btnDodajRadnika.addActionListener(new ActionListener() {
+	private JButton getBtnObrisiRadnika() {
+		if (btnObrisiRadnika == null) {
+			btnObrisiRadnika = new JButton("Obrisi Radnika");
+			btnObrisiRadnika.setFont(new Font("DialogInput", Font.BOLD, 16));
+			btnObrisiRadnika.setBackground(new Color(242, 243, 244));
+			btnObrisiRadnika.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dodajRadnika(dodajRadnikaProzor);
+					GUIKontroler.obrisiRadnikaIzListe(obrisiRadnikaProzor, radnik);
 				}
 			});
 		}
-		return btnDodajRadnika;
+		return btnObrisiRadnika;
 	}
 	private JButton getBtnOdustani() {
 		if (btnOdustani == null) {

@@ -31,6 +31,8 @@ public class AdminProzor extends JFrame {
 	private JButton btnObrisiArtikal;
 	private JButton btnGenerisiIzvestaj;
 	private JButton btnLogout;
+	
+	public AdminProzor adminProzor = this;
 
 	/**
 	 * Create the frame.
@@ -126,6 +128,8 @@ public class AdminProzor extends JFrame {
 			btnObrisiRadnika.setBackground(new Color(242, 243, 244));
 			btnObrisiRadnika.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					IzlistajRadnikeProzor izlistajRadnikeProzor = new IzlistajRadnikeProzor();
+					izlistajRadnikeProzor.setVisible(true);
 				}
 			});
 			btnObrisiRadnika.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));

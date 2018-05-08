@@ -7,17 +7,73 @@
     "admin": true
   },
   {
-    "ime": "Uros",
-    "prezime": "Veljkovic",
-    "username": "uros.veljkovic",
-    "password": "lozinka",
-    "admin": false
-  },
-  {
     "ime": "Nikola",
     "prezime": "Bakic",
     "username": "nikola.bakic",
     "password": "lozinka",
     "admin": false
+  },
+  {
+    "ime": "Silvester",
+    "prezime": "Stalone",
+    "username": "rambo",
+    "password": "123123",
+    "admin": true
+  },
+  {
+    "ime": "Test",
+    "prezime": "test",
+    "username": "test1",
+    "password": "123123",
+    "admin": false
+  },
+  {
+    "ime": "testriranje",
+    "prezime": "testriranje",
+    "username": "testriranje1",
+    "password": "testriranje",
+    "admin": false
+  },
+  {
+    "ime": "testriranje",
+    "prezime": "testriranje",
+    "username": "testriranje2",
+    "password": "testriranje",
+    "admin": true
+  },
+  {
+    "ime": "testriranje",
+    "prezime": "testriranje",
+    "username": "testriranje3",
+    "password": "testriranje",
+    "admin": true
+  },
+  {
+    "ime": "testriranje",
+    "prezime": "testriranje",
+    "username": "testriranje4",
+    "password": "testriranje",
+    "admin": false
+  },
+  {
+    "ime": "testriranje",
+    "prezime": "testriranje",
+    "username": "testriranje11",
+    "password": "testriranje",
+    "admin": true
+  },
+  {
+    "ime": "testriranje",
+    "prezime": "testriranje",
+    "username": "testriranje123",
+    "password": "testriranje",
+    "admin": false
+  },
+  {
+    "ime": "testriranje",
+    "prezime": "testriranje",
+    "username": "testriranje33323",
+    "password": "testriranje",
+    "admin": true
   }
 ]
