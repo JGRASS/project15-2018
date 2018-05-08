@@ -6,6 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import kafic.Kafic;
+import kafic.gui.kontroler.GUIKontroler;
+import kafic.sistemskeoperacije.SOVratiUkupanBrojRacuna;
+import kafic.sistemskeoperacije.SOVratiUkupanPrihod;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -17,6 +23,10 @@ import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.awt.event.ActionEvent;
 
 public class IzvestajProzor extends JFrame {
 
@@ -24,8 +34,8 @@ public class IzvestajProzor extends JFrame {
 	private JScrollPane scrollPane;
 	private JTextArea textArea;
 	private JPanel panel;
-	private JButton jtfSacuvaj;
-	private JButton jtfOdustani;
+	private JButton btnSacuvaj;
+	private JButton btnOdustani;
 	private JLabel lblPocetniDatum;
 	private JTextField jtfPocetniDan;
 	private JTextField jtfPocetniMesec;
@@ -43,15 +53,17 @@ public class IzvestajProzor extends JFrame {
 	public IzvestajProzor() {
 		setResizable(false);
 		setTitle("Izvestaj");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 314);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
 		contentPane.add(getPanel(), BorderLayout.EAST);
 	}
+
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
@@ -59,19 +71,21 @@ public class IzvestajProzor extends JFrame {
 		}
 		return scrollPane;
 	}
+
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
 		}
 		return textArea;
 	}
+
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.setPreferredSize(new Dimension(150, 10));
 			panel.setLayout(null);
-			panel.add(getJtfSacuvaj());
-			panel.add(getJtfOdustani());
+			panel.add(getBtnSacuvaj());
+			panel.add(getBtnOdustani());
 			panel.add(getLblPocetniDatum());
 			panel.add(getJtfPocetniDan());
 			panel.add(getJtfPocetniMesec());
@@ -85,24 +99,27 @@ public class IzvestajProzor extends JFrame {
 		}
 		return panel;
 	}
-	private JButton getJtfSacuvaj() {
-		if (jtfSacuvaj == null) {
-			jtfSacuvaj = new JButton("Sacuvaj");
-			jtfSacuvaj.setBackground(SystemColor.control);
-			jtfSacuvaj.setBounds(14, 187, 126, 29);
-			jtfSacuvaj.setFont(new Font("Dialog", Font.PLAIN, 15));
+
+	private JButton getBtnSacuvaj() {
+		if (btnSacuvaj == null) {
+			btnSacuvaj = new JButton("Sacuvaj");
+			btnSacuvaj.setBackground(SystemColor.control);
+			btnSacuvaj.setBounds(14, 187, 126, 29);
+			btnSacuvaj.setFont(new Font("Dialog", Font.PLAIN, 15));
 		}
-		return jtfSacuvaj;
+		return btnSacuvaj;
 	}
-	private JButton getJtfOdustani() {
-		if (jtfOdustani == null) {
-			jtfOdustani = new JButton("Odustani");
-			jtfOdustani.setBackground(SystemColor.control);
-			jtfOdustani.setBounds(14, 227, 126, 29);
-			jtfOdustani.setFont(new Font("Dialog", Font.PLAIN, 15));
+
+	private JButton getBtnOdustani() {
+		if (btnOdustani == null) {
+			btnOdustani = new JButton("Odustani");
+			btnOdustani.setBackground(SystemColor.control);
+			btnOdustani.setBounds(14, 227, 126, 29);
+			btnOdustani.setFont(new Font("Dialog", Font.PLAIN, 15));
 		}
-		return jtfOdustani;
+		return btnOdustani;
 	}
+
 	private JLabel getLblPocetniDatum() {
 		if (lblPocetniDatum == null) {
 			lblPocetniDatum = new JLabel("Pocetni datum");
@@ -110,6 +127,7 @@ public class IzvestajProzor extends JFrame {
 		}
 		return lblPocetniDatum;
 	}
+
 	private JTextField getJtfPocetniDan() {
 		if (jtfPocetniDan == null) {
 			jtfPocetniDan = new JTextField();
@@ -118,6 +136,7 @@ public class IzvestajProzor extends JFrame {
 		}
 		return jtfPocetniDan;
 	}
+
 	private JTextField getJtfPocetniMesec() {
 		if (jtfPocetniMesec == null) {
 			jtfPocetniMesec = new JTextField();
@@ -126,6 +145,7 @@ public class IzvestajProzor extends JFrame {
 		}
 		return jtfPocetniMesec;
 	}
+
 	private JTextField getJtfPocetnaGodina() {
 		if (jtfPocetnaGodina == null) {
 			jtfPocetnaGodina = new JTextField();
@@ -134,6 +154,7 @@ public class IzvestajProzor extends JFrame {
 		}
 		return jtfPocetnaGodina;
 	}
+
 	private JLabel getLblKrajnjiDatum() {
 		if (lblKrajnjiDatum == null) {
 			lblKrajnjiDatum = new JLabel("Krajnji datum");
@@ -141,6 +162,7 @@ public class IzvestajProzor extends JFrame {
 		}
 		return lblKrajnjiDatum;
 	}
+
 	private JTextField getJtfKrajnjiDan() {
 		if (jtfKrajnjiDan == null) {
 			jtfKrajnjiDan = new JTextField();
@@ -149,6 +171,7 @@ public class IzvestajProzor extends JFrame {
 		}
 		return jtfKrajnjiDan;
 	}
+
 	private JTextField getJtfKrajnjiMesec() {
 		if (jtfKrajnjiMesec == null) {
 			jtfKrajnjiMesec = new JTextField();
@@ -157,6 +180,7 @@ public class IzvestajProzor extends JFrame {
 		}
 		return jtfKrajnjiMesec;
 	}
+
 	private JTextField getJtfKrajnjaGodina() {
 		if (jtfKrajnjaGodina == null) {
 			jtfKrajnjaGodina = new JTextField();
@@ -165,6 +189,7 @@ public class IzvestajProzor extends JFrame {
 		}
 		return jtfKrajnjaGodina;
 	}
+
 	private JCheckBox getChckbxTrenutniDatum() {
 		if (chckbxTrenutniDatum == null) {
 			chckbxTrenutniDatum = new JCheckBox("Trenutni datum");
@@ -173,9 +198,18 @@ public class IzvestajProzor extends JFrame {
 		}
 		return chckbxTrenutniDatum;
 	}
+
 	private JButton getBtnIspis() {
 		if (btnIspis == null) {
 			btnIspis = new JButton("Ispis");
+			btnIspis.setBackground(SystemColor.control);
+			btnIspis.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					textArea.setText(GUIKontroler.vratiIzvestaj(jtfPocetniDan.getText(), jtfPocetniMesec.getText(),
+							jtfPocetnaGodina.getText(), jtfKrajnjiDan.getText(), jtfKrajnjiMesec.getText(),
+							jtfKrajnjaGodina.getText()));
+				}
+			});
 			btnIspis.setFont(new Font("Dialog", Font.PLAIN, 15));
 			btnIspis.setBounds(10, 11, 130, 29);
 		}
