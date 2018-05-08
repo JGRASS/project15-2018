@@ -2,10 +2,13 @@ package kafic.gui.kontroler;
 
 import java.awt.EventQueue;
 
+import javax.swing.JPanel;
+
 import kafic.Kafic;
 import kafic.Radnik;
 import kafic.gui.AdminProzor;
 import kafic.gui.GlavniProzor;
+import kafic.gui.IzvestajProzor;
 import kafic.gui.LogInProzor;
 import kafic.gui.UvodniProzor;
 
@@ -56,5 +59,10 @@ public class GUIKontroler {
 			glavniProzor.setVisible(true);
 			start.dispose();
 		}		
+	}
+	
+	public static void prikaziIzvestajProzor() {
+		IzvestajProzor prozor = new IzvestajProzor();
+		prozor.setVisible(true);
 	}
 }
