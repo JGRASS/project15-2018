@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import kafic.Radnik;
+import kafic.gui.kontroler.GUIKontroler;
 
 public class AdminProzor extends JFrame {
 
@@ -149,6 +150,7 @@ public class AdminProzor extends JFrame {
 			btnGenerisiIzvestaj.setBackground(new Color(242, 243, 244));
 			btnGenerisiIzvestaj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.prikaziIzvestajProzor(contentPane);
 				}
 			});
 			btnGenerisiIzvestaj.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
