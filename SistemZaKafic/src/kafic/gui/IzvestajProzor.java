@@ -35,15 +35,16 @@ public class IzvestajProzor extends JFrame {
 	private JTextField jtfKrajnjiMesec;
 	private JTextField jtfKrajnjaGodina;
 	private JCheckBox chckbxTrenutniDatum;
+	private JButton btnIspis;
 
 	/**
 	 * Create the frame.
 	 */
 	public IzvestajProzor() {
-		setTitle("Izvestaj");
 		setResizable(false);
+		setTitle("Izvestaj");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 314);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -67,7 +68,7 @@ public class IzvestajProzor extends JFrame {
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.setPreferredSize(new Dimension(140, 10));
+			panel.setPreferredSize(new Dimension(150, 10));
 			panel.setLayout(null);
 			panel.add(getJtfSacuvaj());
 			panel.add(getJtfOdustani());
@@ -80,6 +81,7 @@ public class IzvestajProzor extends JFrame {
 			panel.add(getJtfKrajnjiMesec());
 			panel.add(getJtfKrajnjaGodina());
 			panel.add(getChckbxTrenutniDatum());
+			panel.add(getBtnIspis());
 		}
 		return panel;
 	}
@@ -87,7 +89,7 @@ public class IzvestajProzor extends JFrame {
 		if (jtfSacuvaj == null) {
 			jtfSacuvaj = new JButton("Sacuvaj");
 			jtfSacuvaj.setBackground(SystemColor.control);
-			jtfSacuvaj.setBounds(14, 5, 116, 29);
+			jtfSacuvaj.setBounds(14, 187, 126, 29);
 			jtfSacuvaj.setFont(new Font("Dialog", Font.PLAIN, 15));
 		}
 		return jtfSacuvaj;
@@ -96,7 +98,7 @@ public class IzvestajProzor extends JFrame {
 		if (jtfOdustani == null) {
 			jtfOdustani = new JButton("Odustani");
 			jtfOdustani.setBackground(SystemColor.control);
-			jtfOdustani.setBounds(14, 211, 116, 29);
+			jtfOdustani.setBounds(14, 227, 126, 29);
 			jtfOdustani.setFont(new Font("Dialog", Font.PLAIN, 15));
 		}
 		return jtfOdustani;
@@ -167,8 +169,16 @@ public class IzvestajProzor extends JFrame {
 		if (chckbxTrenutniDatum == null) {
 			chckbxTrenutniDatum = new JCheckBox("Trenutni datum");
 			chckbxTrenutniDatum.setBackground(SystemColor.control);
-			chckbxTrenutniDatum.setBounds(14, 153, 116, 23);
+			chckbxTrenutniDatum.setBounds(14, 153, 126, 23);
 		}
 		return chckbxTrenutniDatum;
+	}
+	private JButton getBtnIspis() {
+		if (btnIspis == null) {
+			btnIspis = new JButton("Ispis");
+			btnIspis.setFont(new Font("Dialog", Font.PLAIN, 15));
+			btnIspis.setBounds(10, 11, 130, 29);
+		}
+		return btnIspis;
 	}
 }
