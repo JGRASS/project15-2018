@@ -8,6 +8,7 @@ import kafic.sistemskeoperacije.SODodajArtikal;
 import kafic.sistemskeoperacije.SODodajRadnika;
 import kafic.sistemskeoperacije.SONapuniListuArtikli;
 import kafic.sistemskeoperacije.SONapuniListuRadnika;
+import kafic.sistemskeoperacije.SOObrisiArtikal;
 import kafic.sistemskeoperacije.SOObrisiRadnika;
 import kafic.sistemskeoperacije.SOSadrziSamoSlova;
 
@@ -117,5 +118,10 @@ public class Kafic {
 	 */
 	public static boolean sadrziSamoSlova(String naziv) {
 		return SOSadrziSamoSlova.izvrsi(naziv);
+	}
+
+	public static void obrisiArtikal(Artikal artikal) {
+		SOObrisiArtikal.izvrsi(artikal, artikli);
+		
 	}
 }

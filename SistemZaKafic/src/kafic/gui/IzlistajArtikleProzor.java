@@ -2,6 +2,7 @@ package kafic.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -12,13 +13,13 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import kafic.gui.kontroler.GUIKontroler;
-import javax.swing.ScrollPaneConstants;
 
-public class IzlistajRadnikeProzor extends JFrame {
+public class IzlistajArtikleProzor extends JFrame {
+
 
 	private JPanel contentPane;
 	
-	public IzlistajRadnikeProzor izlistajRadnikeProzor = this;
+	public IzlistajArtikleProzor izlistajArtikleProzor = this;
 	
 	public JPanel buttonGrid = new JPanel(new GridLayout(0, 10));
 	
@@ -31,11 +32,11 @@ public class IzlistajRadnikeProzor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public IzlistajRadnikeProzor() {
+	public IzlistajArtikleProzor() {
 		setResizable(false);
-		setTitle("Lista Radnika");
+		setTitle("Lista Artikala");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.buttons = GUIKontroler.listButtonsRadnici(izlistajRadnikeProzor);
+		this.buttons = GUIKontroler.listButtonsArtikli(izlistajArtikleProzor);
 		this.panelHeight = buttons.size() * 55 + 2;
 		setBounds(100, 100, 443, 500);
 		setLocationRelativeTo(null);

@@ -21,52 +21,10 @@
     "admin": true
   },
   {
-    "ime": "testiranje",
-    "prezime": "testiranje",
-    "username": "testiranje",
-    "password": "testiranje",
-    "admin": false
-  },
-  {
-    "ime": "testiranje",
-    "prezime": "testiranje",
-    "username": "testiranje1",
-    "password": "testiranje",
-    "admin": false
-  },
-  {
-    "ime": "testiranje",
-    "prezime": "testiranje",
-    "username": "testiranje2",
-    "password": "testiranje",
-    "admin": false
-  },
-  {
-    "ime": "testiranje",
-    "prezime": "testiranje",
-    "username": "testiranje3",
-    "password": "testiranje",
-    "admin": false
-  },
-  {
-    "ime": "testiranje",
-    "prezime": "testiranje",
-    "username": "testiranje4",
-    "password": "testiranje",
-    "admin": false
-  },
-  {
-    "ime": "testiranje",
-    "prezime": "testiranje",
-    "username": "testiranje5",
-    "password": "testiranje",
-    "admin": false
-  },
-  {
-    "ime": "testiranje",
-    "prezime": "testiranje",
-    "username": "testiranje6",
-    "password": "testiranje",
+    "ime": "Uros",
+    "prezime": "Veljkovic",
+    "username": "uros.veljkovic",
+    "password": "lozinka",
     "admin": false
   }
 ]

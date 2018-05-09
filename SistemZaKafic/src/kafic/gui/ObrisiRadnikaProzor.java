@@ -76,7 +76,7 @@ public class ObrisiRadnikaProzor extends JFrame {
 			}
 		}
 		
-		GUIKontroler.napuniObrisiProzor(obrisiRadnikaProzor, radnik);
+		GUIKontroler.napuniObrisiRadnikaProzor(obrisiRadnikaProzor, radnik);
 	}
 
 	private JLabel getLblImeRadnika() {
@@ -148,7 +148,7 @@ public class ObrisiRadnikaProzor extends JFrame {
 	private JCheckBox getChckbxPotvrda() {
 		if (chckbxPotvrda == null) {
 			chckbxPotvrda = new JCheckBox("Potvrda za brisanje");
-			chckbxPotvrda.setFont(new Font("DialogInput", Font.BOLD, 16));
+			chckbxPotvrda.setFont(new Font("DialogInput", Font.BOLD, 14));
 		}
 		return chckbxPotvrda;
 	}

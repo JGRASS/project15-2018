@@ -91,7 +91,7 @@ public class Artikal {
 	 *             koji nije slovo
 	 */
 	public void setNazivArtikla(String nazivArtikla) throws Exception {
-		if (nazivArtikla == null || nazivArtikla.length() < 2 || nazivArtikla.length() > 40 || nazivArtikla.isEmpty())
+		if (nazivArtikla == null || nazivArtikla.length() < 2 || nazivArtikla.length() > 40)
 			throw new Exception("Naziv artikla mora imati vise od jednog, a manje od 40 karaktera!");
 		this.nazivArtikla = nazivArtikla;
 	}
@@ -122,16 +122,19 @@ public class Artikal {
 	 *             ili null
 	 */
 	public void setZemljaPoreklaArtikla(String zemljaPoreklaArtikla) throws Exception {
+		if (zemljaPoreklaArtikla.isEmpty())
+			throw new Exception("Zemlja porekla ne sme biti prazna");
 		if (zemljaPoreklaArtikla.length() < 1)
 			throw new Exception("Zemlja porekla mora sadrzati samo slovne karaktere!");
-		this.zemljaPoreklaArtikla = zemljaPoreklaArtikla;
 		
 		String[] zemljaPoreklaNiz = zemljaPoreklaArtikla.split(" ");
 		
 		for (int i = 0; i < zemljaPoreklaNiz.length; i++) {
 			if (!Kafic.sadrziSamoSlova(zemljaPoreklaNiz[i]))
-				throw new Exception("zemlja porekla ne sme da sadrzi karaktere");
+				throw new Exception("Zemlja porekla ne sme da sadrzi slovne karaktere");
 		}
+		
+		this.zemljaPoreklaArtikla = zemljaPoreklaArtikla;
 	}
 
 	/**

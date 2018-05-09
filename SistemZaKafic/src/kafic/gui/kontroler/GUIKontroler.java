@@ -9,18 +9,23 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+import kafic.Artikal;
 import kafic.Kafic;
 import kafic.Radnik;
 import kafic.gui.AdminProzor;
+import kafic.gui.DodajArtikalProzor;
 import kafic.gui.DodajRadnikaProzor;
 import kafic.gui.GlavniProzor;
+import kafic.gui.IzlistajArtikleProzor;
 import kafic.gui.IzlistajRadnikeProzor;
 import kafic.gui.IzvestajProzor;
 import kafic.gui.LogInProzor;
+import kafic.gui.ObrisiArtikalProzor;
 import kafic.gui.ObrisiRadnikaProzor;
 import kafic.gui.UvodniProzor;
 import kafic.sistemskeoperacije.SOVratiUkupanBrojRacuna;
@@ -52,13 +57,12 @@ public class GUIKontroler {
 		start = new UvodniProzor();
 		start.setVisible(true);
 
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			System.out.println("Greska, " + e.getMessage());
-		}
+		otvoriLoginProzor();
+	}
 
+	public static void otvoriLoginProzor() {
 		LogInProzor login = new LogInProzor();
+
 		login.setVisible(true);
 	}
 
@@ -68,6 +72,7 @@ public class GUIKontroler {
 		if (radnik.isAdmin()) {
 			AdminProzor adminProzor = new AdminProzor(radnik);
 			adminProzor.setVisible(true);
+			
 			start.dispose();
 		} else {
 			GlavniProzor glavniProzor = new GlavniProzor(radnik);
@@ -81,9 +86,8 @@ public class GUIKontroler {
 		prozor.setVisible(true);
 	}
 
-	
-	public static String vratiIzvestaj(String pocetniDan, String pocetniMesec, String pocetnaGodina,
-			String krajnjiDan, String krajnjiMesec, String krajnjaGodina) {
+	public static String vratiIzvestaj(String pocetniDan, String pocetniMesec, String pocetnaGodina, String krajnjiDan,
+			String krajnjiMesec, String krajnjaGodina) {
 		int pocetniD = Integer.parseInt(pocetniDan);
 		int pocetniM = Integer.parseInt(pocetniMesec);
 		int pocetnaG = Integer.parseInt(pocetnaGodina);
@@ -96,10 +100,9 @@ public class GUIKontroler {
 
 		Date krajnji = new Date(krajnjaG, krajnjiM, krajnjiD);
 
-		return "Izvestaj za period od " + pocetni.getDate() + "/" + pocetni.getMonth() + "/"
-				+ pocetni.getYear() + " do " + krajnji.getDate() + "/" + krajnji.getMonth() + "/"
-				+ krajnji.getYear() + "\n\nUkupan prihod za dati period: "
-				+ SOVratiUkupanPrihod.izvrsi(pocetni, krajnji, Kafic.racuni)
+		return "Izvestaj za period od " + pocetni.getDate() + "/" + pocetni.getMonth() + "/" + pocetni.getYear()
+				+ " do " + krajnji.getDate() + "/" + krajnji.getMonth() + "/" + krajnji.getYear()
+				+ "\n\nUkupan prihod za dati period: " + SOVratiUkupanPrihod.izvrsi(pocetni, krajnji, Kafic.racuni)
 				+ "\n\nUkupan broj racuna za dati period: "
 				+ SOVratiUkupanBrojRacuna.izvrsi(pocetni, krajnji, Kafic.racuni);
 	}
@@ -169,7 +172,10 @@ public class GUIKontroler {
 
 		for (int i = 0; i < radnici.size(); i++) {
 			JButton button = new JButton(
-					radnici.get(i).getIme() + " " + radnici.get(i).getPrezime() + ", " + radnici.get(i).getUsername());
+					radnici.get(i).getIme() + " " + radnici.get(i).getPrezime() + ", " + radnici.get(i).getUsername());// samo
+																														// getNaziv
+																														// za
+																														// artikal
 			button.setBackground(new Color(242, 243, 244));
 			button.setActionCommand(radnici.get(i).getUsername());
 			button.setPreferredSize(new Dimension(400, 50));
@@ -192,7 +198,7 @@ public class GUIKontroler {
 		obrisiRadnikaProzor.setVisible(true);
 	}
 
-	public static void napuniObrisiProzor(ObrisiRadnikaProzor obrisiRadnikaProzor, Radnik radnik) {
+	public static void napuniObrisiRadnikaProzor(ObrisiRadnikaProzor obrisiRadnikaProzor, Radnik radnik) {
 		obrisiRadnikaProzor.textImeRadnika.setText(radnik.getIme());
 		obrisiRadnikaProzor.textPrezimeRadnika.setText(radnik.getPrezime());
 		obrisiRadnikaProzor.textUsername.setText(radnik.getUsername());
@@ -210,5 +216,145 @@ public class GUIKontroler {
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 
+	}
+
+	public static void dodajArtikal(DodajArtikalProzor dodajArtikalProzor) {
+		Artikal artikal = new Artikal();
+
+		String naziv = dodajArtikalProzor.textField.getText();
+		try {
+			artikal.setNazivArtikla(naziv);
+		} catch (Exception e1) {
+			dodajArtikalProzor.textField.setText("");
+			JOptionPane.showMessageDialog(dodajArtikalProzor, e1.getMessage(), "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+
+		double cena = -1;
+		try {
+			cena = Double.parseDouble(dodajArtikalProzor.textField_1.getText());
+		} catch (Exception e2) {
+			dodajArtikalProzor.textField_1.setText("");
+			JOptionPane.showMessageDialog(dodajArtikalProzor, "Neispravan unos broja!", "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+		try {
+			artikal.setCenaArtikla(cena);
+		} catch (Exception e) {
+			dodajArtikalProzor.textField_1.setText("");
+			JOptionPane.showMessageDialog(dodajArtikalProzor, e.getMessage(), "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+
+		String sifra = dodajArtikalProzor.textField_2.getText();
+		try {
+			artikal.setSifraArtikla(sifra);
+		} catch (Exception e) {
+			dodajArtikalProzor.textField_2.setText("");
+			JOptionPane.showMessageDialog(dodajArtikalProzor, e.getMessage(), "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+
+		String zemljaPorekla = dodajArtikalProzor.textField_3.getText();
+		try {
+			artikal.setZemljaPoreklaArtikla(zemljaPorekla);
+		} catch (Exception e) {
+			dodajArtikalProzor.textField_3.setText("");
+			JOptionPane.showMessageDialog(dodajArtikalProzor, e.getMessage(), "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+
+		try {
+			Kafic.dodajArtikal(artikal);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(dodajArtikalProzor, e.getMessage(), "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+
+		JOptionPane.showMessageDialog(dodajArtikalProzor, "Artikal " + naziv + " uspesno dodat!", "Obavestenje",
+				JOptionPane.INFORMATION_MESSAGE);
+		dodajArtikalProzor.dispose();
+	}
+
+	public static ArrayList<JButton> listButtonsArtikli(IzlistajArtikleProzor izlistajArtikleProzor) {
+		ArrayList<JButton> buttons = new ArrayList<JButton>();
+		LinkedList<Artikal> artikli = Kafic.artikli;
+
+		for (int i = 0; i < artikli.size(); i++) {
+			JButton button = new JButton(artikli.get(i).getNazivArtikla()); // za
+			button.setBackground(new Color(242, 243, 244));
+			button.setActionCommand(artikli.get(i).getSifraArtikla());
+			button.setPreferredSize(new Dimension(400, 50));
+			button.setHorizontalAlignment(SwingConstants.LEFT);
+			button.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.otvoriObrisiArtikalProzor(button.getActionCommand());
+					izlistajArtikleProzor.dispose();
+				}
+			});
+			buttons.add(button);
+		}
+		return buttons;
+	}
+
+	protected static void otvoriObrisiArtikalProzor(String actionCommand) {
+		ObrisiArtikalProzor obrisiArtikalProzor = new ObrisiArtikalProzor(actionCommand);
+		obrisiArtikalProzor.setVisible(true);
+	}
+
+	public static void napuniObrisiArtikalProzor(ObrisiArtikalProzor obrisiArtikalProzor, Artikal artikal) {
+		obrisiArtikalProzor.textNaziv.setText(artikal.getNazivArtikla());
+		obrisiArtikalProzor.textCena.setText("" + artikal.getCenaArtikla());
+		obrisiArtikalProzor.textSifra.setText(artikal.getSifraArtikla());
+		obrisiArtikalProzor.textZemljaPorekla.setText(artikal.getZemljaPoreklaArtikla());
+	}
+
+	public static void obrisiArtikalIzListe(ObrisiArtikalProzor obrisiArtikalProzor, Artikal artikal) {
+		if (obrisiArtikalProzor.chckbxPotvrda.isSelected()) {
+			Kafic.obrisiArtikal(artikal);
+			JOptionPane.showMessageDialog(obrisiArtikalProzor,
+					"Artikal " + artikal.getNazivArtikla() + " uspesno obrisan!", "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			obrisiArtikalProzor.dispose();
+		} else {
+			JOptionPane.showMessageDialog(obrisiArtikalProzor, "Neophodno je potvrditi brisanje", "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+	}
+
+	public static void loginButton(LogInProzor logInProzor) {
+		String username = logInProzor.textField.getText();
+		String password =logInProzor.passwordField.getText();
+
+		LinkedList<Radnik> radnici = Kafic.radnici;
+		Radnik radnik = new Radnik();
+
+		boolean pronadjenRadnik = false;
+		for (int i = 0; i < radnici.size(); i++) {
+			if (radnici.get(i).getUsername().equals(username)) {
+				if (radnici.get(i).getPassword().equals(password)) {
+					radnik = radnici.get(i);
+					pronadjenRadnik = true;
+				}
+			}
+		}
+		
+		if (!pronadjenRadnik) {
+			JOptionPane.showMessageDialog(logInProzor.contentPane,
+					"Pogresan username ili lozinka", "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
+			logInProzor.passwordField.setText("");
+		}
+		
+		if (pronadjenRadnik) {
+			GUIKontroler.adminIliRadnikPaDalje(radnik);
+			logInProzor.dispose();
+		}
 	}
 }

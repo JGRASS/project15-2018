@@ -23,12 +23,14 @@ import kafic.gui.kontroler.GUIKontroler;
 
 public class LogInProzor extends JFrame {
 
-	private JPanel contentPane;
+	public JPanel contentPane;
 	private JLabel lblUsername;
-	private JTextField textField;
+	public JTextField textField;
 	private JLabel lblPassword;
-	private JPasswordField passwordField;
+	public JPasswordField passwordField;
 	private JButton btnNewButton;
+	
+	private LogInProzor logInProzor = this;
 
 	/**
 	 * Create the frame.
@@ -92,32 +94,7 @@ public class LogInProzor extends JFrame {
 			btnNewButton.setBackground(new Color(229, 231, 233));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					String username = textField.getText();
-					String password = passwordField.getText();
-
-					LinkedList<Radnik> radnici = Kafic.radnici;
-					Radnik radnik = new Radnik();
-
-					boolean pronadjenRadnik = false;
-					for (int i = 0; i < radnici.size(); i++) {
-						if (radnici.get(i).getUsername().equals(username)) {
-							if (radnici.get(i).getPassword().equals(password)) {
-								radnik = radnici.get(i);
-								pronadjenRadnik = true;
-							}
-						}
-					}
-					
-					if (!pronadjenRadnik) {
-						JOptionPane.showMessageDialog(contentPane,
-								"Pogresan username ili lozinka", "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
-						passwordField.setText("");
-					}
-					
-					if (pronadjenRadnik) {
-						GUIKontroler.adminIliRadnikPaDalje(radnik);
-						dispose();
-					}
+					GUIKontroler.loginButton(logInProzor);
 				}
 			});
 			btnNewButton.setBounds(117, 176, 168, 43);

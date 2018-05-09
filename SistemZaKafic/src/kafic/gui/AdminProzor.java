@@ -115,6 +115,8 @@ public class AdminProzor extends JFrame {
 			btnDodajArtikal.setBackground(new Color(242, 243, 244));
 			btnDodajArtikal.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					DodajArtikalProzor dodajArtikalProzor = new DodajArtikalProzor();
+					dodajArtikalProzor.setVisible(true);
 				}
 			});
 			btnDodajArtikal.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
@@ -143,6 +145,8 @@ public class AdminProzor extends JFrame {
 			btnObrisiArtikal.setBackground(new Color(242, 243, 244));
 			btnObrisiArtikal.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					IzlistajArtikleProzor izlistajArtikleProzor = new IzlistajArtikleProzor();
+					izlistajArtikleProzor.setVisible(true);
 				}
 			});
 			btnObrisiArtikal.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
