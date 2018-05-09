@@ -38,9 +38,9 @@ public class GlavniProzor extends JFrame {
 	private JLabel lblRealUserName;
 
 	// Uzimanje dimenzija ekrana
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	double width = screenSize.getWidth();
-	double height = screenSize.getHeight();
+//	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//	double width = screenSize.getWidth();
+//	double height = screenSize.getHeight();
 	private JPanel zapadniPanel;
 	private JPanel istocniPanel;
 	private JPanel juzniPanel;
@@ -62,7 +62,10 @@ public class GlavniProzor extends JFrame {
 				Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/icons/ParadisoCaffee.jpeg")));
 		setTitle("Paradiso Caffee");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, (int) width - 400, (int) height - 200);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		pack();
+		setSize(screenSize.width - 400,screenSize.height - 200);
+		//setBounds(100, 100, (int) width - 400, (int) height - 200);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
