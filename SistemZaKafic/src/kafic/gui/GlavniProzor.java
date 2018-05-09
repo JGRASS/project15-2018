@@ -23,6 +23,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
 
 public class GlavniProzor extends JFrame {
 
@@ -35,15 +36,23 @@ public class GlavniProzor extends JFrame {
 	private JLabel lblRealPrezime;
 	private JButton btnLogOut;
 	private JLabel lblRealUserName;
-	private JButton btnPrviSto;
-	private JButton btnDrugiSto;
+
+	// Uzimanje dimenzija ekrana
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	double width = screenSize.getWidth();
+	double height = screenSize.getHeight();
+	private JPanel zapadniPanel;
+	private JPanel istocniPanel;
+	private JPanel juzniPanel;
+	private JPanel centralniPanel;
+	private JButton btnPrvisto;
+	private JButton btnDrugisto;
 	private JButton btnTreciSto;
 	private JButton btnCetvrtiSto;
 	private JButton btnPetiSto;
 	private JButton btnSestiSto;
-	private JButton btnSedmiSto;
 	private JButton btnOsmiSto;
-	private JLabel lblNewLabel_1;
+	private JButton btnSedmiSto;
 
 	/**
 	 * Create the frame.
@@ -52,9 +61,8 @@ public class GlavniProzor extends JFrame {
 		setIconImage(
 				Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/icons/ParadisoCaffee.jpeg")));
 		setTitle("Paradiso Caffee");
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1600, 1000);
+		setBounds(100, 100, (int) width - 400, (int) height - 200);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -88,16 +96,11 @@ public class GlavniProzor extends JFrame {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.setBackground(new Color(237, 187, 153));
-			panel.setLayout(null);
-			panel.add(getBtnPrviSto());
-			panel.add(getBtnDrugiSto());
-			panel.add(getBtnTreciSto());
-			panel.add(getBtnCetvrtiSto());
-			panel.add(getBtnPetiSto());
-			panel.add(getBtnSestiSto());
-			panel.add(getBtnSedmiSto());
-			panel.add(getBtnOsmiSto());
-			panel.add(getLblNewLabel_1());
+			panel.setLayout(new BorderLayout(0, 0));
+			panel.add(getPanel_2_1(), BorderLayout.WEST);
+			panel.add(getPanel_2_2(), BorderLayout.EAST);
+			panel.add(getPanel_2_3(), BorderLayout.SOUTH);
+			panel.add(getPanel_2_4(), BorderLayout.CENTER);
 		}
 		return panel;
 	}
@@ -164,104 +167,126 @@ public class GlavniProzor extends JFrame {
 		return lblRealUserName;
 	}
 
-	private JButton getBtnPrviSto() {
-		if (btnPrviSto == null) {
-			btnPrviSto = new JButton("");
-			btnPrviSto.setBackground(new Color(237, 187, 153));
-			btnPrviSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
-			btnPrviSto.setBorder(null);
-			btnPrviSto.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+	private JPanel getPanel_2_1() {
+		if (zapadniPanel == null) {
+			zapadniPanel = new JPanel();
+			zapadniPanel.setPreferredSize(new Dimension(180, 0));
+			zapadniPanel.setBackground(new Color(237, 187, 153));
+			zapadniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 90));
+			zapadniPanel.add(getBtnPrvisto());
+			zapadniPanel.add(getBtnDrugisto());
+		}
+		return zapadniPanel;
+	}
+
+	private JPanel getPanel_2_2() {
+		if (istocniPanel == null) {
+			istocniPanel = new JPanel();
+			istocniPanel.setPreferredSize(new Dimension(180, 0));
+			istocniPanel.setBackground(new Color(237, 187, 153));
+			istocniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 90));
+			istocniPanel.add(getBtnOsmiSto());
+			istocniPanel.add(getBtnSedmiSto());
+		}
+		return istocniPanel;
+	}
+
+	private JPanel getPanel_2_3() {
+		if (juzniPanel == null) {
+			juzniPanel = new JPanel();
+			juzniPanel.setPreferredSize(new Dimension(0,180));
+			juzniPanel.setBackground(new Color(237, 187, 153));
+			juzniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 200, 20));
+			juzniPanel.add(getBtnTreciSto());
+			juzniPanel.add(getBtnCetvrtiSto());
+			juzniPanel.add(getBtnPetiSto());
+			juzniPanel.add(getBtnSestiSto());
+		}
+		return juzniPanel;
+	}
+
+	private JPanel getPanel_2_4() {
+		if (centralniPanel == null) {
+			centralniPanel = new JPanel();
+			FlowLayout flowLayout = (FlowLayout) centralniPanel.getLayout();
+			centralniPanel.setBackground(new Color(237, 187, 153));
+		}
+		return centralniPanel;
+	}
+	private JButton getBtnPrvisto() {
+		if (btnPrvisto == null) {
+			btnPrvisto = new JButton("");
+			btnPrvisto.setBorder(null);
+			btnPrvisto.setBackground(new Color(237, 187, 153));
+			btnPrvisto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
 				}
 			});
-			btnPrviSto.setBounds(100, 127, 247, 137);
+			btnPrvisto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
-		return btnPrviSto;
+		return btnPrvisto;
 	}
-
-	private JButton getBtnDrugiSto() {
-		if (btnDrugiSto == null) {
-			btnDrugiSto = new JButton("");
-			btnDrugiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
-			btnDrugiSto.setBackground(new Color(237, 187, 153));
-			btnDrugiSto.setBounds(100, 360, 247, 137);
-			btnDrugiSto.setBorder(null);
+	private JButton getBtnDrugisto() {
+		if (btnDrugisto == null) {
+			btnDrugisto = new JButton("");
+			btnDrugisto.setBorder(null);
+			btnDrugisto.setBackground(new Color(237, 187, 153));
+			btnDrugisto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
-		return btnDrugiSto;
+		return btnDrugisto;
 	}
-
 	private JButton getBtnTreciSto() {
 		if (btnTreciSto == null) {
 			btnTreciSto = new JButton("");
-			btnTreciSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
-			btnTreciSto.setBackground(new Color(237, 187, 153));
-			btnTreciSto.setBounds(100, 607, 247, 137);
 			btnTreciSto.setBorder(null);
+			btnTreciSto.setBackground(new Color(237, 187, 153));
+			btnTreciSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
 		return btnTreciSto;
 	}
-
 	private JButton getBtnCetvrtiSto() {
 		if (btnCetvrtiSto == null) {
 			btnCetvrtiSto = new JButton("");
-			btnCetvrtiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
-			btnCetvrtiSto.setBackground(new Color(237, 187, 153));
-			btnCetvrtiSto.setBounds(483, 607, 247, 137);
 			btnCetvrtiSto.setBorder(null);
+			btnCetvrtiSto.setBackground(new Color(237, 187, 153));
+			btnCetvrtiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
 		return btnCetvrtiSto;
 	}
-
 	private JButton getBtnPetiSto() {
 		if (btnPetiSto == null) {
 			btnPetiSto = new JButton("");
-			btnPetiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
-			btnPetiSto.setBackground(new Color(237, 187, 153));
-			btnPetiSto.setBounds(859, 607, 247, 137);
 			btnPetiSto.setBorder(null);
+			btnPetiSto.setBackground(new Color(237, 187, 153));
+			btnPetiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
 		return btnPetiSto;
 	}
-
 	private JButton getBtnSestiSto() {
 		if (btnSestiSto == null) {
 			btnSestiSto = new JButton("");
-			btnSestiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
-			btnSestiSto.setBackground(new Color(237, 187, 153));
-			btnSestiSto.setBounds(1227, 607, 247, 137);
 			btnSestiSto.setBorder(null);
+			btnSestiSto.setBackground(new Color(237, 187, 153));
+			btnSestiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
 		return btnSestiSto;
 	}
-
-	private JButton getBtnSedmiSto() {
-		if (btnSedmiSto == null) {
-			btnSedmiSto = new JButton("");
-			btnSedmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
-			btnSedmiSto.setBackground(new Color(237, 187, 153));
-			btnSedmiSto.setBounds(1227, 360, 247, 137);
-			btnSedmiSto.setBorder(null);
-		}
-		return btnSedmiSto;
-	}
-
 	private JButton getBtnOsmiSto() {
 		if (btnOsmiSto == null) {
 			btnOsmiSto = new JButton("");
-			btnOsmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
-			btnOsmiSto.setBackground(new Color(237, 187, 153));
-			btnOsmiSto.setBounds(1227, 127, 247, 137);
 			btnOsmiSto.setBorder(null);
+			btnOsmiSto.setBackground(new Color(237, 187, 153));
+			btnOsmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
 		return btnOsmiSto;
 	}
-
-	private JLabel getLblNewLabel_1() {
-		if (lblNewLabel_1 == null) {
-			lblNewLabel_1 = new JLabel("");
-			lblNewLabel_1.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/barTable.png")));
-			lblNewLabel_1.setBounds(594, 110, 407, 368);
+	private JButton getBtnSedmiSto() {
+		if (btnSedmiSto == null) {
+			btnSedmiSto = new JButton("");
+			btnSedmiSto.setBorder(null);
+			btnSedmiSto.setBackground(new Color(237, 187, 153));
+			btnSedmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
-		return lblNewLabel_1;
+		return btnSedmiSto;
 	}
 }
