@@ -14,9 +14,6 @@ import java.awt.Toolkit;
 public class UvodniProzor extends JFrame {
 
 	private JPanel contentPane;
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	double width = screenSize.getWidth();
-	double height = screenSize.getHeight();
 
 	/**
 	 * Create the frame.
@@ -24,7 +21,7 @@ public class UvodniProzor extends JFrame {
 	public UvodniProzor() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(UvodniProzor.class.getResource("/icons/ParadisoCaffee.jpeg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, (int)width - 400, (int)height - 200);
+		setBounds(100, 100, 1366, 768);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
