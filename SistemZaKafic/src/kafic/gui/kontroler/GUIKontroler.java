@@ -32,9 +32,18 @@ import kafic.gui.UvodniProzor;
 import kafic.sistemskeoperacije.SOVratiUkupanBrojRacuna;
 import kafic.sistemskeoperacije.SOVratiUkupanPrihod;
 
+
+
 public class GUIKontroler {
 	public static Radnik radnik;
 	public static UvodniProzor start;
+	
+	private static Timer timer = new Timer(2000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			otvoriLoginProzor();	
+		}
+	});	
 
 	/**
 	 * Launch the application.
@@ -58,17 +67,11 @@ public class GUIKontroler {
 		start = new UvodniProzor();
 		start.setVisible(true);
 		
-		Timer timer = new Timer(2000, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				otvoriLoginProzor();	
-			}
-		});	
-		
 		timer.start();
 	}
 
 	public static void otvoriLoginProzor() {
+		timer.stop();
 		LogInProzor login = new LogInProzor();
 
 		login.setVisible(true);
