@@ -7,17 +7,17 @@
     "admin": true
   },
   {
-    "ime": "Uros",
-    "prezime": "Veljkovic",
-    "username": "uros.veljkovic",
-    "password": "lozinka",
-    "admin": false
-  },
-  {
     "ime": "Nikola",
     "prezime": "Bakic",
     "username": "nikola.bakic",
     "password": "lozinka",
     "admin": false
+  },
+  {
+    "ime": "Silvester",
+    "prezime": "Stalone",
+    "username": "rambo",
+    "password": "123123",
+    "admin": true
   }
 ]

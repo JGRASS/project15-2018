@@ -31,6 +31,8 @@ public class AdminProzor extends JFrame {
 	private JButton btnObrisiArtikal;
 	private JButton btnGenerisiIzvestaj;
 	private JButton btnLogout;
+	
+	public AdminProzor adminProzor = this;
 
 	/**
 	 * Create the frame.
@@ -98,6 +100,8 @@ public class AdminProzor extends JFrame {
 			btnDodajRadnika.setBackground(new Color(242, 243, 244));
 			btnDodajRadnika.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					DodajRadnikaProzor dodajRadnikaProzor = new DodajRadnikaProzor();
+					dodajRadnikaProzor.setVisible(true);
 				}
 			});
 			btnDodajRadnika.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
@@ -124,6 +128,8 @@ public class AdminProzor extends JFrame {
 			btnObrisiRadnika.setBackground(new Color(242, 243, 244));
 			btnObrisiRadnika.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					IzlistajRadnikeProzor izlistajRadnikeProzor = new IzlistajRadnikeProzor();
+					izlistajRadnikeProzor.setVisible(true);
 				}
 			});
 			btnObrisiRadnika.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
@@ -164,6 +170,7 @@ public class AdminProzor extends JFrame {
 			btnLogout.setBackground(new Color(229, 232, 232));
 			btnLogout.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.startovanjePrograma();
 				}
 			});
 			btnLogout.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));

@@ -54,9 +54,9 @@ public class Radnik {
 	 */
 	public void setIme(String ime) throws Exception {
 		if (ime == null || ime.isEmpty() || !Kafic.sadrziSamoSlova(ime))
-			throw new Exception("ime mora da se sastoji samo iz slova i ne moze biti prazan String");
+			throw new Exception("Ime mora da se sastoji samo iz slova i ne moze biti prazan String");
 		if (ime.length() <= 1 || ime.length() > 20)
-			throw new Exception("ime mora imati od 2 do 20 slova");
+			throw new Exception("Ime mora imati od 2 do 20 slova");
 		this.ime = ime;
 	}
 
@@ -84,7 +84,7 @@ public class Radnik {
 	 */
 	public void setPrezime(String prezime) throws Exception {
 		if (prezime == null || prezime.isEmpty())
-			throw new Exception("prezime ne moze biti prazan String");
+			throw new Exception("Prezime ne moze biti prazan String");
 		String[] prezimeNiz = prezime.split(" ");
 		
 		int brojRazmaka = 0;
@@ -93,16 +93,16 @@ public class Radnik {
 			if (prezime.charAt(i) == ' ')
 				brojRazmaka++;
 			if (brojRazmaka > 2)
-				throw new Exception("prezime ne moze da se sastoji od vise od dve reci");
+				throw new Exception("Prezime ne moze da se sastoji od vise od dve reci");
 		}
 		
 		for (int i = 0; i < prezimeNiz.length; i++) {
 			if (!Kafic.sadrziSamoSlova(prezimeNiz[i]))
-				throw new Exception("prezime mora da sadrzi samo slova");
+				throw new Exception("Prezime mora da sadrzi samo slova");
 		}
 		
 		if (prezime.length() <= 1 || prezime.length() > 20)
-			throw new Exception("prezime mora imati od 2 do 20 slova");
+			throw new Exception("Prezime mora imati od 2 do 20 slova");
 		this.prezime = prezime;
 	}
 
@@ -131,14 +131,14 @@ public class Radnik {
 	 */
 	public void setUsername(String username) throws Exception {
 		if (username == null || username.isEmpty() || username.contains(" "))
-			throw new Exception("usename ne sme da bude prazan ili da sadrzi razmake");
+			throw new Exception("Usename ne sme da bude prazan ili da sadrzi razmake");
 
 		char[] nizKaraktera = username.toCharArray();
 		if (!Character.isLetter(nizKaraktera[0]))
-			throw new Exception("username mora poceti slovom");
+			throw new Exception("Username mora poceti slovom");
 
 		if (username.length() <= 3 || username.length() > 20)
-			throw new Exception("username mora biti od 4 do 20 karatera dugacak");
+			throw new Exception("Username mora biti od 4 do 20 karatera dugacak");
 		
 		this.username = username;
 	}
@@ -168,9 +168,9 @@ public class Radnik {
 	 */
 	public void setPassword(String password) throws Exception {
 		if (password == null || password.isEmpty())
-			throw new Exception("password ne sme biti prazan");
+			throw new Exception("Password ne sme biti prazan");
 		if (password.length() <= 4 || password.length() > 30)
-			throw new Exception("password mora biti od 5 do 30 karaktera dugacak");
+			throw new Exception("Password mora biti od 5 do 30 karaktera dugacak");
 		this.password = password;
 	}
 

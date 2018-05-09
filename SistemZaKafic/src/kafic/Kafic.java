@@ -8,6 +8,7 @@ import kafic.sistemskeoperacije.SODodajArtikal;
 import kafic.sistemskeoperacije.SODodajRadnika;
 import kafic.sistemskeoperacije.SONapuniListuArtikli;
 import kafic.sistemskeoperacije.SONapuniListuRadnika;
+import kafic.sistemskeoperacije.SOObrisiRadnika;
 import kafic.sistemskeoperacije.SOSadrziSamoSlova;
 
 /**
@@ -34,6 +35,15 @@ public class Kafic {
 	 * Lista koja sadzi sve transakcije u vidu racuna
 	 */
 	public static LinkedList<Racun> racuni = new LinkedList<Racun>();
+	
+	/**
+	 * Brise radnika i iz liste i iz baze
+	 * 
+	 * @param radnik
+	 */
+	public static void obrisiRadnika(Radnik radnik) {
+		SOObrisiRadnika.izvrsi(radnik, radnici);
+	}
 
 	/**
 	 * Metoda koja se koristi za dodavanje novog radnika u listu radnika i json fajl
