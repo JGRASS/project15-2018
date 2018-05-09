@@ -39,8 +39,11 @@ public class GlavniProzor extends JFrame {
 
 	// Uzimanje dimenzija ekrana
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	double width = screenSize.getWidth();
-	double height = screenSize.getHeight();
+	double width = screenSize.getWidth() - screenSize.getWidth() * 0.2;
+	double height = screenSize.getHeight() - screenSize.getHeight() * 0.2;
+	double horisontalGap = width/9;
+	double buttonHeight = 150;
+	double buttonWidth = 150;
 	private JPanel zapadniPanel;
 	private JPanel istocniPanel;
 	private JPanel juzniPanel;
@@ -62,7 +65,7 @@ public class GlavniProzor extends JFrame {
 				Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/icons/ParadisoCaffee.jpeg")));
 		setTitle("Paradiso Caffee");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, (int) width - 400, (int) height - 200);
+		setBounds(100, 100, (int) width, (int) height);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -73,6 +76,7 @@ public class GlavniProzor extends JFrame {
 		lblRealIme.setText(radnik.getIme());
 		lblRealPrezime.setText(radnik.getPrezime());
 		lblRealUserName.setText(radnik.getUsername());
+		
 	}
 
 	private JPanel getPanel_1() {
@@ -196,7 +200,7 @@ public class GlavniProzor extends JFrame {
 			juzniPanel = new JPanel();
 			juzniPanel.setPreferredSize(new Dimension(0,180));
 			juzniPanel.setBackground(new Color(237, 187, 153));
-			juzniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 200, 20));
+			juzniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, (int)horisontalGap, 20));
 			juzniPanel.add(getBtnTreciSto());
 			juzniPanel.add(getBtnCetvrtiSto());
 			juzniPanel.add(getBtnPetiSto());
@@ -216,7 +220,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnPrvisto() {
 		if (btnPrvisto == null) {
 			btnPrvisto = new JButton("");
-			btnPrvisto.setBorder(null);
+			btnPrvisto.setPreferredSize(new Dimension((int)buttonWidth, (int)buttonHeight));
 			btnPrvisto.setBackground(new Color(237, 187, 153));
 			btnPrvisto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -229,6 +233,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnDrugisto() {
 		if (btnDrugisto == null) {
 			btnDrugisto = new JButton("");
+			btnDrugisto.setPreferredSize(new Dimension((int)buttonWidth, (int)buttonHeight));
 			btnDrugisto.setBackground(new Color(237, 187, 153));
 			btnDrugisto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
@@ -237,6 +242,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnTreciSto() {
 		if (btnTreciSto == null) {
 			btnTreciSto = new JButton("");
+			btnTreciSto.setPreferredSize(new Dimension((int)buttonWidth, (int)buttonHeight));
 			btnTreciSto.setBackground(new Color(237, 187, 153));
 			btnTreciSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
@@ -245,6 +251,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnCetvrtiSto() {
 		if (btnCetvrtiSto == null) {
 			btnCetvrtiSto = new JButton("");
+			btnCetvrtiSto.setPreferredSize(new Dimension((int)buttonWidth, (int)buttonHeight));
 			btnCetvrtiSto.setBackground(new Color(237, 187, 153));
 			btnCetvrtiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
@@ -253,6 +260,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnPetiSto() {
 		if (btnPetiSto == null) {
 			btnPetiSto = new JButton("");
+			btnPetiSto.setPreferredSize(new Dimension((int)buttonWidth, (int)buttonHeight));
 			btnPetiSto.setBackground(new Color(237, 187, 153));
 			btnPetiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
@@ -261,6 +269,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnSestiSto() {
 		if (btnSestiSto == null) {
 			btnSestiSto = new JButton("");
+			btnSestiSto.setPreferredSize(new Dimension((int)buttonWidth, (int)buttonHeight));
 			btnSestiSto.setBackground(new Color(237, 187, 153));
 			btnSestiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
@@ -269,6 +278,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnOsmiSto() {
 		if (btnOsmiSto == null) {
 			btnOsmiSto = new JButton("");
+			btnOsmiSto.setPreferredSize(new Dimension((int)buttonWidth, (int)buttonHeight));
 			btnOsmiSto.setBackground(new Color(237, 187, 153));
 			btnOsmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
@@ -277,6 +287,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnSedmiSto() {
 		if (btnSedmiSto == null) {
 			btnSedmiSto = new JButton("");
+			btnSedmiSto.setPreferredSize(new Dimension((int)buttonWidth, (int)buttonHeight));
 			btnSedmiSto.setBackground(new Color(237, 187, 153));
 			btnSedmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/coffee-table.png")));
 		}
