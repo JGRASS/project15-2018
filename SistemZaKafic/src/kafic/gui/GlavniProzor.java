@@ -42,8 +42,8 @@ public class GlavniProzor extends JFrame {
 	double width = screenSize.getWidth() - screenSize.getWidth() * 0.2;
 	double height = screenSize.getHeight() - screenSize.getHeight() * 0.2;
 	double horisontalGap = width/9;
-	double buttonHeight = 150;
-	double buttonWidth = 150;
+	double buttonHeight = height * 0.2;
+	double buttonWidth = width* 0.2;
 	private JPanel zapadniPanel;
 	private JPanel istocniPanel;
 	private JPanel juzniPanel;
