@@ -91,7 +91,7 @@ public class Artikal {
 	 *             koji nije slovo
 	 */
 	public void setNazivArtikla(String nazivArtikla) throws Exception {
-		if (nazivArtikla == null || nazivArtikla.length() < 2 || nazivArtikla.length() > 40)
+		if (nazivArtikla == null || nazivArtikla.length() < 2 || nazivArtikla.length() > 40 || nazivArtikla.isEmpty())
 			throw new Exception("Naziv artikla mora imati vise od jednog, a manje od 40 karaktera!");
 		this.nazivArtikla = nazivArtikla;
 	}
