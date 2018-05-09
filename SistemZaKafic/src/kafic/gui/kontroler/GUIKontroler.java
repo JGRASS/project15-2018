@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import kafic.Artikal;
 import kafic.Kafic;
@@ -56,8 +57,15 @@ public class GUIKontroler {
 	public static void startovanjePrograma() {
 		start = new UvodniProzor();
 		start.setVisible(true);
-
-		otvoriLoginProzor();
+		
+		Timer timer = new Timer(2000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				otvoriLoginProzor();	
+			}
+		});	
+		
+		timer.start();
 	}
 
 	public static void otvoriLoginProzor() {
