@@ -41,10 +41,8 @@ public class GUIKontroler {
 	public static UvodniProzor start;
 	public static int panelRacuniHeight = 0;
 	public static JButton prethodnoDugme = new JButton();
-	
+
 	public static Date radnikZapoceoSesiju = new Date();
-	public static Date radnikZavrsioSesiju;
-	
 
 	private static Timer timer = new Timer(2000, new ActionListener() {
 		@Override
@@ -589,6 +587,15 @@ public class GUIKontroler {
 			ukupanPazar += Kafic.racuni.get(i).getZaUplatu();
 		}
 
+		Date kraj = new Date();
+
+		long diff = Math.abs(kraj.getTime() - radnikZapoceoSesiju.getTime());
+		long diffSeconds = diff / (1000);
+		long diffMinutes = diff / (60 * 1000);
+		long diffHours = diff / (60 * 60 * 1000);
+		
+		System.out.println(diffHours + " sati, " + diffMinutes + " minuta, " + diffSeconds + " sekundi");
+
 		int ukupnoRacuna = Kafic.racuni.size();
 		double prosecanPazar = (double) ukupanPazar / (double) ukupnoRacuna;
 
@@ -609,28 +616,28 @@ public class GUIKontroler {
 
 	public static void dugmeZavrsiIzvestaj(IzvestajGUI izvestaj) {
 		if (Kafic.racuni.size() == 0) {
-			JOptionPane.showMessageDialog(izvestaj.contentPane, "Mora postojati bar jedan obradjen racun!", "Obavestenje",
-					JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(izvestaj.contentPane, "Mora postojati bar jedan obradjen racun!",
+					"Obavestenje", JOptionPane.INFORMATION_MESSAGE);
 			izvestaj.dispose();
 			return;
 		}
 		for (int i = 0; i < Kafic.racuni.size(); i++) {
 			if (Kafic.racuni.get(i).getKusur() == -1) {
-				JOptionPane.showMessageDialog(izvestaj.contentPane, "Svi racuni moraju da budu obradjeni!", "Obavestenje",
-						JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(izvestaj.contentPane, "Svi racuni moraju da budu obradjeni!",
+						"Obavestenje", JOptionPane.INFORMATION_MESSAGE);
 				izvestaj.dispose();
 				return;
 			}
 		}
-			
+
 		try {
 			Kafic.zabeleziListuRacuna();
 		} catch (Exception e) {
 		}
-		
-		JOptionPane.showMessageDialog(izvestaj.contentPane, "Izvestaj sacuvan u podaci/izvestaji folderu!", "Obavestenje",
-				JOptionPane.INFORMATION_MESSAGE);
-		
-		System.exit(0);		
+
+		JOptionPane.showMessageDialog(izvestaj.contentPane, "Izvestaj sacuvan u podaci/izvestaji folderu!",
+				"Obavestenje", JOptionPane.INFORMATION_MESSAGE);
+
+		System.exit(0);
 	}
 }

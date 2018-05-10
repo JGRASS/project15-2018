@@ -1,6 +1,7 @@
 package kafic.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -22,6 +23,7 @@ import kafic.Racun;
 import kafic.Radnik;
 import kafic.Sto;
 import kafic.gui.kontroler.GUIKontroler;
+import javax.swing.JSeparator;
 
 public class RacunProzor extends JFrame {
 
@@ -44,6 +46,7 @@ public class RacunProzor extends JFrame {
 	private Radnik radnik;
 	private static int panelHeight;
 	private static GlavniProzor glavniProzor;
+	private JSeparator separator;
 
 	/**
 	 * Create the frame.
@@ -88,6 +91,7 @@ public class RacunProzor extends JFrame {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.add(getBtnNapraviRacun());
+			panel.add(getSeparator());
 			panel.add(getBtnOdustani());
 		}
 		return panel;
@@ -96,6 +100,7 @@ public class RacunProzor extends JFrame {
 	private JButton getBtnNapraviRacun() {
 		if (btnNapraviRacun == null) {
 			btnNapraviRacun = new JButton("Napravi Racun");
+			btnNapraviRacun.setBackground(new Color(229, 232, 232));
 			btnNapraviRacun.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (textArea.getText().isEmpty()) {
@@ -119,6 +124,7 @@ public class RacunProzor extends JFrame {
 	private JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
+			btnOdustani.setBackground(new Color(229, 232, 232));
 			btnOdustani.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
@@ -167,5 +173,12 @@ public class RacunProzor extends JFrame {
 			lblDodajteArtikle.setFont(new Font("DialogInput", Font.BOLD, 15));
 		}
 		return lblDodajteArtikle;
+	}
+	private JSeparator getSeparator() {
+		if (separator == null) {
+			separator = new JSeparator();
+			separator.setPreferredSize(new Dimension(114, 2));
+		}
+		return separator;
 	}
 }
