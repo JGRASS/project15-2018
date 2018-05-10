@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -93,6 +94,11 @@ public class RacunProzor extends JFrame {
 			btnNapraviRacun = new JButton("Napravi Racun");
 			btnNapraviRacun.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					if (textArea.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(contentPane, "Morate dodati bar jedan artikal", "Obavestenje",
+								JOptionPane.INFORMATION_MESSAGE);
+						return;
+					}
 					LinkedList<Racun> racuni = sto.getRacuniNaStolu();
 					racuni.add(racun);
 					sto.setRacuniNaStolu(racuni);
