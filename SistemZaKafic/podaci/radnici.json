@@ -26,5 +26,12 @@
     "username": "kovalski",
     "password": "lozinka",
     "admin": false
+  },
+  {
+    "ime": "Test",
+    "prezime": "Testovic",
+    "username": "tester",
+    "password": "lozinka",
+    "admin": false
   }
 ]

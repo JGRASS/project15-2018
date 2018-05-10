@@ -46,12 +46,12 @@ public class GlavniProzor extends JFrame {
 	private JButton btnPetiSto;
 	private JButton btnSestiSto;
 	private JPanel panel;
-	
+
 	public static Radnik radnik;
 	private JButton btnNoviRacun;
 	private JPanel panelGornji;
 	public JLabel lblBrojstola;
-	
+
 	public Sto sto1 = new Sto();
 	public Sto sto2 = new Sto();
 	public Sto sto3 = new Sto();
@@ -60,10 +60,9 @@ public class GlavniProzor extends JFrame {
 	public Sto sto6 = new Sto();
 	public Sto sto7 = new Sto();
 	public Sto sto8 = new Sto();
-	
+
 	public Sto selektovanSto = null;
-	
-	
+
 	private GlavniProzor glavniProzor = this;
 	private JScrollPane scrollPane;
 	public JPanel panelZaRacune;
@@ -90,9 +89,9 @@ public class GlavniProzor extends JFrame {
 		contentPane.add(getSeverniPanel(), BorderLayout.NORTH);
 		contentPane.add(getCentralniPanel(), BorderLayout.CENTER);
 		contentPane.add(getIstocniPanel(), BorderLayout.EAST);
-		
+
 		this.radnik = radnik;
-		
+
 		sto1.setBrojStola(1);
 		sto2.setBrojStola(2);
 		sto3.setBrojStola(3);
@@ -101,7 +100,7 @@ public class GlavniProzor extends JFrame {
 		sto6.setBrojStola(6);
 		sto7.setBrojStola(7);
 		sto8.setBrojStola(8);
-		
+
 		lblRealIme.setText(radnik.getIme());
 		lblRealPrezime.setText(radnik.getPrezime());
 		lblRealUserName.setText(radnik.getUsername());
@@ -124,6 +123,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return severniPanel;
 	}
+
 	private JPanel getCentralniPanel() {
 		if (centralniPanel == null) {
 			centralniPanel = new JPanel();
@@ -145,6 +145,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return centralniPanel;
 	}
+
 	private JPanel getIstocniPanel() {
 		if (istocniPanel == null) {
 			istocniPanel = new JPanel();
@@ -158,6 +159,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return istocniPanel;
 	}
+
 	private JButton getBtnPrviSto() {
 		if (btnPrviSto == null) {
 			btnPrviSto = new JButton("1");
@@ -172,6 +174,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnPrviSto;
 	}
+
 	private JSeparator getSeparator() {
 		if (separator == null) {
 			separator = new JSeparator();
@@ -180,6 +183,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return separator;
 	}
+
 	private JSeparator getSeparator_1() {
 		if (separator_1 == null) {
 			separator_1 = new JSeparator();
@@ -188,6 +192,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return separator_1;
 	}
+
 	private JButton getBtnOsmiSto() {
 		if (btnOsmiSto == null) {
 			btnOsmiSto = new JButton("8");
@@ -202,6 +207,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnOsmiSto;
 	}
+
 	private JButton getBtnDrugiSto() {
 		if (btnDrugiSto == null) {
 			btnDrugiSto = new JButton("2");
@@ -216,6 +222,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnDrugiSto;
 	}
+
 	private JSeparator getSeparator_2() {
 		if (separator_2 == null) {
 			separator_2 = new JSeparator();
@@ -224,6 +231,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return separator_2;
 	}
+
 	private JSeparator getSeparator_3() {
 		if (separator_3 == null) {
 			separator_3 = new JSeparator();
@@ -232,6 +240,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return separator_3;
 	}
+
 	private JButton getBtnSedmiSto() {
 		if (btnSedmiSto == null) {
 			btnSedmiSto = new JButton("7");
@@ -246,6 +255,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnSedmiSto;
 	}
+
 	private JButton getBtnTreciSto() {
 		if (btnTreciSto == null) {
 			btnTreciSto = new JButton("3");
@@ -260,6 +270,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnTreciSto;
 	}
+
 	private JButton getBtnCetvrtiSto() {
 		if (btnCetvrtiSto == null) {
 			btnCetvrtiSto = new JButton("4");
@@ -274,6 +285,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnCetvrtiSto;
 	}
+
 	private JButton getBtnPetiSto() {
 		if (btnPetiSto == null) {
 			btnPetiSto = new JButton("5");
@@ -288,6 +300,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnPetiSto;
 	}
+
 	private JButton getBtnSestiSto() {
 		if (btnSestiSto == null) {
 			btnSestiSto = new JButton("6");
@@ -302,6 +315,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnSestiSto;
 	}
+
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
@@ -311,6 +325,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return panel;
 	}
+
 	private JButton getBtnNoviRacun() {
 		if (btnNoviRacun == null) {
 			btnNoviRacun = new JButton("Novi Racun");
@@ -330,6 +345,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnNoviRacun;
 	}
+
 	private JPanel getPanelGornji() {
 		if (panelGornji == null) {
 			panelGornji = new JPanel();
@@ -341,6 +357,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return panelGornji;
 	}
+
 	private JLabel getLblBrojstola() {
 		if (lblBrojstola == null) {
 			lblBrojstola = new JLabel("Broj stola: ");
@@ -348,6 +365,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return lblBrojstola;
 	}
+
 	private JScrollPane getScrollPane_1() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
@@ -356,6 +374,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return scrollPane;
 	}
+
 	private JPanel getPanelZaRacune() {
 		if (panelZaRacune == null) {
 			panelZaRacune = new JPanel();
@@ -363,6 +382,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return panelZaRacune;
 	}
+
 	private JLabel getLblIme() {
 		if (lblIme == null) {
 			lblIme = new JLabel("Ime:");
@@ -371,6 +391,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return lblIme;
 	}
+
 	private JLabel getLblPrezime() {
 		if (lblPrezime == null) {
 			lblPrezime = new JLabel("Prezime:");
@@ -379,6 +400,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return lblPrezime;
 	}
+
 	private JLabel getLblRealIme() {
 		if (lblRealIme == null) {
 			lblRealIme = new JLabel("");
@@ -387,6 +409,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return lblRealIme;
 	}
+
 	private JLabel getLblRealPrezime() {
 		if (lblRealPrezime == null) {
 			lblRealPrezime = new JLabel("");
@@ -395,6 +418,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return lblRealPrezime;
 	}
+
 	private JButton getBtnKrajRada() {
 		if (btnKrajRada == null) {
 			btnKrajRada = new JButton("Kraj rada");
@@ -402,7 +426,8 @@ public class GlavniProzor extends JFrame {
 			btnKrajRada.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			btnKrajRada.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					IzvestajGUI izvestajGUI = new IzvestajGUI(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, radnik);
+					IzvestajGUI izvestajGUI = new IzvestajGUI(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, radnik,
+							glavniProzor);
 					izvestajGUI.setVisible(true);
 				}
 			});
@@ -410,6 +435,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnKrajRada;
 	}
+
 	private JButton getBtnLogOut() {
 		if (btnLogOut == null) {
 			btnLogOut = new JButton("LogOut");
@@ -417,9 +443,10 @@ public class GlavniProzor extends JFrame {
 			btnLogOut.setBackground(new Color(248, 196, 113));
 			btnLogOut.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+
 					int opcija = JOptionPane.showConfirmDialog(glavniProzor.contentPane,
-							"PAZNJA! Ukoliko se izlogujete iz programa, racuni nece biti sacuvani u bazu.\nDa li stvarno zelite da se izlogujete ?", "LogOut", JOptionPane.YES_NO_OPTION);
+							"PAZNJA! Ukoliko se izlogujete iz programa, racuni nece biti sacuvani u bazu.\nDa li stvarno zelite da se izlogujete ?",
+							"LogOut", JOptionPane.YES_NO_OPTION);
 
 					if (opcija == JOptionPane.YES_OPTION)
 						GUIKontroler.startovanjePrograma();
@@ -429,6 +456,7 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnLogOut;
 	}
+
 	private JLabel getLblRealUserName() {
 		if (lblRealUserName == null) {
 			lblRealUserName = new JLabel("");

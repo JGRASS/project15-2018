@@ -32,6 +32,7 @@ public class IzvestajGUI extends JFrame {
 
 	public static String ceoIzvestaj;
 	private IzvestajGUI izvestaj = this;
+	public GlavniProzor pozvanoIz;
 
 	/**
 	 * Create the frame.
@@ -46,7 +47,7 @@ public class IzvestajGUI extends JFrame {
 	 * @param sto2
 	 * @param sto1
 	 */
-	public IzvestajGUI(Sto sto1, Sto sto2, Sto sto3, Sto sto4, Sto sto5, Sto sto6, Sto sto7, Sto sto8, Radnik radnik) {
+	public IzvestajGUI(Sto sto1, Sto sto2, Sto sto3, Sto sto4, Sto sto5, Sto sto6, Sto sto7, Sto sto8, Radnik radnik, GlavniProzor glavniProzor) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(IzvestajGUI.class.getResource("/icons/ParadisoCaffee.jpeg")));
 		setResizable(false);
 		setTitle("Izvestaj");
@@ -60,6 +61,7 @@ public class IzvestajGUI extends JFrame {
 		contentPane.add(getJuzniPanel(), BorderLayout.SOUTH);
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
 		GUIKontroler.izvuciSveRacune(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, izvestaj);
+		pozvanoIz = glavniProzor;
 	}
 
 	private JPanel getJuzniPanel() {
@@ -97,7 +99,7 @@ public class IzvestajGUI extends JFrame {
 			btnZavrsi.setBackground(new Color(130, 224, 170));
 			btnZavrsi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKontroler.dugmeZavrsiIzvestaj(izvestaj);
+					GUIKontroler.dugmeZavrsiIzvestaj(izvestaj, pozvanoIz);
 				}
 			});
 			btnZavrsi.setBounds(48, 16, 115, 48);

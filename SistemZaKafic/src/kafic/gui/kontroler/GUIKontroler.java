@@ -591,7 +591,7 @@ public class GUIKontroler {
 		Date kraj = new Date();
 
 		long diff = Math.abs(kraj.getTime() - radnikZapoceoSesiju.getTime());
-		long diffSeconds = diff / (1000);
+		long diffSeconds = diff / (1000) % 60;
 		long diffMinutes = diff / (60 * 1000);
 		long diffHours = diff / (60 * 60 * 1000);
 
@@ -619,7 +619,7 @@ public class GUIKontroler {
 		izvestaj.ceoIzvestaj = izvestajString;
 	}
 
-	public static void dugmeZavrsiIzvestaj(IzvestajGUI izvestaj) {
+	public static void dugmeZavrsiIzvestaj(IzvestajGUI izvestaj, GlavniProzor glavniProzor) {
 		if (Kafic.racuni.size() == 0) {
 			JOptionPane.showMessageDialog(izvestaj.contentPane, "Mora postojati bar jedan obradjen racun!",
 					"Obavestenje", JOptionPane.INFORMATION_MESSAGE);
@@ -643,6 +643,8 @@ public class GUIKontroler {
 		JOptionPane.showMessageDialog(izvestaj.contentPane, "Izvestaj sacuvan u podaci/izvestaji folderu!",
 				"Obavestenje", JOptionPane.INFORMATION_MESSAGE);
 
-		System.exit(0);
+		GUIKontroler.startovanjePrograma();
+		izvestaj.dispose();
+		glavniProzor.dispose();
 	}
 }
