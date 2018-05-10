@@ -1,5 +1,10 @@
 # project15-2018
 
+<<<<<<< HEAD
+=======
+# SISTEM ZA KAFIC
+
+>>>>>>> branch 'master' of https://github.com/JGRASS/project15-2018.git
 Sistem za kafic koji se koristi za upravljanje porudzbinama u kaficu i generisanje izvestaja za odredjeni vremenski period.
 
 
