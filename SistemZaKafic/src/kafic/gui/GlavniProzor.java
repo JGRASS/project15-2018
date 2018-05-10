@@ -46,7 +46,6 @@ public class GlavniProzor extends JFrame {
 	
 	private static Radnik radnik;
 	private JButton btnNoviRacun;
-	private JButton btnKrajRada;
 	private JPanel panelGornji;
 	public JLabel lblBrojstola;
 	
@@ -286,7 +285,6 @@ public class GlavniProzor extends JFrame {
 			panel.setPreferredSize(new Dimension(600, 70));
 			panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			panel.add(getBtnNoviRacun());
-			panel.add(getBtnKrajRada());
 		}
 		return panel;
 	}
@@ -307,21 +305,6 @@ public class GlavniProzor extends JFrame {
 			btnNoviRacun.setPreferredSize(new Dimension(170, 45));
 		}
 		return btnNoviRacun;
-	}
-	private JButton getBtnKrajRada() {
-		if (btnKrajRada == null) {
-			btnKrajRada = new JButton("Kraj rada");
-			btnKrajRada.setBackground(new Color(229, 232, 232));
-			btnKrajRada.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					if (selektovanSto == null) {
-						
-					}
-				}
-			});
-			btnKrajRada.setPreferredSize(new Dimension(170, 45));
-		}
-		return btnKrajRada;
 	}
 	private JPanel getPanelGornji() {
 		if (panelGornji == null) {
