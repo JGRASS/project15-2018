@@ -46,13 +46,9 @@ public class GlavniProzor extends JFrame {
 	
 	private static Radnik radnik;
 	private JButton btnNoviRacun;
-	private JButton btnObracunajRacune;
+	private JButton btnSuperDugme;
 	private JPanel panelGornji;
 	public JLabel lblBrojstola;
-	private JScrollPane scrollPane;
-	private JPanel panel_3;
-	private JLabel lblRacuni;
-	private JPanel panelZaRacune;
 	
 	public Sto sto1 = new Sto();
 	public Sto sto2 = new Sto();
@@ -67,6 +63,8 @@ public class GlavniProzor extends JFrame {
 	
 	
 	private GlavniProzor glavniProzor = this;
+	private JScrollPane scrollPane;
+	public JPanel panelZaRacune;
 
 	/**
 	 * Create the frame.
@@ -134,7 +132,7 @@ public class GlavniProzor extends JFrame {
 			istocniPanel.setLayout(new BorderLayout(0, 0));
 			istocniPanel.add(getPanel(), BorderLayout.SOUTH);
 			istocniPanel.add(getPanelGornji(), BorderLayout.NORTH);
-			istocniPanel.add(getScrollPane(), BorderLayout.CENTER);
+			istocniPanel.add(getScrollPane_1(), BorderLayout.CENTER);
 		}
 		return istocniPanel;
 	}
@@ -145,7 +143,7 @@ public class GlavniProzor extends JFrame {
 			btnPrviSto.setBackground(new Color(237, 187, 153));
 			btnPrviSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKontroler.dugmePritisnuto(sto1, glavniProzor);
+					GUIKontroler.dugmePritisnuto(sto1, glavniProzor, null);
 				}
 			});
 			btnPrviSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
@@ -173,7 +171,7 @@ public class GlavniProzor extends JFrame {
 			btnOsmiSto = new JButton("8");
 			btnOsmiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto8, glavniProzor);
+					GUIKontroler.dugmePritisnuto(sto8, glavniProzor, null);
 				}
 			});
 			btnOsmiSto.setBorder(null);
@@ -187,7 +185,7 @@ public class GlavniProzor extends JFrame {
 			btnDrugiSto = new JButton("2");
 			btnDrugiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto2, glavniProzor);
+					GUIKontroler.dugmePritisnuto(sto2, glavniProzor, null);
 				}
 			});
 			btnDrugiSto.setBorder(null);
@@ -217,7 +215,7 @@ public class GlavniProzor extends JFrame {
 			btnSedmiSto = new JButton("7");
 			btnSedmiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto7, glavniProzor);
+					GUIKontroler.dugmePritisnuto(sto7, glavniProzor, null);
 				}
 			});
 			btnSedmiSto.setBorder(null);
@@ -231,7 +229,7 @@ public class GlavniProzor extends JFrame {
 			btnTreciSto = new JButton("3");
 			btnTreciSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto3, glavniProzor);
+					GUIKontroler.dugmePritisnuto(sto3, glavniProzor, null);
 				}
 			});
 			btnTreciSto.setBorder(null);
@@ -245,7 +243,7 @@ public class GlavniProzor extends JFrame {
 			btnCetvrtiSto = new JButton("4");
 			btnCetvrtiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto4, glavniProzor);
+					GUIKontroler.dugmePritisnuto(sto4, glavniProzor, null);
 				}
 			});
 			btnCetvrtiSto.setBorder(null);
@@ -259,7 +257,7 @@ public class GlavniProzor extends JFrame {
 			btnPetiSto = new JButton("5");
 			btnPetiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto5, glavniProzor);
+					GUIKontroler.dugmePritisnuto(sto5, glavniProzor, null);
 				}
 			});
 			btnPetiSto.setBorder(null);
@@ -273,7 +271,7 @@ public class GlavniProzor extends JFrame {
 			btnSestiSto = new JButton("6");
 			btnSestiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto6, glavniProzor);
+					GUIKontroler.dugmePritisnuto(sto6, glavniProzor, null);
 				}
 			});
 			btnSestiSto.setBorder(null);
@@ -288,7 +286,7 @@ public class GlavniProzor extends JFrame {
 			panel.setPreferredSize(new Dimension(600, 70));
 			panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			panel.add(getBtnNoviRacun());
-			panel.add(getBtnObracunajRacune());
+			panel.add(getBtnSuperDugme());
 		}
 		return panel;
 	}
@@ -303,18 +301,18 @@ public class GlavniProzor extends JFrame {
 								JOptionPane.INFORMATION_MESSAGE);
 						return;
 					}
-					GUIKontroler.otvoriRacunProzor(selektovanSto, radnik);
+					GUIKontroler.otvoriRacunProzor(selektovanSto, radnik, glavniProzor);
 				}
 			});
 			btnNoviRacun.setPreferredSize(new Dimension(170, 45));
 		}
 		return btnNoviRacun;
 	}
-	private JButton getBtnObracunajRacune() {
-		if (btnObracunajRacune == null) {
-			btnObracunajRacune = new JButton("Obracunaj Racune");
-			btnObracunajRacune.setBackground(new Color(229, 232, 232));
-			btnObracunajRacune.addActionListener(new ActionListener() {
+	private JButton getBtnSuperDugme() {
+		if (btnSuperDugme == null) {
+			btnSuperDugme = new JButton("Bas super dugme");
+			btnSuperDugme.setBackground(new Color(229, 232, 232));
+			btnSuperDugme.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (selektovanSto == null) {
 						JOptionPane.showMessageDialog(glavniProzor, "Prvi selektujte sto!", "Obavestenje",
@@ -323,9 +321,9 @@ public class GlavniProzor extends JFrame {
 					}
 				}
 			});
-			btnObracunajRacune.setPreferredSize(new Dimension(170, 45));
+			btnSuperDugme.setPreferredSize(new Dimension(170, 45));
 		}
-		return btnObracunajRacune;
+		return btnSuperDugme;
 	}
 	private JPanel getPanelGornji() {
 		if (panelGornji == null) {
@@ -345,34 +343,18 @@ public class GlavniProzor extends JFrame {
 		}
 		return lblBrojstola;
 	}
-	private JScrollPane getScrollPane() {
+	private JScrollPane getScrollPane_1() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setPreferredSize(new Dimension(200, 3));
-			scrollPane.setColumnHeaderView(getPanel_3());
+			scrollPane.setPreferredSize(new Dimension(350, 425));
 			scrollPane.setViewportView(getPanelZaRacune());
 		}
 		return scrollPane;
 	}
-	private JPanel getPanel_3() {
-		if (panel_3 == null) {
-			panel_3 = new JPanel();
-			FlowLayout flowLayout = (FlowLayout) panel_3.getLayout();
-			flowLayout.setAlignment(FlowLayout.LEFT);
-			panel_3.add(getLblRacuni());
-		}
-		return panel_3;
-	}
-	private JLabel getLblRacuni() {
-		if (lblRacuni == null) {
-			lblRacuni = new JLabel("Racuni:");
-			lblRacuni.setFont(new Font("DialogInput", Font.BOLD, 16));
-		}
-		return lblRacuni;
-	}
 	private JPanel getPanelZaRacune() {
 		if (panelZaRacune == null) {
 			panelZaRacune = new JPanel();
+			panelZaRacune.setPreferredSize(new Dimension(350, 10));
 		}
 		return panelZaRacune;
 	}

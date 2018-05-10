@@ -38,6 +38,8 @@ import kafic.sistemskeoperacije.SOVratiUkupanPrihod;
 public class GUIKontroler {
 	public static Radnik radnik;
 	public static UvodniProzor start;
+	public static int panelRacuniHeight = 0;
+	public static int  brojRacuna = 1;
 
 	private static Timer timer = new Timer(2000, new ActionListener() {
 		@Override
@@ -370,13 +372,44 @@ public class GUIKontroler {
 		}
 	}
 
-	public static void dugmePritisnuto(Sto sto, GlavniProzor glavniProzor) {
+	public static void dugmePritisnuto(Sto sto, GlavniProzor glavniProzor, Racun racun) {
 		glavniProzor.lblBrojstola.setText("Broj stola: " + sto.getBrojStola());
 		glavniProzor.selektovanSto = sto;
+		System.out.println("Broj racuna na dugmetu " + sto.getBrojStola() + " je " + sto.getRacuniNaStolu().size());
+
+		if (racun == null)
+			return;
+		
+		if (sto.getRacuniNaStolu().size() == 0)
+			return;
+
+
+		JButton button = new JButton(brojRacuna + ") Sto " + sto.getBrojStola());
+		if (racun.getKusur() == -1)
+			button.setBackground(new Color(241, 148, 138));
+		else
+			button.setBackground(new Color(130, 224, 170));
+		button.setActionCommand(racun.getSifraRacuna());
+		button.setPreferredSize(new Dimension(300, 50));
+		button.setHorizontalAlignment(SwingConstants.LEFT);
+		button.setFont(new Font("DejaVu Sans", Font.PLAIN, 16));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIKontroler.otvoriRacunManagementProzor(button.getActionCommand(), glavniProzor, sto);
+			}
+		});
+		panelRacuniHeight += 55;
+		glavniProzor.panelZaRacune.setPreferredSize(new Dimension(180, panelRacuniHeight));
+		glavniProzor.panelZaRacune.add(button);
 	}
 
-	public static void otvoriRacunProzor(Sto sto, Radnik radnik) {
-		RacunProzor racunProzor = new RacunProzor(sto, radnik);
+	protected static void otvoriRacunManagementProzor(String actionCommand, GlavniProzor glavniProzor, Sto sto) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static void otvoriRacunProzor(Sto sto, Radnik radnik, GlavniProzor glavniProzor) {
+		RacunProzor racunProzor = new RacunProzor(sto, radnik, glavniProzor);
 		racunProzor.setVisible(true);
 	}
 
@@ -385,7 +418,7 @@ public class GUIKontroler {
 		LinkedList<Artikal> artikli = Kafic.artikli;
 
 		for (int i = 0; i < artikli.size(); i++) {
-			JButton button = new JButton(artikli.get(i).getNazivArtikla()); // za
+			JButton button = new JButton(artikli.get(i).getNazivArtikla());
 			button.setBackground(new Color(242, 243, 244));
 			button.setActionCommand(artikli.get(i).getSifraArtikla());
 			button.setPreferredSize(new Dimension(120, 30));
@@ -405,17 +438,17 @@ public class GUIKontroler {
 	protected static void dodajArtikalUTextArea(String actionCommand, RacunProzor racunProzor, Sto sto, Racun racun) {
 		LinkedList<Artikal> artikli = Kafic.artikli;
 		Artikal artikal = new Artikal();
-		
+
 		for (int i = 0; i < artikli.size(); i++) {
 			if (artikli.get(i).getSifraArtikla().equals(actionCommand)) {
 				artikal = artikli.get(i);
 			}
 		}
-		
+
 		LinkedList<Artikal> artikliNaRacunu = racun.getStavkeRacuna();
 		artikliNaRacunu.add(artikal);
 		racun.setStavkeRacuna(artikliNaRacunu);
-		
+
 		racunProzor.textArea.append(artikal.getNazivArtikla() + "\n");
 	}
 

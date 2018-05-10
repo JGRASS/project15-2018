@@ -42,11 +42,12 @@ public class RacunProzor extends JFrame {
 	private Racun racun;
 
 	private static int panelHeight;
+	private static GlavniProzor glavniProzor;
 
 	/**
 	 * Create the frame.
 	 */
-	public RacunProzor(Sto sto, Radnik radnik) {
+	public RacunProzor(Sto sto, Radnik radnik, GlavniProzor glavniProzor) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -57,6 +58,7 @@ public class RacunProzor extends JFrame {
 		contentPane.add(getPanel(), BorderLayout.SOUTH);
 		contentPane.add(getScrollPane_1(), BorderLayout.CENTER);
 		contentPane.add(getPanel_1_1(), BorderLayout.NORTH);
+		this.glavniProzor = glavniProzor;
 
 		this.racun = new Racun();
 		racun.setRadnik(radnik);
@@ -102,9 +104,9 @@ public class RacunProzor extends JFrame {
 					LinkedList<Racun> racuni = sto.getRacuniNaStolu();
 					racuni.add(racun);
 					sto.setRacuniNaStolu(racuni);
-
-					System.out.println(
-							"Trenutni ukupan broj racuna na stolu " + sto.getBrojStola() + " je " + racuni.size());
+					
+					GUIKontroler.dugmePritisnuto(sto, glavniProzor, racun);
+					
 					dispose();
 				}
 			});

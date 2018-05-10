@@ -45,7 +45,7 @@ public class Racun {
 	/**
 	 * Integer koji predstavlja kusur.
 	 */
-	private double kusur;
+	private double kusur = -1;
 	/**
 	 * String koji predstavlja sifru racuna.
 	 */
