@@ -1,5 +1,7 @@
 # project15-2018
 
+# SISTEM ZA KAFIC
+
 Sistem za kafic koji se koristi za upravljanje porudzbinama u kaficu i generisanje izvestaja za odredjeni vremenski period.
 
 
