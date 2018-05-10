@@ -1,20 +1,22 @@
-package kafic.gui.kontroler;
+package kafic.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
+import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
+
+import kafic.Radnik;
+import kafic.Sto;
+import kafic.gui.kontroler.GUIKontroler;
 
 public class IzvestajGUI extends JFrame {
 
@@ -24,13 +26,23 @@ public class IzvestajGUI extends JFrame {
 	private JTextArea textArea;
 	private JButton btnZavrsi;
 	private JButton btnOdustani;
-	
+
 	private IzvestajGUI izvestaj = this;
 
 	/**
 	 * Create the frame.
+	 * 
+	 * @param radnik
+	 * @param sto8
+	 * @param sto7
+	 * @param sto6
+	 * @param sto5
+	 * @param sto4
+	 * @param sto3
+	 * @param sto2
+	 * @param sto1
 	 */
-	public IzvestajGUI() {
+	public IzvestajGUI(Sto sto1, Sto sto2, Sto sto3, Sto sto4, Sto sto5, Sto sto6, Sto sto7, Sto sto8, Radnik radnik) {
 		setResizable(false);
 		setTitle("Izvestaj");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -41,8 +53,10 @@ public class IzvestajGUI extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(getJuzniPanel(), BorderLayout.SOUTH);
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
-		//GUIKontroler.napuniIzvestaj(izvestaj);
+		GUIKontroler.izvuciSveRacune(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, izvestaj);
+		// GUIKontroler.napuniIzvestaj(izvestaj);
 	}
+
 	private JPanel getJuzniPanel() {
 		if (juzniPanel == null) {
 			juzniPanel = new JPanel();
@@ -53,6 +67,7 @@ public class IzvestajGUI extends JFrame {
 		}
 		return juzniPanel;
 	}
+
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
@@ -60,6 +75,7 @@ public class IzvestajGUI extends JFrame {
 		}
 		return scrollPane;
 	}
+
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
@@ -67,6 +83,7 @@ public class IzvestajGUI extends JFrame {
 		}
 		return textArea;
 	}
+
 	private JButton getBtnZavrsi() {
 		if (btnZavrsi == null) {
 			btnZavrsi = new JButton("Zavrsi");
@@ -80,6 +97,7 @@ public class IzvestajGUI extends JFrame {
 		}
 		return btnZavrsi;
 	}
+
 	private JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");

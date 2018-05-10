@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
@@ -28,14 +27,13 @@ import kafic.gui.DodajRadnikaProzor;
 import kafic.gui.GlavniProzor;
 import kafic.gui.IzlistajArtikleProzor;
 import kafic.gui.IzlistajRadnikeProzor;
+import kafic.gui.IzvestajGUI;
 import kafic.gui.LogInProzor;
 import kafic.gui.ObrisiArtikalProzor;
 import kafic.gui.ObrisiRadnikaProzor;
 import kafic.gui.RacunManagementProzor;
 import kafic.gui.RacunProzor;
 import kafic.gui.UvodniProzor;
-import kafic.sistemskeoperacije.SOVratiUkupanBrojRacuna;
-import kafic.sistemskeoperacije.SOVratiUkupanPrihod;
 
 public class GUIKontroler {
 	public static Radnik radnik;
@@ -511,4 +509,89 @@ public class GUIKontroler {
 		}
 	}
 
+	public static void izvuciSveRacune(Sto sto1, Sto sto2, Sto sto3, Sto sto4, Sto sto5, Sto sto6, Sto sto7, Sto sto8, IzvestajGUI izvestaj) {
+		LinkedList<Racun> racuniSto1 = sto1.getRacuniNaStolu();
+		LinkedList<Racun> racuniSto2 = sto2.getRacuniNaStolu();
+		LinkedList<Racun> racuniSto3 = sto3.getRacuniNaStolu();
+		LinkedList<Racun> racuniSto4 = sto4.getRacuniNaStolu();
+		LinkedList<Racun> racuniSto5 = sto5.getRacuniNaStolu();
+		LinkedList<Racun> racuniSto6 = sto6.getRacuniNaStolu();
+		LinkedList<Racun> racuniSto7 = sto7.getRacuniNaStolu();
+		LinkedList<Racun> racuniSto8 = sto8.getRacuniNaStolu();
+
+		for (int i = 0; i < racuniSto1.size(); i++) {
+			try {
+				Kafic.dodajRacun(racuniSto1.get(i));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		for (int i = 0; i < racuniSto2.size(); i++) {
+			try {
+				Kafic.dodajRacun(racuniSto2.get(i));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		for (int i = 0; i < racuniSto3.size(); i++) {
+			try {
+				Kafic.dodajRacun(racuniSto3.get(i));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		for (int i = 0; i < racuniSto4.size(); i++) {
+			try {
+				Kafic.dodajRacun(racuniSto4.get(i));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		for (int i = 0; i < racuniSto5.size(); i++) {
+			try {
+				Kafic.dodajRacun(racuniSto5.get(i));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		for (int i = 0; i < racuniSto6.size(); i++) {
+			try {
+				Kafic.dodajRacun(racuniSto6.get(i));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		for (int i = 0; i < racuniSto7.size(); i++) {
+			try {
+				Kafic.dodajRacun(racuniSto7.get(i));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		for (int i = 0; i < racuniSto8.size(); i++) {
+			try {
+				Kafic.dodajRacun(racuniSto1.get(i));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		String izvestajString = "";
+		
+	}
 }

@@ -402,12 +402,8 @@ public class GlavniProzor extends JFrame {
 			btnKrajRada.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			btnKrajRada.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
-					int opcija = JOptionPane.showConfirmDialog(glavniProzor.contentPane,
-							"Da li ZAISTA zelite da izadjete iz aplikacije", "Izlazak", JOptionPane.YES_NO_OPTION);
-
-					if (opcija == JOptionPane.YES_OPTION)
-						System.exit(0);
+					IzvestajGUI izvestajGUI = new IzvestajGUI(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, radnik);
+					izvestajGUI.setVisible(true);
 				}
 			});
 			btnKrajRada.setBounds(1105, 28, 115, 55);
