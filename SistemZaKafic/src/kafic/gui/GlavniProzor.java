@@ -23,6 +23,7 @@ import javax.swing.border.EmptyBorder;
 import kafic.Radnik;
 import kafic.Sto;
 import kafic.gui.kontroler.GUIKontroler;
+import javax.swing.SwingConstants;
 
 public class GlavniProzor extends JFrame {
 
@@ -69,7 +70,7 @@ public class GlavniProzor extends JFrame {
 	private JLabel lblRealIme;
 	private JLabel lblRealPrezime;
 	private JButton btnKrajRada;
-	private JButton btnLogOff;
+	private JButton btnLogOut;
 	private JLabel lblRealUserName;
 	private JLabel lblUsername;
 
@@ -113,7 +114,7 @@ public class GlavniProzor extends JFrame {
 			severniPanel.add(getLblRealIme());
 			severniPanel.add(getLblRealPrezime());
 			severniPanel.add(getBtnKrajRada());
-			severniPanel.add(getBtnLogOff());
+			severniPanel.add(getBtnLogOut());
 			severniPanel.add(getLblRealUserName());
 			severniPanel.add(getLblUsername());
 		}
@@ -390,6 +391,8 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnKrajRada() {
 		if (btnKrajRada == null) {
 			btnKrajRada = new JButton("Kraj rada");
+			btnKrajRada.setBackground(new Color(236, 112, 99));
+			btnKrajRada.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			btnKrajRada.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
@@ -400,14 +403,16 @@ public class GlavniProzor extends JFrame {
 						System.exit(0);
 				}
 			});
-			btnKrajRada.setBounds(1099, 16, 115, 88);
+			btnKrajRada.setBounds(1105, 29, 115, 55);
 		}
 		return btnKrajRada;
 	}
-	private JButton getBtnLogOff() {
-		if (btnLogOff == null) {
-			btnLogOff = new JButton("LogOut");
-			btnLogOff.addActionListener(new ActionListener() {
+	private JButton getBtnLogOut() {
+		if (btnLogOut == null) {
+			btnLogOut = new JButton("LogOut");
+			btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btnLogOut.setBackground(new Color(248, 196, 113));
+			btnLogOut.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
 					int opcija = JOptionPane.showConfirmDialog(glavniProzor.contentPane,
@@ -417,15 +422,16 @@ public class GlavniProzor extends JFrame {
 						GUIKontroler.startovanjePrograma();
 				}
 			});
-			btnLogOff.setBounds(945, 16, 115, 88);
+			btnLogOut.setBounds(964, 28, 115, 55);
 		}
-		return btnLogOff;
+		return btnLogOut;
 	}
 	private JLabel getLblRealUserName() {
 		if (lblRealUserName == null) {
 			lblRealUserName = new JLabel("");
+			lblRealUserName.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblRealUserName.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblRealUserName.setBounds(752, 50, 152, 20);
+			lblRealUserName.setBounds(752, 50, 197, 20);
 		}
 		return lblRealUserName;
 	}
