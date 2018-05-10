@@ -5,12 +5,14 @@ import java.util.LinkedList;
 import kafic.sistemskeoperacije.SOAzurirajArtikliJson;
 import kafic.sistemskeoperacije.SOAzurirajRadniciJson;
 import kafic.sistemskeoperacije.SODodajArtikal;
+import kafic.sistemskeoperacije.SODodajRacun;
 import kafic.sistemskeoperacije.SODodajRadnika;
 import kafic.sistemskeoperacije.SONapuniListuArtikli;
 import kafic.sistemskeoperacije.SONapuniListuRadnika;
 import kafic.sistemskeoperacije.SOObrisiArtikal;
 import kafic.sistemskeoperacije.SOObrisiRadnika;
 import kafic.sistemskeoperacije.SOSadrziSamoSlova;
+import kafic.sistemskeoperacije.SOZabeleziListuRacuna;
 
 /**
  * Klasa radnik predstavlja klasu sa statickim metodama koje pozivaju sistemske
@@ -86,6 +88,24 @@ public class Kafic {
 	 */
 	public static void napuniListuArtikli() {
 		SONapuniListuArtikli.izvrsi(artikli);
+	}
+	
+	/**
+	 * Metoda koja se koristi za dodavanje novog racuna u listu racuni
+	 * 
+	 * @param racun
+	 * @throws Exception
+	 */
+	public static void dodajRacun(Racun racun) throws Exception {
+		SODodajRacun.izvrsi(racuni, racun);
+	}
+	
+	/**
+	 * Metoda koja upisuje izvestaj u podaci/izvestaji
+	 * @throws Exception 
+	 */
+	public static void zabeleziListuRacuna() throws Exception {
+		SOZabeleziListuRacuna.izvrsi(racuni);
 	}
 
 	/**
