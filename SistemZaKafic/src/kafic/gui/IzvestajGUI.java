@@ -9,24 +9,28 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+import kafic.Kafic;
 import kafic.Radnik;
 import kafic.Sto;
 import kafic.gui.kontroler.GUIKontroler;
+import java.awt.Toolkit;
 
 public class IzvestajGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel juzniPanel;
 	private JScrollPane scrollPane;
-	private JTextArea textArea;
+	public JTextArea textArea;
 	private JButton btnZavrsi;
 	private JButton btnOdustani;
 
+	public static String ceoIzvestaj;
 	private IzvestajGUI izvestaj = this;
 
 	/**
@@ -43,6 +47,7 @@ public class IzvestajGUI extends JFrame {
 	 * @param sto1
 	 */
 	public IzvestajGUI(Sto sto1, Sto sto2, Sto sto3, Sto sto4, Sto sto5, Sto sto6, Sto sto7, Sto sto8, Radnik radnik) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(IzvestajGUI.class.getResource("/icons/ParadisoCaffee.jpeg")));
 		setResizable(false);
 		setTitle("Izvestaj");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -54,7 +59,6 @@ public class IzvestajGUI extends JFrame {
 		contentPane.add(getJuzniPanel(), BorderLayout.SOUTH);
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
 		GUIKontroler.izvuciSveRacune(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, izvestaj);
-		// GUIKontroler.napuniIzvestaj(izvestaj);
 	}
 
 	private JPanel getJuzniPanel() {
@@ -91,6 +95,15 @@ public class IzvestajGUI extends JFrame {
 			btnZavrsi.setBackground(new Color(130, 224, 170));
 			btnZavrsi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					try {
+						Kafic.zabeleziListuRacuna();
+					} catch (Exception e) {
+					}
+					
+					JOptionPane.showMessageDialog(contentPane, "Izvestaj sacuvan u podaci/izvestaji folderu!", "Obavestenje",
+							JOptionPane.INFORMATION_MESSAGE);
+					
+					System.exit(0);
 				}
 			});
 			btnZavrsi.setBounds(48, 16, 115, 48);
@@ -105,6 +118,7 @@ public class IzvestajGUI extends JFrame {
 			btnOdustani.setBackground(new Color(236, 112, 99));
 			btnOdustani.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					dispose();
 				}
 			});
 			btnOdustani.setBounds(267, 16, 115, 48);

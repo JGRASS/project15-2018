@@ -26,5 +26,12 @@
     "username": "uros.veljkovic",
     "password": "lozinka",
     "admin": false
+  },
+  {
+    "ime": "Vojislav",
+    "prezime": "Seselj",
+    "username": "vojaseselj",
+    "password": "vojavoja",
+    "admin": false
   }
 ]

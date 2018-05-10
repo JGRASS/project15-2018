@@ -509,7 +509,8 @@ public class GUIKontroler {
 		}
 	}
 
-	public static void izvuciSveRacune(Sto sto1, Sto sto2, Sto sto3, Sto sto4, Sto sto5, Sto sto6, Sto sto7, Sto sto8, IzvestajGUI izvestaj) {
+	public static void izvuciSveRacune(Sto sto1, Sto sto2, Sto sto3, Sto sto4, Sto sto5, Sto sto6, Sto sto7, Sto sto8,
+			IzvestajGUI izvestaj) {
 		LinkedList<Racun> racuniSto1 = sto1.getRacuniNaStolu();
 		LinkedList<Racun> racuniSto2 = sto2.getRacuniNaStolu();
 		LinkedList<Racun> racuniSto3 = sto3.getRacuniNaStolu();
@@ -584,14 +585,34 @@ public class GUIKontroler {
 
 		for (int i = 0; i < racuniSto8.size(); i++) {
 			try {
-				Kafic.dodajRacun(racuniSto1.get(i));
+				Kafic.dodajRacun(racuniSto8.get(i));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
+
 		String izvestajString = "";
-		
+
+		int ukupanPazar = 0;
+
+		for (int i = 0; i < Kafic.racuni.size(); i++) {
+			ukupanPazar += Kafic.racuni.get(i).getZaUplatu();
+		}
+
+		int ukupnoRacuna = Kafic.racuni.size();
+		double prosecanPazar = (double) ukupanPazar / (double) ukupnoRacuna;
+
+		izvestajString += "Paradiso Caffee\n" + "Ukupan pazar: " + ukupanPazar + "\n" + "Ukupno racuna: " + ukupnoRacuna
+				+ "\n" + "Prosecan pazar: " + prosecanPazar + "\n\n";
+
+		for (int i = 0; i < Kafic.racuni.size(); i++) {
+			izvestajString += Kafic.racuni.get(i).toString();
+			izvestajString += "\n\n";
+		}
+
+		izvestaj.textArea.setText(izvestajString);
+
+		izvestaj.ceoIzvestaj = izvestajString;
 	}
 }
