@@ -189,10 +189,8 @@ public class GUIKontroler {
 
 		for (int i = 0; i < radnici.size(); i++) {
 			JButton button = new JButton(
-					radnici.get(i).getIme() + " " + radnici.get(i).getPrezime() + ", " + radnici.get(i).getUsername());// samo
-																														// getNaziv
-																														// za
-																														// artikal
+					radnici.get(i).getIme() + " " + radnici.get(i).getPrezime() + ", " + radnici.get(i).getUsername());
+
 			button.setBackground(new Color(242, 243, 244));
 			button.setActionCommand(radnici.get(i).getUsername());
 			button.setPreferredSize(new Dimension(400, 50));
