@@ -375,7 +375,6 @@ public class GUIKontroler {
 	public static void dugmePritisnuto(Sto sto, GlavniProzor glavniProzor, Racun racun) {
 		glavniProzor.lblBrojstola.setText("Broj stola: " + sto.getBrojStola());
 		glavniProzor.selektovanSto = sto;
-		System.out.println("Broj racuna na dugmetu " + sto.getBrojStola() + " je " + sto.getRacuniNaStolu().size());
 
 		if (racun == null)
 			return;
@@ -383,14 +382,20 @@ public class GUIKontroler {
 		if (sto.getRacuniNaStolu().size() == 0)
 			return;
 
-
-		JButton button = new JButton(brojRacuna + ") Sto " + sto.getBrojStola());
+		String tekstDugmeta = "";
+		tekstDugmeta += brojRacuna + ") Sto " + sto.getBrojStola();
+		
+		for(int i = 0; i < racun.getStavkeRacuna().size(); i++) {
+			tekstDugmeta +=  ", " + racun.getStavkeRacuna().get(i).getNazivArtikla();
+		}
+		
+		JButton button = new JButton(tekstDugmeta);
 		if (racun.getKusur() == -1)
 			button.setBackground(new Color(241, 148, 138));
 		else
 			button.setBackground(new Color(130, 224, 170));
 		button.setActionCommand(racun.getSifraRacuna());
-		button.setPreferredSize(new Dimension(300, 50));
+		button.setPreferredSize(new Dimension(350, 50));
 		button.setHorizontalAlignment(SwingConstants.LEFT);
 		button.setFont(new Font("DejaVu Sans", Font.PLAIN, 16));
 		button.addActionListener(new ActionListener() {
