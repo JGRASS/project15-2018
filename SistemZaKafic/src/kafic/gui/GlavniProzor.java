@@ -46,7 +46,7 @@ public class GlavniProzor extends JFrame {
 	
 	private static Radnik radnik;
 	private JButton btnNoviRacun;
-	private JButton btnSuperDugme;
+	private JButton btnKrajRada;
 	private JPanel panelGornji;
 	public JLabel lblBrojstola;
 	
@@ -286,7 +286,7 @@ public class GlavniProzor extends JFrame {
 			panel.setPreferredSize(new Dimension(600, 70));
 			panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			panel.add(getBtnNoviRacun());
-			panel.add(getBtnSuperDugme());
+			panel.add(getBtnKrajRada());
 		}
 		return panel;
 	}
@@ -308,22 +308,20 @@ public class GlavniProzor extends JFrame {
 		}
 		return btnNoviRacun;
 	}
-	private JButton getBtnSuperDugme() {
-		if (btnSuperDugme == null) {
-			btnSuperDugme = new JButton("Bas super dugme");
-			btnSuperDugme.setBackground(new Color(229, 232, 232));
-			btnSuperDugme.addActionListener(new ActionListener() {
+	private JButton getBtnKrajRada() {
+		if (btnKrajRada == null) {
+			btnKrajRada = new JButton("Kraj rada");
+			btnKrajRada.setBackground(new Color(229, 232, 232));
+			btnKrajRada.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (selektovanSto == null) {
-						JOptionPane.showMessageDialog(glavniProzor, "Prvi selektujte sto!", "Obavestenje",
-								JOptionPane.INFORMATION_MESSAGE);
-						return;
+						
 					}
 				}
 			});
-			btnSuperDugme.setPreferredSize(new Dimension(170, 45));
+			btnKrajRada.setPreferredSize(new Dimension(170, 45));
 		}
-		return btnSuperDugme;
+		return btnKrajRada;
 	}
 	private JPanel getPanelGornji() {
 		if (panelGornji == null) {

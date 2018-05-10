@@ -39,7 +39,6 @@ public class GUIKontroler {
 	public static Radnik radnik;
 	public static UvodniProzor start;
 	public static int panelRacuniHeight = 0;
-	public static int  brojRacuna = 1;
 
 	private static Timer timer = new Timer(2000, new ActionListener() {
 		@Override
@@ -373,7 +372,7 @@ public class GUIKontroler {
 	}
 
 	public static void dugmePritisnuto(Sto sto, GlavniProzor glavniProzor, Racun racun) {
-		glavniProzor.lblBrojstola.setText("Broj stola: " + sto.getBrojStola());
+		glavniProzor.lblBrojstola.setText("Selektovani sto: " + sto.getBrojStola());
 		glavniProzor.selektovanSto = sto;
 
 		if (racun == null)
@@ -383,9 +382,11 @@ public class GUIKontroler {
 			return;
 
 		String tekstDugmeta = "";
-		tekstDugmeta += brojRacuna + ") Sto " + sto.getBrojStola();
+		tekstDugmeta +=  "Sto " + sto.getBrojStola() + ":";
 		
 		for(int i = 0; i < racun.getStavkeRacuna().size(); i++) {
+			if (i == 0)
+				tekstDugmeta +=  " " + racun.getStavkeRacuna().get(i).getNazivArtikla();
 			tekstDugmeta +=  ", " + racun.getStavkeRacuna().get(i).getNazivArtikla();
 		}
 		
@@ -406,6 +407,7 @@ public class GUIKontroler {
 		panelRacuniHeight += 55;
 		glavniProzor.panelZaRacune.setPreferredSize(new Dimension(180, panelRacuniHeight));
 		glavniProzor.panelZaRacune.add(button);
+		glavniProzor.panelZaRacune.validate();
 	}
 
 	protected static void otvoriRacunManagementProzor(String actionCommand, GlavniProzor glavniProzor, Sto sto) {
