@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -598,6 +599,8 @@ public class GUIKontroler {
 
 		int ukupnoRacuna = Kafic.racuni.size();
 		double prosecanPazar = (double) ukupanPazar / (double) ukupnoRacuna;
+		
+		prosecanPazar = Math.round(prosecanPazar * 100) / 100.0;
 
 		izvestajString += "Paradiso Caffee\n" + "Radnik: " + Kafic.racuni.get(0).getRadnik().getIme() + " "
 				+ Kafic.racuni.get(0).getRadnik().getPrezime() + "\n" + "Vreme rada: " + smena + "\n" + "Ukupan pazar: "
