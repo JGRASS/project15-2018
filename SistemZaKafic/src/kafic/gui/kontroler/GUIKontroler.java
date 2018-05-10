@@ -499,7 +499,7 @@ public class GUIKontroler {
 			pritisnutoDugme.setBackground(new Color(88, 214, 141));
 			pritisnutoDugme.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					pritisnutoDugme.setText("Racun obradjen :)");
+					pritisnutoDugme.setText("Racun vec obradjen :)");
 				}
 			});
 			rmp.dispose();
@@ -524,8 +524,6 @@ public class GUIKontroler {
 			try {
 				Kafic.dodajRacun(racuniSto1.get(i));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 
@@ -533,8 +531,6 @@ public class GUIKontroler {
 			try {
 				Kafic.dodajRacun(racuniSto2.get(i));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 
@@ -542,8 +538,6 @@ public class GUIKontroler {
 			try {
 				Kafic.dodajRacun(racuniSto3.get(i));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 
@@ -551,8 +545,6 @@ public class GUIKontroler {
 			try {
 				Kafic.dodajRacun(racuniSto4.get(i));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 
@@ -560,8 +552,6 @@ public class GUIKontroler {
 			try {
 				Kafic.dodajRacun(racuniSto5.get(i));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 
@@ -569,8 +559,6 @@ public class GUIKontroler {
 			try {
 				Kafic.dodajRacun(racuniSto6.get(i));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 
@@ -578,8 +566,6 @@ public class GUIKontroler {
 			try {
 				Kafic.dodajRacun(racuniSto7.get(i));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 
@@ -587,8 +573,6 @@ public class GUIKontroler {
 			try {
 				Kafic.dodajRacun(racuniSto8.get(i));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 
@@ -608,6 +592,8 @@ public class GUIKontroler {
 
 		for (int i = 0; i < Kafic.racuni.size(); i++) {
 			izvestajString += Kafic.racuni.get(i).toString();
+			if (i == Kafic.racuni.size() - 1)
+				break;
 			izvestajString += "\n\n";
 		}
 

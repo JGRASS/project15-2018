@@ -4,13 +4,6 @@
     "prezime": "Vujic",
     "username": "nikola.vujic",
     "password": "lozinka",
-    "admin": true
-  },
-  {
-    "ime": "Nikola",
-    "prezime": "Bakic",
-    "username": "nikola.bakic",
-    "password": "lozinka",
     "admin": false
   },
   {
@@ -28,10 +21,10 @@
     "admin": false
   },
   {
-    "ime": "Vojislav",
-    "prezime": "Seselj",
-    "username": "vojaseselj",
-    "password": "vojavoja",
+    "ime": "Pingvini",
+    "prezime": "Sa Madagaskara",
+    "username": "kovalski",
+    "password": "lozinka",
     "admin": false
   }
 ]

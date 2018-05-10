@@ -26,7 +26,7 @@ public class SOZabeleziListuRacuna {
 
 		Random rand = new Random();
 
-		String naziv = "izv_" + racuni.get(0).getRadnik().getUsername() + sdf.format(datum) + "_" + rand.nextInt(999)
+		String naziv = "izv_" + racuni.get(0).getRadnik().getUsername() + "_" + sdf.format(datum) + "_" + rand.nextInt(999)
 				+ 1;
 
 		try (PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(lokacija + "/" + naziv)));) {

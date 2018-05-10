@@ -54,6 +54,7 @@ public class IzvestajGUI extends JFrame {
 		setBounds(100, 100, 450, 577);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setLocationRelativeTo(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(getJuzniPanel(), BorderLayout.SOUTH);
@@ -83,6 +84,7 @@ public class IzvestajGUI extends JFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setEditable(false);
 			textArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
 		}
 		return textArea;
@@ -95,6 +97,21 @@ public class IzvestajGUI extends JFrame {
 			btnZavrsi.setBackground(new Color(130, 224, 170));
 			btnZavrsi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					if (Kafic.racuni.size() == 0) {
+						JOptionPane.showMessageDialog(contentPane, "Mora postojati bar jedan obradjen racun!", "Obavestenje",
+								JOptionPane.INFORMATION_MESSAGE);
+						dispose();
+						return;
+					}
+					for (int i = 0; i < Kafic.racuni.size(); i++) {
+						if (Kafic.racuni.get(i).getKusur() == -1) {
+							JOptionPane.showMessageDialog(contentPane, "Svi racuni moraju da budu obradjeni!", "Obavestenje",
+									JOptionPane.INFORMATION_MESSAGE);
+							dispose();
+							return;
+						}
+					}
+						
 					try {
 						Kafic.zabeleziListuRacuna();
 					} catch (Exception e) {

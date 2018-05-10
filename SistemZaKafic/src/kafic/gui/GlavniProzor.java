@@ -382,16 +382,16 @@ public class GlavniProzor extends JFrame {
 	private JLabel getLblRealIme() {
 		if (lblRealIme == null) {
 			lblRealIme = new JLabel("");
-			lblRealIme.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblRealIme.setBounds(74, 28, 163, 20);
+			lblRealIme.setFont(new Font("DejaVu Sans", Font.PLAIN, 20));
+			lblRealIme.setBounds(74, 26, 163, 26);
 		}
 		return lblRealIme;
 	}
 	private JLabel getLblRealPrezime() {
 		if (lblRealPrezime == null) {
 			lblRealPrezime = new JLabel("");
-			lblRealPrezime.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblRealPrezime.setBounds(119, 64, 163, 20);
+			lblRealPrezime.setFont(new Font("DejaVu Sans", Font.PLAIN, 20));
+			lblRealPrezime.setBounds(119, 62, 163, 27);
 		}
 		return lblRealPrezime;
 	}
