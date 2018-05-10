@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,12 +19,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import kafic.Radnik;
 import kafic.Sto;
 import kafic.gui.kontroler.GUIKontroler;
-import javax.swing.SwingConstants;
 
 public class GlavniProzor extends JFrame {
 
@@ -72,7 +74,6 @@ public class GlavniProzor extends JFrame {
 	private JButton btnKrajRada;
 	private JButton btnLogOut;
 	private JLabel lblRealUserName;
-	private JLabel lblUsername;
 
 	/**
 	 * Create the frame.
@@ -101,6 +102,9 @@ public class GlavniProzor extends JFrame {
 		sto7.setBrojStola(7);
 		sto8.setBrojStola(8);
 		
+		lblRealIme.setText(radnik.getIme());
+		lblRealPrezime.setText(radnik.getPrezime());
+		lblRealUserName.setText(radnik.getUsername());
 	}
 
 	private JPanel getSeverniPanel() {
@@ -112,11 +116,11 @@ public class GlavniProzor extends JFrame {
 			severniPanel.add(getLblIme());
 			severniPanel.add(getLblPrezime());
 			severniPanel.add(getLblRealIme());
+			severniPanel.setBorder(new LineBorder(new Color(84, 153, 199), 4));
 			severniPanel.add(getLblRealPrezime());
 			severniPanel.add(getBtnKrajRada());
 			severniPanel.add(getBtnLogOut());
 			severniPanel.add(getLblRealUserName());
-			severniPanel.add(getLblUsername());
 		}
 		return severniPanel;
 	}
@@ -130,6 +134,7 @@ public class GlavniProzor extends JFrame {
 			centralniPanel.add(getSeparator_1());
 			centralniPanel.add(getBtnOsmiSto());
 			centralniPanel.add(getBtnDrugiSto());
+			centralniPanel.setBorder(BorderFactory.createMatteBorder(0, 4, 4, 4, new Color(84, 153, 199)));
 			centralniPanel.add(getSeparator_2());
 			centralniPanel.add(getSeparator_3());
 			centralniPanel.add(getBtnSedmiSto());
@@ -145,6 +150,7 @@ public class GlavniProzor extends JFrame {
 			istocniPanel = new JPanel();
 			istocniPanel.setBackground(new Color(253, 254, 254));
 			istocniPanel.setPreferredSize(new Dimension(440, 0));
+			istocniPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 4, 4, new Color(84, 153, 199)));
 			istocniPanel.setLayout(new BorderLayout(0, 0));
 			istocniPanel.add(getPanel(), BorderLayout.SOUTH);
 			istocniPanel.add(getPanelGornji(), BorderLayout.NORTH);
@@ -320,7 +326,7 @@ public class GlavniProzor extends JFrame {
 					GUIKontroler.otvoriRacunProzor(selektovanSto, radnik, glavniProzor);
 				}
 			});
-			btnNoviRacun.setPreferredSize(new Dimension(171, 60));
+			btnNoviRacun.setPreferredSize(new Dimension(171, 55));
 		}
 		return btnNoviRacun;
 	}
@@ -377,7 +383,7 @@ public class GlavniProzor extends JFrame {
 		if (lblRealIme == null) {
 			lblRealIme = new JLabel("");
 			lblRealIme.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblRealIme.setBounds(134, 28, 163, 20);
+			lblRealIme.setBounds(74, 28, 163, 20);
 		}
 		return lblRealIme;
 	}
@@ -385,7 +391,7 @@ public class GlavniProzor extends JFrame {
 		if (lblRealPrezime == null) {
 			lblRealPrezime = new JLabel("");
 			lblRealPrezime.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblRealPrezime.setBounds(134, 64, 163, 20);
+			lblRealPrezime.setBounds(119, 64, 163, 20);
 		}
 		return lblRealPrezime;
 	}
@@ -435,13 +441,5 @@ public class GlavniProzor extends JFrame {
 			lblRealUserName.setBounds(752, 50, 197, 20);
 		}
 		return lblRealUserName;
-	}
-	private JLabel getLblUsername() {
-		if (lblUsername == null) {
-			lblUsername = new JLabel("username:");
-			lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblUsername.setBounds(647, 48, 104, 20);
-		}
-		return lblUsername;
 	}
 }
