@@ -2,20 +2,27 @@ package kafic.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 
 import kafic.Radnik;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.ImageIcon;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import kafic.Sto;
+import kafic.gui.kontroler.GUIKontroler;
 
 public class GlavniProzor extends JFrame {
 
@@ -35,6 +42,31 @@ public class GlavniProzor extends JFrame {
 	private JButton btnCetvrtiSto;
 	private JButton btnPetiSto;
 	private JButton btnSestiSto;
+	private JPanel panel;
+	
+	private static Radnik radnik;
+	private JButton btnNoviRacun;
+	private JButton btnObracunajRacune;
+	private JPanel panelGornji;
+	public JLabel lblBrojstola;
+	private JScrollPane scrollPane;
+	private JPanel panel_3;
+	private JLabel lblRacuni;
+	private JPanel panelZaRacune;
+	
+	public Sto sto1 = new Sto();
+	public Sto sto2 = new Sto();
+	public Sto sto3 = new Sto();
+	public Sto sto4 = new Sto();
+	public Sto sto5 = new Sto();
+	public Sto sto6 = new Sto();
+	public Sto sto7 = new Sto();
+	public Sto sto8 = new Sto();
+	
+	public Sto selektovanSto = null;
+	
+	
+	private GlavniProzor glavniProzor = this;
 
 	/**
 	 * Create the frame.
@@ -42,7 +74,7 @@ public class GlavniProzor extends JFrame {
 	public GlavniProzor(Radnik randik) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1366, 768);
+		setBounds(100, 100, 1266, 768);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,6 +83,18 @@ public class GlavniProzor extends JFrame {
 		contentPane.add(getSeverniPanel(), BorderLayout.NORTH);
 		contentPane.add(getCentralniPanel(), BorderLayout.CENTER);
 		contentPane.add(getIstocniPanel(), BorderLayout.EAST);
+		
+		this.radnik = radnik;
+		
+		sto1.setBrojStola(1);
+		sto2.setBrojStola(2);
+		sto3.setBrojStola(3);
+		sto4.setBrojStola(4);
+		sto5.setBrojStola(5);
+		sto6.setBrojStola(6);
+		sto7.setBrojStola(7);
+		sto8.setBrojStola(8);
+		
 	}
 
 	private JPanel getSeverniPanel() {
@@ -86,8 +130,11 @@ public class GlavniProzor extends JFrame {
 		if (istocniPanel == null) {
 			istocniPanel = new JPanel();
 			istocniPanel.setBackground(new Color(253, 254, 254));
-			istocniPanel.setPreferredSize(new Dimension(683, 0));
+			istocniPanel.setPreferredSize(new Dimension(440, 0));
 			istocniPanel.setLayout(new BorderLayout(0, 0));
+			istocniPanel.add(getPanel(), BorderLayout.SOUTH);
+			istocniPanel.add(getPanelGornji(), BorderLayout.NORTH);
+			istocniPanel.add(getScrollPane(), BorderLayout.CENTER);
 		}
 		return istocniPanel;
 	}
@@ -98,6 +145,7 @@ public class GlavniProzor extends JFrame {
 			btnPrviSto.setBackground(new Color(237, 187, 153));
 			btnPrviSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.dugmePritisnuto(sto1, glavniProzor);
 				}
 			});
 			btnPrviSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
@@ -123,6 +171,11 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnOsmiSto() {
 		if (btnOsmiSto == null) {
 			btnOsmiSto = new JButton("8");
+			btnOsmiSto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.dugmePritisnuto(sto8, glavniProzor);
+				}
+			});
 			btnOsmiSto.setBorder(null);
 			btnOsmiSto.setBackground(new Color(237, 187, 153));
 			btnOsmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
@@ -132,6 +185,11 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnDrugiSto() {
 		if (btnDrugiSto == null) {
 			btnDrugiSto = new JButton("2");
+			btnDrugiSto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.dugmePritisnuto(sto2, glavniProzor);
+				}
+			});
 			btnDrugiSto.setBorder(null);
 			btnDrugiSto.setBackground(new Color(237, 187, 153));
 			btnDrugiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
@@ -157,6 +215,11 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnSedmiSto() {
 		if (btnSedmiSto == null) {
 			btnSedmiSto = new JButton("7");
+			btnSedmiSto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.dugmePritisnuto(sto7, glavniProzor);
+				}
+			});
 			btnSedmiSto.setBorder(null);
 			btnSedmiSto.setBackground(new Color(237, 187, 153));
 			btnSedmiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
@@ -166,6 +229,11 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnTreciSto() {
 		if (btnTreciSto == null) {
 			btnTreciSto = new JButton("3");
+			btnTreciSto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.dugmePritisnuto(sto3, glavniProzor);
+				}
+			});
 			btnTreciSto.setBorder(null);
 			btnTreciSto.setBackground(new Color(237, 187, 153));
 			btnTreciSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
@@ -175,6 +243,11 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnCetvrtiSto() {
 		if (btnCetvrtiSto == null) {
 			btnCetvrtiSto = new JButton("4");
+			btnCetvrtiSto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.dugmePritisnuto(sto4, glavniProzor);
+				}
+			});
 			btnCetvrtiSto.setBorder(null);
 			btnCetvrtiSto.setBackground(new Color(237, 187, 153));
 			btnCetvrtiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
@@ -184,6 +257,11 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnPetiSto() {
 		if (btnPetiSto == null) {
 			btnPetiSto = new JButton("5");
+			btnPetiSto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.dugmePritisnuto(sto5, glavniProzor);
+				}
+			});
 			btnPetiSto.setBorder(null);
 			btnPetiSto.setBackground(new Color(237, 187, 153));
 			btnPetiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
@@ -193,10 +271,109 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnSestiSto() {
 		if (btnSestiSto == null) {
 			btnSestiSto = new JButton("6");
+			btnSestiSto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.dugmePritisnuto(sto6, glavniProzor);
+				}
+			});
 			btnSestiSto.setBorder(null);
 			btnSestiSto.setBackground(new Color(237, 187, 153));
 			btnSestiSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
 		}
 		return btnSestiSto;
+	}
+	private JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.setPreferredSize(new Dimension(600, 70));
+			panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			panel.add(getBtnNoviRacun());
+			panel.add(getBtnObracunajRacune());
+		}
+		return panel;
+	}
+	private JButton getBtnNoviRacun() {
+		if (btnNoviRacun == null) {
+			btnNoviRacun = new JButton("Novi Racun");
+			btnNoviRacun.setBackground(new Color(229, 232, 232));
+			btnNoviRacun.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (selektovanSto == null) {
+						JOptionPane.showMessageDialog(glavniProzor, "Prvo selektujte sto!", "Obavestenje",
+								JOptionPane.INFORMATION_MESSAGE);
+						return;
+					}
+					GUIKontroler.otvoriRacunProzor(selektovanSto, radnik);
+				}
+			});
+			btnNoviRacun.setPreferredSize(new Dimension(170, 45));
+		}
+		return btnNoviRacun;
+	}
+	private JButton getBtnObracunajRacune() {
+		if (btnObracunajRacune == null) {
+			btnObracunajRacune = new JButton("Obracunaj Racune");
+			btnObracunajRacune.setBackground(new Color(229, 232, 232));
+			btnObracunajRacune.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (selektovanSto == null) {
+						JOptionPane.showMessageDialog(glavniProzor, "Prvi selektujte sto!", "Obavestenje",
+								JOptionPane.INFORMATION_MESSAGE);
+						return;
+					}
+				}
+			});
+			btnObracunajRacune.setPreferredSize(new Dimension(170, 45));
+		}
+		return btnObracunajRacune;
+	}
+	private JPanel getPanelGornji() {
+		if (panelGornji == null) {
+			panelGornji = new JPanel();
+			FlowLayout flowLayout = (FlowLayout) panelGornji.getLayout();
+			flowLayout.setAlignment(FlowLayout.LEFT);
+			panelGornji.setAlignmentY(Component.TOP_ALIGNMENT);
+			panelGornji.setPreferredSize(new Dimension(10, 35));
+			panelGornji.add(getLblBrojstola());
+		}
+		return panelGornji;
+	}
+	private JLabel getLblBrojstola() {
+		if (lblBrojstola == null) {
+			lblBrojstola = new JLabel("Broj stola: ");
+			lblBrojstola.setFont(new Font("DialogInput", Font.PLAIN, 20));
+		}
+		return lblBrojstola;
+	}
+	private JScrollPane getScrollPane() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setPreferredSize(new Dimension(200, 3));
+			scrollPane.setColumnHeaderView(getPanel_3());
+			scrollPane.setViewportView(getPanelZaRacune());
+		}
+		return scrollPane;
+	}
+	private JPanel getPanel_3() {
+		if (panel_3 == null) {
+			panel_3 = new JPanel();
+			FlowLayout flowLayout = (FlowLayout) panel_3.getLayout();
+			flowLayout.setAlignment(FlowLayout.LEFT);
+			panel_3.add(getLblRacuni());
+		}
+		return panel_3;
+	}
+	private JLabel getLblRacuni() {
+		if (lblRacuni == null) {
+			lblRacuni = new JLabel("Racuni:");
+			lblRacuni.setFont(new Font("DialogInput", Font.BOLD, 16));
+		}
+		return lblRacuni;
+	}
+	private JPanel getPanelZaRacune() {
+		if (panelZaRacune == null) {
+			panelZaRacune = new JPanel();
+		}
+		return panelZaRacune;
 	}
 }

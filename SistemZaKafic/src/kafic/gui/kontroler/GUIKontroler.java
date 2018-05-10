@@ -17,7 +17,9 @@ import javax.swing.Timer;
 
 import kafic.Artikal;
 import kafic.Kafic;
+import kafic.Racun;
 import kafic.Radnik;
+import kafic.Sto;
 import kafic.gui.AdminProzor;
 import kafic.gui.DodajArtikalProzor;
 import kafic.gui.DodajRadnikaProzor;
@@ -28,22 +30,21 @@ import kafic.gui.IzvestajProzor;
 import kafic.gui.LogInProzor;
 import kafic.gui.ObrisiArtikalProzor;
 import kafic.gui.ObrisiRadnikaProzor;
+import kafic.gui.RacunProzor;
 import kafic.gui.UvodniProzor;
 import kafic.sistemskeoperacije.SOVratiUkupanBrojRacuna;
 import kafic.sistemskeoperacije.SOVratiUkupanPrihod;
 
-
-
 public class GUIKontroler {
 	public static Radnik radnik;
 	public static UvodniProzor start;
-	
+
 	private static Timer timer = new Timer(2000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			otvoriLoginProzor();	
+			otvoriLoginProzor();
 		}
-	});	
+	});
 
 	/**
 	 * Launch the application.
@@ -66,7 +67,7 @@ public class GUIKontroler {
 	public static void startovanjePrograma() {
 		start = new UvodniProzor();
 		start.setVisible(true);
-		
+
 		timer.start();
 	}
 
@@ -83,7 +84,7 @@ public class GUIKontroler {
 		if (radnik.isAdmin()) {
 			AdminProzor adminProzor = new AdminProzor(radnik);
 			adminProzor.setVisible(true);
-			
+
 			start.dispose();
 		} else {
 			GlavniProzor glavniProzor = new GlavniProzor(radnik);
@@ -342,7 +343,7 @@ public class GUIKontroler {
 
 	public static void loginButton(LogInProzor logInProzor) {
 		String username = logInProzor.textField.getText();
-		String password =logInProzor.passwordField.getText();
+		String password = logInProzor.passwordField.getText();
 
 		LinkedList<Radnik> radnici = Kafic.radnici;
 		Radnik radnik = new Radnik();
@@ -356,16 +357,66 @@ public class GUIKontroler {
 				}
 			}
 		}
-		
+
 		if (!pronadjenRadnik) {
-			JOptionPane.showMessageDialog(logInProzor.contentPane,
-					"Pogresan username ili lozinka", "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(logInProzor.contentPane, "Pogresan username ili lozinka", "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
 			logInProzor.passwordField.setText("");
 		}
-		
+
 		if (pronadjenRadnik) {
 			GUIKontroler.adminIliRadnikPaDalje(radnik);
 			logInProzor.dispose();
 		}
 	}
+
+	public static void dugmePritisnuto(Sto sto, GlavniProzor glavniProzor) {
+		glavniProzor.lblBrojstola.setText("Broj stola: " + sto.getBrojStola());
+		glavniProzor.selektovanSto = sto;
+	}
+
+	public static void otvoriRacunProzor(Sto sto, Radnik radnik) {
+		RacunProzor racunProzor = new RacunProzor(sto, radnik);
+		racunProzor.setVisible(true);
+	}
+
+	public static ArrayList<JButton> generisiDugmadZaArtikle(RacunProzor racunProzor, Sto sto, Racun racun) {
+		ArrayList<JButton> buttons = new ArrayList<JButton>();
+		LinkedList<Artikal> artikli = Kafic.artikli;
+
+		for (int i = 0; i < artikli.size(); i++) {
+			JButton button = new JButton(artikli.get(i).getNazivArtikla()); // za
+			button.setBackground(new Color(242, 243, 244));
+			button.setActionCommand(artikli.get(i).getSifraArtikla());
+			button.setPreferredSize(new Dimension(120, 30));
+			button.setHorizontalAlignment(SwingConstants.LEFT);
+			button.setFont(new Font("DejaVu Sans", Font.PLAIN, 12));
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.dodajArtikalUTextArea(button.getActionCommand(), racunProzor, sto, racun);
+
+				}
+			});
+			buttons.add(button);
+		}
+		return buttons;
+	}
+
+	protected static void dodajArtikalUTextArea(String actionCommand, RacunProzor racunProzor, Sto sto, Racun racun) {
+		LinkedList<Artikal> artikli = Kafic.artikli;
+		Artikal artikal = new Artikal();
+		
+		for (int i = 0; i < artikli.size(); i++) {
+			if (artikli.get(i).getSifraArtikla().equals(actionCommand)) {
+				artikal = artikli.get(i);
+			}
+		}
+		
+		LinkedList<Artikal> artikliNaRacunu = racun.getStavkeRacuna();
+		artikliNaRacunu.add(artikal);
+		racun.setStavkeRacuna(artikliNaRacunu);
+		
+		racunProzor.textArea.append(artikal.getNazivArtikla() + "\n");
+	}
+
 }

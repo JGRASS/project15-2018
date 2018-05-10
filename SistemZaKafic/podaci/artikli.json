@@ -16,5 +16,41 @@
     "naziv": "Limunada",
     "cena": 220.0,
     "zemljaPorekla": "Isle of Man"
+  },
+  {
+    "sifra": "iv3nrt",
+    "naziv": "Milk-Shake",
+    "cena": 220.0,
+    "zemljaPorekla": "Srbija"
+  },
+  {
+    "sifra": "h94jv0",
+    "naziv": "Plazma-Shake",
+    "cena": 240.0,
+    "zemljaPorekla": "Srbija"
+  },
+  {
+    "sifra": "ti43mf",
+    "naziv": "Neka kafa",
+    "cena": 110.0,
+    "zemljaPorekla": "Srbija"
+  },
+  {
+    "sifra": "ofn442",
+    "naziv": "Neko Pivo",
+    "cena": 160.0,
+    "zemljaPorekla": "Srbija"
+  },
+  {
+    "sifra": "p32dsa",
+    "naziv": "Somersbi",
+    "cena": 220.0,
+    "zemljaPorekla": "Bakicev Podrum"
+  },
+  {
+    "sifra": "995itf",
+    "naziv": "Banananas",
+    "cena": 14054.0,
+    "zemljaPorekla": "Uroseva baza na Marsu"
   }
 ]
