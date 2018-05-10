@@ -308,6 +308,7 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnNoviRacun() {
 		if (btnNoviRacun == null) {
 			btnNoviRacun = new JButton("Novi Racun");
+			btnNoviRacun.setFont(new Font("Dialog", Font.BOLD, 16));
 			btnNoviRacun.setBackground(new Color(229, 232, 232));
 			btnNoviRacun.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -319,7 +320,7 @@ public class GlavniProzor extends JFrame {
 					GUIKontroler.otvoriRacunProzor(selektovanSto, radnik, glavniProzor);
 				}
 			});
-			btnNoviRacun.setPreferredSize(new Dimension(170, 45));
+			btnNoviRacun.setPreferredSize(new Dimension(171, 60));
 		}
 		return btnNoviRacun;
 	}
@@ -403,14 +404,14 @@ public class GlavniProzor extends JFrame {
 						System.exit(0);
 				}
 			});
-			btnKrajRada.setBounds(1105, 29, 115, 55);
+			btnKrajRada.setBounds(1105, 28, 115, 55);
 		}
 		return btnKrajRada;
 	}
 	private JButton getBtnLogOut() {
 		if (btnLogOut == null) {
 			btnLogOut = new JButton("LogOut");
-			btnLogOut.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			btnLogOut.setFont(new Font("Dialog", Font.PLAIN, 18));
 			btnLogOut.setBackground(new Color(248, 196, 113));
 			btnLogOut.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -422,7 +423,7 @@ public class GlavniProzor extends JFrame {
 						GUIKontroler.startovanjePrograma();
 				}
 			});
-			btnLogOut.setBounds(964, 28, 115, 55);
+			btnLogOut.setBounds(967, 28, 115, 55);
 		}
 		return btnLogOut;
 	}

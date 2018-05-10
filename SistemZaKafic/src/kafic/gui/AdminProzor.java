@@ -29,7 +29,6 @@ public class AdminProzor extends JFrame {
 	private JButton btnDodajArtikal;
 	private JButton btnObrisiRadnika;
 	private JButton btnObrisiArtikal;
-	private JButton btnGenerisiIzvestaj;
 	private JButton btnLogout;
 	
 	public AdminProzor adminProzor = this;
@@ -76,7 +75,6 @@ public class AdminProzor extends JFrame {
 			panel_1.add(getBtnDodajArtikal());
 			panel_1.add(getBtnObrisiRadnika());
 			panel_1.add(getBtnObrisiArtikal());
-			panel_1.add(getBtnGenerisiIzvestaj());
 			panel_1.add(getBtnLogout());
 			panel_1.setBorder(BorderFactory.createEmptyBorder(45, 50, 50, 50));
 		}
@@ -152,20 +150,6 @@ public class AdminProzor extends JFrame {
 			btnObrisiArtikal.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
 		}
 		return btnObrisiArtikal;
-	}
-
-	private JButton getBtnGenerisiIzvestaj() {
-		if (btnGenerisiIzvestaj == null) {
-			btnGenerisiIzvestaj = new JButton("Generisi Izvestaj");
-			btnGenerisiIzvestaj.setBackground(new Color(242, 243, 244));
-			btnGenerisiIzvestaj.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.prikaziIzvestajProzor();
-				}
-			});
-			btnGenerisiIzvestaj.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));
-		}
-		return btnGenerisiIzvestaj;
 	}
 
 	private JButton getBtnLogout() {

@@ -28,7 +28,6 @@ import kafic.gui.DodajRadnikaProzor;
 import kafic.gui.GlavniProzor;
 import kafic.gui.IzlistajArtikleProzor;
 import kafic.gui.IzlistajRadnikeProzor;
-import kafic.gui.IzvestajProzor;
 import kafic.gui.LogInProzor;
 import kafic.gui.ObrisiArtikalProzor;
 import kafic.gui.ObrisiRadnikaProzor;
@@ -96,32 +95,6 @@ public class GUIKontroler {
 			glavniProzor.setVisible(true);
 			start.dispose();
 		}
-	}
-
-	public static void prikaziIzvestajProzor() {
-		IzvestajProzor prozor = new IzvestajProzor();
-		prozor.setVisible(true);
-	}
-
-	public static String vratiIzvestaj(String pocetniDan, String pocetniMesec, String pocetnaGodina, String krajnjiDan,
-			String krajnjiMesec, String krajnjaGodina) {
-		int pocetniD = Integer.parseInt(pocetniDan);
-		int pocetniM = Integer.parseInt(pocetniMesec);
-		int pocetnaG = Integer.parseInt(pocetnaGodina);
-
-		Date pocetni = new Date(pocetnaG, pocetniM, pocetniD);
-
-		int krajnjiD = Integer.parseInt(krajnjiDan);
-		int krajnjiM = Integer.parseInt(krajnjiMesec);
-		int krajnjaG = Integer.parseInt(krajnjaGodina);
-
-		Date krajnji = new Date(krajnjaG, krajnjiM, krajnjiD);
-
-		return "Izvestaj za period od " + pocetni.getDate() + "/" + pocetni.getMonth() + "/" + pocetni.getYear()
-				+ " do " + krajnji.getDate() + "/" + krajnji.getMonth() + "/" + krajnji.getYear()
-				+ "\n\nUkupan prihod za dati period: " + SOVratiUkupanPrihod.izvrsi(pocetni, krajnji, Kafic.racuni)
-				+ "\n\nUkupan broj racuna za dati period: "
-				+ SOVratiUkupanBrojRacuna.izvrsi(pocetni, krajnji, Kafic.racuni);
 	}
 
 	public static void dodajRadnika(DodajRadnikaProzor dodajRadnikaProzor) {
