@@ -64,6 +64,14 @@ public class GlavniProzor extends JFrame {
 	private GlavniProzor glavniProzor = this;
 	private JScrollPane scrollPane;
 	public JPanel panelZaRacune;
+	private JLabel lblIme;
+	private JLabel lblPrezime;
+	private JLabel lblRealIme;
+	private JLabel lblRealPrezime;
+	private JButton btnKrajRada;
+	private JButton btnLogOff;
+	private JLabel lblRealUserName;
+	private JLabel lblUsername;
 
 	/**
 	 * Create the frame.
@@ -99,7 +107,15 @@ public class GlavniProzor extends JFrame {
 			severniPanel = new JPanel();
 			severniPanel.setBackground(new Color(229, 231, 233));
 			severniPanel.setPreferredSize(new Dimension(0, 120));
-			severniPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			severniPanel.setLayout(null);
+			severniPanel.add(getLblIme());
+			severniPanel.add(getLblPrezime());
+			severniPanel.add(getLblRealIme());
+			severniPanel.add(getLblRealPrezime());
+			severniPanel.add(getBtnKrajRada());
+			severniPanel.add(getBtnLogOff());
+			severniPanel.add(getLblRealUserName());
+			severniPanel.add(getLblUsername());
 		}
 		return severniPanel;
 	}
@@ -338,5 +354,87 @@ public class GlavniProzor extends JFrame {
 			panelZaRacune.setPreferredSize(new Dimension(350, 10));
 		}
 		return panelZaRacune;
+	}
+	private JLabel getLblIme() {
+		if (lblIme == null) {
+			lblIme = new JLabel("Ime:");
+			lblIme.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblIme.setBounds(15, 28, 104, 20);
+		}
+		return lblIme;
+	}
+	private JLabel getLblPrezime() {
+		if (lblPrezime == null) {
+			lblPrezime = new JLabel("Prezime:");
+			lblPrezime.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblPrezime.setBounds(15, 64, 104, 20);
+		}
+		return lblPrezime;
+	}
+	private JLabel getLblRealIme() {
+		if (lblRealIme == null) {
+			lblRealIme = new JLabel("");
+			lblRealIme.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblRealIme.setBounds(134, 28, 163, 20);
+		}
+		return lblRealIme;
+	}
+	private JLabel getLblRealPrezime() {
+		if (lblRealPrezime == null) {
+			lblRealPrezime = new JLabel("");
+			lblRealPrezime.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblRealPrezime.setBounds(134, 64, 163, 20);
+		}
+		return lblRealPrezime;
+	}
+	private JButton getBtnKrajRada() {
+		if (btnKrajRada == null) {
+			btnKrajRada = new JButton("Kraj rada");
+			btnKrajRada.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					int opcija = JOptionPane.showConfirmDialog(glavniProzor.contentPane,
+							"Da li ZAISTA zelite da izadjete iz aplikacije", "Izlazak", JOptionPane.YES_NO_OPTION);
+
+					if (opcija == JOptionPane.YES_OPTION)
+						System.exit(0);
+				}
+			});
+			btnKrajRada.setBounds(1099, 16, 115, 88);
+		}
+		return btnKrajRada;
+	}
+	private JButton getBtnLogOff() {
+		if (btnLogOff == null) {
+			btnLogOff = new JButton("LogOut");
+			btnLogOff.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+					int opcija = JOptionPane.showConfirmDialog(glavniProzor.contentPane,
+							"PAZNJA! Ukoliko se izlogujete iz programa, racuni nece biti sacuvani u bazu.\nDa li stvarno zelite da se izlogujete ?", "LogOut", JOptionPane.YES_NO_OPTION);
+
+					if (opcija == JOptionPane.YES_OPTION)
+						GUIKontroler.startovanjePrograma();
+				}
+			});
+			btnLogOff.setBounds(945, 16, 115, 88);
+		}
+		return btnLogOff;
+	}
+	private JLabel getLblRealUserName() {
+		if (lblRealUserName == null) {
+			lblRealUserName = new JLabel("");
+			lblRealUserName.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblRealUserName.setBounds(752, 50, 152, 20);
+		}
+		return lblRealUserName;
+	}
+	private JLabel getLblUsername() {
+		if (lblUsername == null) {
+			lblUsername = new JLabel("username:");
+			lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblUsername.setBounds(647, 48, 104, 20);
+		}
+		return lblUsername;
 	}
 }

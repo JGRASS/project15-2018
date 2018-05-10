@@ -114,6 +114,7 @@ public class ArtikalTest {
 		artikal.setNazivArtikla("A");
 	}
 	
+	
 	/**
 	 * Test method for {@link kafic.Artikal#setNazivArtikla(java.lang.String)}.
 	 * @throws Exception 
