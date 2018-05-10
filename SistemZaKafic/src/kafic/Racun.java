@@ -192,7 +192,7 @@ public class Racun {
 	public void updateZaUplatu() throws Exception {
 		double zaUplatu = 0;
 		if (stavkeRacuna == null || stavkeRacuna.size() == 0)
-			throw new Exception("moraju postojati stavke racuna pre racunanja uplate");
+			throw new Exception("Moraju postojati stavke racuna pre racunanja uplate");
 
 		for (int i = 0; i < stavkeRacuna.size(); i++) {
 			zaUplatu += stavkeRacuna.get(i).getCenaArtikla();

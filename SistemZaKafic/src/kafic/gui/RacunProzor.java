@@ -41,6 +41,7 @@ public class RacunProzor extends JFrame {
 	private Sto sto;
 	private Racun racun;
 
+	private Radnik radnik;
 	private static int panelHeight;
 	private static GlavniProzor glavniProzor;
 
@@ -60,6 +61,7 @@ public class RacunProzor extends JFrame {
 		contentPane.add(getPanel_1_1(), BorderLayout.NORTH);
 		this.glavniProzor = glavniProzor;
 
+		this.radnik = radnik;
 		this.racun = new Racun();
 		racun.setRadnik(radnik);
 		this.sto = sto;
@@ -105,7 +107,7 @@ public class RacunProzor extends JFrame {
 					racuni.add(racun);
 					sto.setRacuniNaStolu(racuni);
 					
-					GUIKontroler.dugmePritisnuto(sto, glavniProzor, racun);
+					GUIKontroler.dugmePritisnuto(sto, glavniProzor, racun, radnik, null);
 					
 					dispose();
 				}

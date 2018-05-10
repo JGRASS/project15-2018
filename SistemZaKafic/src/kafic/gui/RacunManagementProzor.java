@@ -3,26 +3,29 @@ package kafic.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import kafic.Racun;
+import kafic.Radnik;
 import kafic.Sto;
 import kafic.gui.kontroler.GUIKontroler;
-import java.awt.FlowLayout;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
 
 public class RacunManagementProzor extends JFrame {
 
-	private JPanel contentPane;
+	public JPanel contentPane;
 	private JPanel panel;
 	public JTextArea textArea;
 	
@@ -32,16 +35,26 @@ public class RacunManagementProzor extends JFrame {
 	private JButton btnPotvrdi;
 	private JButton btnOdustani;
 	private JSeparator separator;
+	public JLabel lblDatum;
+	public JLabel lblRadnik;
+	public JLabel lblBrojStola;
+	public JLabel lblZaUplatu;
+	private JLabel lblUplata;
+	private JTextField txtUplata;
+	private JButton btnUplati;
+	public JLabel lblKusur;
+	
+	public Racun racun;
 
 	/**
 	 * Create the frame.
 	 */
 	public RacunManagementProzor(GlavniProzor glavniProzor, Sto sto,
-			Racun racun, JButton button) {
+			Racun racun, JButton button, Radnik radnik) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setBounds(100, 100, 450, 400);
 		contentPane = new JPanel();
-		setLocationRelativeTo(glavniProzor.panelZaRacune);
+		setLocationRelativeTo(null);
 		contentPane.setPreferredSize(new Dimension(250, 10));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -49,7 +62,17 @@ public class RacunManagementProzor extends JFrame {
 		contentPane.add(getPanel(), BorderLayout.EAST);
 		contentPane.add(getPanelGlavni(), BorderLayout.CENTER);
 		contentPane.add(getPanel_1(), BorderLayout.SOUTH);
+		
+		this.racun = racun;
+		racun.setRadnik(radnik);
+		try {
+			racun.setBrojStola(sto.getBrojStola());
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(contentPane, "Neocekivana greska", "Obavestenje",
+					JOptionPane.WARNING_MESSAGE);
+		}
 		GUIKontroler.dodajArtikleUProzor(rmp, racun);
+		GUIKontroler.setOsnovnePodatkeRacun(rmp, racun, glavniProzor);
 		
 	}
 	private JPanel getPanel() {
@@ -63,6 +86,7 @@ public class RacunManagementProzor extends JFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setFont(new Font("Dialog", Font.PLAIN, 14));
 			textArea.setEditable(false);
 			textArea.setPreferredSize(new Dimension(200, 400));
 		}
@@ -71,7 +95,16 @@ public class RacunManagementProzor extends JFrame {
 	private JPanel getPanelGlavni() {
 		if (panelGlavni == null) {
 			panelGlavni = new JPanel();
+			panelGlavni.setPreferredSize(new Dimension(250, 10));
 			panelGlavni.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			panelGlavni.add(getLblDatum());
+			panelGlavni.add(getLblRadnik());
+			panelGlavni.add(getLblBrojStola());
+			panelGlavni.add(getLblZaUplatu());
+			panelGlavni.add(getLblUplata());
+			panelGlavni.add(getTxtUplata());
+			panelGlavni.add(getBtnUplati());
+			panelGlavni.add(getLblKusur());
 		}
 		return panelGlavni;
 	}
@@ -90,6 +123,7 @@ public class RacunManagementProzor extends JFrame {
 	private JButton getBtnPotvrdi() {
 		if (btnPotvrdi == null) {
 			btnPotvrdi = new JButton("Potvrdi");
+			btnPotvrdi.setFont(new Font("DialogInput", Font.BOLD, 16));
 			btnPotvrdi.setBackground(new Color(229, 232, 232));
 			btnPotvrdi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -102,6 +136,7 @@ public class RacunManagementProzor extends JFrame {
 	private JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
+			btnOdustani.setFont(new Font("DialogInput", Font.BOLD, 16));
 			btnOdustani.setBackground(new Color(229, 232, 232));
 			btnOdustani.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -119,5 +154,74 @@ public class RacunManagementProzor extends JFrame {
 			separator.setVisible(false);
 		}
 		return separator;
+	}
+	private JLabel getLblDatum() {
+		if (lblDatum == null) {
+			lblDatum = new JLabel("Datum");
+			lblDatum.setFont(new Font("DialogInput", Font.BOLD, 12));
+			lblDatum.setPreferredSize(new Dimension(200, 35));
+		}
+		return lblDatum;
+	}
+	private JLabel getLblRadnik() {
+		if (lblRadnik == null) {
+			lblRadnik = new JLabel("Radnik");
+			lblRadnik.setFont(new Font("DialogInput", Font.BOLD, 14));
+			lblRadnik.setPreferredSize(new Dimension(200, 35));
+		}
+		return lblRadnik;
+	}
+	private JLabel getLblBrojStola() {
+		if (lblBrojStola == null) {
+			lblBrojStola = new JLabel("Broj Stola");
+			lblBrojStola.setFont(new Font("DialogInput", Font.BOLD, 12));
+			lblBrojStola.setPreferredSize(new Dimension(200, 35));
+		}
+		return lblBrojStola;
+	}
+	private JLabel getLblZaUplatu() {
+		if (lblZaUplatu == null) {
+			lblZaUplatu = new JLabel("Za uplatu");
+			lblZaUplatu.setFont(new Font("DialogInput", Font.BOLD, 14));
+			lblZaUplatu.setPreferredSize(new Dimension(200, 35));
+		}
+		return lblZaUplatu;
+	}
+	private JLabel getLblUplata() {
+		if (lblUplata == null) {
+			lblUplata = new JLabel("Uplata:");
+			lblUplata.setFont(new Font("DialogInput", Font.BOLD, 14));
+			lblUplata.setPreferredSize(new Dimension(80, 35));
+		}
+		return lblUplata;
+	}
+	private JTextField getTxtUplata() {
+		if (txtUplata == null) {
+			txtUplata = new JTextField();
+			txtUplata.setPreferredSize(new Dimension(120, 35));
+			txtUplata.setColumns(10);
+		}
+		return txtUplata;
+	}
+	private JButton getBtnUplati() {
+		if (btnUplati == null) {
+			btnUplati = new JButton("Uplati");
+			btnUplati.setFont(new Font("DialogInput", Font.BOLD, 16));
+			btnUplati.setPreferredSize(new Dimension(80, 35));
+			btnUplati.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			btnUplati.setPreferredSize(new Dimension(120, 35));
+		}
+		return btnUplati;
+	}
+	private JLabel getLblKusur() {
+		if (lblKusur == null) {
+			lblKusur = new JLabel("Kusur:");
+			lblKusur.setFont(new Font("DialogInput", Font.BOLD, 14));
+			lblKusur.setPreferredSize(new Dimension(200, 35));
+		}
+		return lblKusur;
 	}
 }

@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import javax.swing.border.LineBorder;
 
 import kafic.Artikal;
 import kafic.Kafic;
@@ -40,6 +42,7 @@ public class GUIKontroler {
 	public static Radnik radnik;
 	public static UvodniProzor start;
 	public static int panelRacuniHeight = 0;
+	public static JButton prethodnoDugme = new JButton();
 
 	private static Timer timer = new Timer(2000, new ActionListener() {
 		@Override
@@ -372,7 +375,15 @@ public class GUIKontroler {
 		}
 	}
 
-	public static void dugmePritisnuto(Sto sto, GlavniProzor glavniProzor, Racun racun) {
+	public static void dugmePritisnuto(Sto sto, GlavniProzor glavniProzor, Racun racun, Radnik radnik, JButton dugme) {
+		if (dugme != null) {
+			prethodnoDugme.setBackground(new Color(237, 187, 153));
+			prethodnoDugme.setBorder(null);
+			dugme.setBorder(new LineBorder(new Color(84, 153, 199), 2));
+			dugme.setBackground(new Color(127, 179, 213));
+			prethodnoDugme = dugme;
+		}
+
 		glavniProzor.lblBrojstola.setText("Selektovani sto: " + sto.getBrojStola());
 		glavniProzor.selektovanSto = sto;
 
@@ -388,7 +399,8 @@ public class GUIKontroler {
 		for (int i = 0; i < racun.getStavkeRacuna().size(); i++) {
 			if (i == 0)
 				tekstDugmeta += " " + racun.getStavkeRacuna().get(i).getNazivArtikla();
-			tekstDugmeta += ", " + racun.getStavkeRacuna().get(i).getNazivArtikla();
+			else
+				tekstDugmeta += ", " + racun.getStavkeRacuna().get(i).getNazivArtikla();
 		}
 
 		JButton button = new JButton(tekstDugmeta);
@@ -401,7 +413,7 @@ public class GUIKontroler {
 		button.setFont(new Font("DejaVu Sans", Font.PLAIN, 16));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUIKontroler.otvoriRacunManagementProzor(glavniProzor, sto, racun, button);
+				GUIKontroler.otvoriRacunManagementProzor(glavniProzor, sto, racun, button, radnik);
 			}
 		});
 		panelRacuniHeight += 55;
@@ -410,9 +422,9 @@ public class GUIKontroler {
 		glavniProzor.panelZaRacune.validate();
 	}
 
-	protected static void otvoriRacunManagementProzor(GlavniProzor glavniProzor, Sto sto,
-			Racun racun, JButton button) {
-		RacunManagementProzor rmp = new RacunManagementProzor(glavniProzor, sto, racun, button);
+	protected static void otvoriRacunManagementProzor(GlavniProzor glavniProzor, Sto sto, Racun racun, JButton button,
+			Radnik radnik) {
+		RacunManagementProzor rmp = new RacunManagementProzor(glavniProzor, sto, racun, button, radnik);
 		rmp.setVisible(true);
 	}
 
@@ -435,7 +447,6 @@ public class GUIKontroler {
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.dodajArtikalUTextArea(button.getActionCommand(), racunProzor, sto, racun);
-
 				}
 			});
 			buttons.add(button);
@@ -464,7 +475,28 @@ public class GUIKontroler {
 		for (int i = 0; i < racun.getStavkeRacuna().size(); i++) {
 			rmp.textArea.append(racun.getStavkeRacuna().get(i).getNazivArtikla() + "\n");
 		}
-		
+
+	}
+
+	public static void setOsnovnePodatkeRacun(RacunManagementProzor rmp, Racun racun, GlavniProzor gp) {
+
+		try {
+			racun.updateZaUplatu();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(rmp.contentPane, e.getMessage(), "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+
+		String datum = "";
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.YYYY");
+
+		datum = sdf.format(racun.getDatum());
+
+		rmp.lblDatum.setText(datum);
+		rmp.lblRadnik.setText("Radnik: " + racun.getRadnik().getIme() + " " + racun.getRadnik().getPrezime());
+		rmp.lblBrojStola.setText("Broj stola: " + racun.getBrojStola());
+		rmp.lblZaUplatu.setText("Za uplatu: " + racun.getZaUplatu());
 	}
 
 }

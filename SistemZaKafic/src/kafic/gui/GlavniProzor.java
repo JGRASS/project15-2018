@@ -44,7 +44,7 @@ public class GlavniProzor extends JFrame {
 	private JButton btnSestiSto;
 	private JPanel panel;
 	
-	private static Radnik radnik;
+	public static Radnik radnik;
 	private JButton btnNoviRacun;
 	private JPanel panelGornji;
 	public JLabel lblBrojstola;
@@ -68,7 +68,7 @@ public class GlavniProzor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GlavniProzor(Radnik randik) {
+	public GlavniProzor(Radnik radnik) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1266, 768);
@@ -142,7 +142,7 @@ public class GlavniProzor extends JFrame {
 			btnPrviSto.setBackground(new Color(237, 187, 153));
 			btnPrviSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKontroler.dugmePritisnuto(sto1, glavniProzor, null);
+					GUIKontroler.dugmePritisnuto(sto1, glavniProzor, null, radnik, btnPrviSto);
 				}
 			});
 			btnPrviSto.setIcon(new ImageIcon(GlavniProzor.class.getResource("/icons/smallCaffeeTable.png")));
@@ -170,7 +170,7 @@ public class GlavniProzor extends JFrame {
 			btnOsmiSto = new JButton("8");
 			btnOsmiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto8, glavniProzor, null);
+					GUIKontroler.dugmePritisnuto(sto8, glavniProzor, null, radnik, btnOsmiSto);
 				}
 			});
 			btnOsmiSto.setBorder(null);
@@ -184,7 +184,7 @@ public class GlavniProzor extends JFrame {
 			btnDrugiSto = new JButton("2");
 			btnDrugiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto2, glavniProzor, null);
+					GUIKontroler.dugmePritisnuto(sto2, glavniProzor, null, radnik, btnDrugiSto);
 				}
 			});
 			btnDrugiSto.setBorder(null);
@@ -214,7 +214,7 @@ public class GlavniProzor extends JFrame {
 			btnSedmiSto = new JButton("7");
 			btnSedmiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto7, glavniProzor, null);
+					GUIKontroler.dugmePritisnuto(sto7, glavniProzor, null, radnik, btnSedmiSto);
 				}
 			});
 			btnSedmiSto.setBorder(null);
@@ -228,7 +228,7 @@ public class GlavniProzor extends JFrame {
 			btnTreciSto = new JButton("3");
 			btnTreciSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto3, glavniProzor, null);
+					GUIKontroler.dugmePritisnuto(sto3, glavniProzor, null, radnik, btnTreciSto);
 				}
 			});
 			btnTreciSto.setBorder(null);
@@ -242,7 +242,7 @@ public class GlavniProzor extends JFrame {
 			btnCetvrtiSto = new JButton("4");
 			btnCetvrtiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto4, glavniProzor, null);
+					GUIKontroler.dugmePritisnuto(sto4, glavniProzor, null, radnik, btnCetvrtiSto);
 				}
 			});
 			btnCetvrtiSto.setBorder(null);
@@ -256,7 +256,7 @@ public class GlavniProzor extends JFrame {
 			btnPetiSto = new JButton("5");
 			btnPetiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto5, glavniProzor, null);
+					GUIKontroler.dugmePritisnuto(sto5, glavniProzor, null, radnik, btnPetiSto);
 				}
 			});
 			btnPetiSto.setBorder(null);
@@ -270,7 +270,7 @@ public class GlavniProzor extends JFrame {
 			btnSestiSto = new JButton("6");
 			btnSestiSto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dugmePritisnuto(sto6, glavniProzor, null);
+					GUIKontroler.dugmePritisnuto(sto6, glavniProzor, null, radnik, btnSestiSto);
 				}
 			});
 			btnSestiSto.setBorder(null);
