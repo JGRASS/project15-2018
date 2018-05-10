@@ -23,7 +23,7 @@ import java.awt.Toolkit;
 
 public class IzvestajGUI extends JFrame {
 
-	private JPanel contentPane;
+	public JPanel contentPane;
 	private JPanel juzniPanel;
 	private JScrollPane scrollPane;
 	public JTextArea textArea;
@@ -97,30 +97,7 @@ public class IzvestajGUI extends JFrame {
 			btnZavrsi.setBackground(new Color(130, 224, 170));
 			btnZavrsi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					if (Kafic.racuni.size() == 0) {
-						JOptionPane.showMessageDialog(contentPane, "Mora postojati bar jedan obradjen racun!", "Obavestenje",
-								JOptionPane.INFORMATION_MESSAGE);
-						dispose();
-						return;
-					}
-					for (int i = 0; i < Kafic.racuni.size(); i++) {
-						if (Kafic.racuni.get(i).getKusur() == -1) {
-							JOptionPane.showMessageDialog(contentPane, "Svi racuni moraju da budu obradjeni!", "Obavestenje",
-									JOptionPane.INFORMATION_MESSAGE);
-							dispose();
-							return;
-						}
-					}
-						
-					try {
-						Kafic.zabeleziListuRacuna();
-					} catch (Exception e) {
-					}
-					
-					JOptionPane.showMessageDialog(contentPane, "Izvestaj sacuvan u podaci/izvestaji folderu!", "Obavestenje",
-							JOptionPane.INFORMATION_MESSAGE);
-					
-					System.exit(0);
+					GUIKontroler.dugmeZavrsiIzvestaj(izvestaj);
 				}
 			});
 			btnZavrsi.setBounds(48, 16, 115, 48);

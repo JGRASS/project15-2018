@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
@@ -40,6 +41,10 @@ public class GUIKontroler {
 	public static UvodniProzor start;
 	public static int panelRacuniHeight = 0;
 	public static JButton prethodnoDugme = new JButton();
+	
+	public static Date radnikZapoceoSesiju = new Date();
+	public static Date radnikZavrsioSesiju;
+	
 
 	private static Timer timer = new Timer(2000, new ActionListener() {
 		@Override
@@ -600,5 +605,32 @@ public class GUIKontroler {
 		izvestaj.textArea.setText(izvestajString);
 
 		izvestaj.ceoIzvestaj = izvestajString;
+	}
+
+	public static void dugmeZavrsiIzvestaj(IzvestajGUI izvestaj) {
+		if (Kafic.racuni.size() == 0) {
+			JOptionPane.showMessageDialog(izvestaj.contentPane, "Mora postojati bar jedan obradjen racun!", "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			izvestaj.dispose();
+			return;
+		}
+		for (int i = 0; i < Kafic.racuni.size(); i++) {
+			if (Kafic.racuni.get(i).getKusur() == -1) {
+				JOptionPane.showMessageDialog(izvestaj.contentPane, "Svi racuni moraju da budu obradjeni!", "Obavestenje",
+						JOptionPane.INFORMATION_MESSAGE);
+				izvestaj.dispose();
+				return;
+			}
+		}
+			
+		try {
+			Kafic.zabeleziListuRacuna();
+		} catch (Exception e) {
+		}
+		
+		JOptionPane.showMessageDialog(izvestaj.contentPane, "Izvestaj sacuvan u podaci/izvestaji folderu!", "Obavestenje",
+				JOptionPane.INFORMATION_MESSAGE);
+		
+		System.exit(0);		
 	}
 }
