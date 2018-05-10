@@ -593,14 +593,16 @@ public class GUIKontroler {
 		long diffSeconds = diff / (1000);
 		long diffMinutes = diff / (60 * 1000);
 		long diffHours = diff / (60 * 60 * 1000);
-		
-		System.out.println(diffHours + " sati, " + diffMinutes + " minuta, " + diffSeconds + " sekundi");
+
+		String smena = diffHours + " sati, " + diffMinutes + " minuta, " + diffSeconds + " sekundi";
 
 		int ukupnoRacuna = Kafic.racuni.size();
 		double prosecanPazar = (double) ukupanPazar / (double) ukupnoRacuna;
 
-		izvestajString += "Paradiso Caffee\n" + "Ukupan pazar: " + ukupanPazar + "\n" + "Ukupno racuna: " + ukupnoRacuna
-				+ "\n" + "Prosecan pazar: " + prosecanPazar + "\n\n";
+		izvestajString += "Paradiso Caffee\n" + "Radnik: " + Kafic.racuni.get(0).getRadnik().getIme() + " "
+				+ Kafic.racuni.get(0).getRadnik().getPrezime() + "\n" + "Vreme rada: " + smena + "\n" + "Ukupan pazar: "
+				+ ukupanPazar + "\n" + "Ukupno racuna: " + ukupnoRacuna + "\n" + "Prosecan pazar: " + prosecanPazar
+				+ "\n\n";
 
 		for (int i = 0; i < Kafic.racuni.size(); i++) {
 			izvestajString += Kafic.racuni.get(i).toString();

@@ -274,7 +274,7 @@ public class Racun {
 	 */
 	@Override
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd.mm.yyyy HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 		String stavke = "";
 
 		for (int i = 0; i < stavkeRacuna.size(); i++) {
