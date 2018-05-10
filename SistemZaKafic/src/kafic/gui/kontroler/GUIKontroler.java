@@ -413,7 +413,8 @@ public class GUIKontroler {
 		button.setFont(new Font("DejaVu Sans", Font.PLAIN, 16));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUIKontroler.otvoriRacunManagementProzor(glavniProzor, sto, racun, button, radnik);
+				if (button.getText().startsWith("Sto"))
+					GUIKontroler.otvoriRacunManagementProzor(glavniProzor, sto, racun, button, radnik);
 			}
 		});
 		panelRacuniHeight += 55;
@@ -473,7 +474,8 @@ public class GUIKontroler {
 
 	public static void dodajArtikleUProzor(RacunManagementProzor rmp, Racun racun) {
 		for (int i = 0; i < racun.getStavkeRacuna().size(); i++) {
-			rmp.textArea.append(racun.getStavkeRacuna().get(i).getNazivArtikla() + "\n");
+			rmp.textArea.append(racun.getStavkeRacuna().get(i).getNazivArtikla() + " = "
+					+ racun.getStavkeRacuna().get(i).getCenaArtikla() + "\n");
 		}
 
 	}
@@ -497,6 +499,45 @@ public class GUIKontroler {
 		rmp.lblRadnik.setText("Radnik: " + racun.getRadnik().getIme() + " " + racun.getRadnik().getPrezime());
 		rmp.lblBrojStola.setText("Broj stola: " + racun.getBrojStola());
 		rmp.lblZaUplatu.setText("Za uplatu: " + racun.getZaUplatu());
+	}
+
+	public static void obracunajUplatu(RacunManagementProzor rmp, Racun racun) {
+		double uplata = 0;
+		try {
+
+			uplata = Double.parseDouble(rmp.txtUplata.getText());
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(rmp.contentPane, "Morate uneti ispravan broj!", "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			rmp.txtUplata.setText("");
+			return;
+		}
+
+		try {
+			racun.setJeUplaceno(uplata);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(rmp.contentPane, e.getMessage(), "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+
+		rmp.lblKusur.setText("Kusur: " + racun.getKusur());
+		rmp.validan = true;
+	}
+
+	public static void potvrdiKrajRacuna(RacunManagementProzor rmp, JButton pritisnutoDugme) {
+		if (rmp.validan) {
+			pritisnutoDugme.setBackground(new Color(88, 214, 141));
+			pritisnutoDugme.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					pritisnutoDugme.setText("Racun obradjen :)");
+				}
+			});
+			rmp.dispose();
+		} else {
+			JOptionPane.showMessageDialog(rmp.contentPane, "Morate uneti placenu vrednost", "Obavestenje",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 }

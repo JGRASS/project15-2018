@@ -22,12 +22,12 @@ import kafic.Racun;
 import kafic.Radnik;
 import kafic.Sto;
 import kafic.gui.kontroler.GUIKontroler;
+import javax.swing.JScrollPane;
 
 public class RacunManagementProzor extends JFrame {
 
 	public JPanel contentPane;
 	private JPanel panel;
-	public JTextArea textArea;
 	
 	private RacunManagementProzor rmp = this;
 	private JPanel panelGlavni;
@@ -40,11 +40,16 @@ public class RacunManagementProzor extends JFrame {
 	public JLabel lblBrojStola;
 	public JLabel lblZaUplatu;
 	private JLabel lblUplata;
-	private JTextField txtUplata;
+	public JTextField txtUplata;
 	private JButton btnUplati;
 	public JLabel lblKusur;
 	
 	public Racun racun;
+	private JScrollPane scrollPane;
+	public JTextArea textArea;
+	public JButton pritisnutoDugme;
+	
+	public boolean validan = false;
 
 	/**
 	 * Create the frame.
@@ -62,7 +67,7 @@ public class RacunManagementProzor extends JFrame {
 		contentPane.add(getPanel(), BorderLayout.EAST);
 		contentPane.add(getPanelGlavni(), BorderLayout.CENTER);
 		contentPane.add(getPanel_1(), BorderLayout.SOUTH);
-		
+		this.pritisnutoDugme = button;
 		this.racun = racun;
 		racun.setRadnik(radnik);
 		try {
@@ -79,18 +84,9 @@ public class RacunManagementProzor extends JFrame {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.setPreferredSize(new Dimension(200, 400));
-			panel.add(getTextArea());
+			panel.add(getScrollPane());
 		}
 		return panel;
-	}
-	private JTextArea getTextArea() {
-		if (textArea == null) {
-			textArea = new JTextArea();
-			textArea.setFont(new Font("Dialog", Font.PLAIN, 14));
-			textArea.setEditable(false);
-			textArea.setPreferredSize(new Dimension(200, 400));
-		}
-		return textArea;
 	}
 	private JPanel getPanelGlavni() {
 		if (panelGlavni == null) {
@@ -127,6 +123,7 @@ public class RacunManagementProzor extends JFrame {
 			btnPotvrdi.setBackground(new Color(229, 232, 232));
 			btnPotvrdi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.potvrdiKrajRacuna(rmp, pritisnutoDugme);
 				}
 			});
 			btnPotvrdi.setPreferredSize(new Dimension(120, 40));
@@ -208,8 +205,10 @@ public class RacunManagementProzor extends JFrame {
 			btnUplati = new JButton("Uplati");
 			btnUplati.setFont(new Font("DialogInput", Font.BOLD, 16));
 			btnUplati.setPreferredSize(new Dimension(80, 35));
+			btnUplati.setBackground(new Color(229, 232, 232));
 			btnUplati.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.obracunajUplatu(rmp, racun);
 				}
 			});
 			btnUplati.setPreferredSize(new Dimension(120, 35));
@@ -223,5 +222,20 @@ public class RacunManagementProzor extends JFrame {
 			lblKusur.setPreferredSize(new Dimension(200, 35));
 		}
 		return lblKusur;
+	}
+	private JScrollPane getScrollPane() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setPreferredSize(new Dimension(200, 300));
+			scrollPane.setViewportView(getTextArea_1());
+		}
+		return scrollPane;
+	}
+	private JTextArea getTextArea_1() {
+		if (textArea == null) {
+			textArea = new JTextArea();
+			textArea.setEditable(false);
+		}
+		return textArea;
 	}
 }
