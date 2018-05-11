@@ -9,13 +9,13 @@ Uputsvo za koriscenje:
 
 U login stranici unosi se username i password radnika koji je zaduzen za odgovarajucu smenu. Ukoliko je radnik admin otvara se poseban prozor za upravljanje bazom radnika i artikla.
 
-primer za obicnog korisnika:
-username: nikola.vujic
-password: lozinka
+primer za obicnog korisnika: </br>
+username: nikola.vujic </br>
+password: lozinka </br>
 
-ako se pristupa admin stranici:
-username: rambo
-password: 123123
+ako se pristupa admin stranici: </br>
+username: rambo </br>
+password: 123123 </br>
 
 U glavnom prozoru se nalaze stolovi na koje radnik moze da pritisne kako bi ih selektovao. Pritiskom na Novi Racun dugme otvara se novi prozor u koje mogu da se biraju artikli koji idu na racun, racun je vezan za selektovani sto. Nakon dodavanja racuna, na desnoj strani programa se prikazuje racun crvene boje. Radnik pritiskom na taj racun moze da doda uplatu za racun. Nakon uspesne uplate racun menja boju u zelenu i ne moze se ponovo otvarati. Pritiskom na dugme Kraj Rada otvara se prozor sa primerom izvestaja, pritiskom na dugme Zavrsi svi racuni se beleze u bazu i radnik se automatski izloguje, pritiskom na LogOut dugme radnik moze da se izloguje bez pamcenja racuna.
 
