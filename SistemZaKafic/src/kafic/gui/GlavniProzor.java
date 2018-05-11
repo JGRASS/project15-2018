@@ -39,8 +39,8 @@ public class GlavniProzor extends JFrame {
 	private JButton btnOsmiSto;
 	private JButton btnDrugiSto;
 	private JSeparator separator_2;
-	private JSeparator separator_3;
 	private JButton btnSedmiSto;
+	private JSeparator separator_3;
 	private JButton btnTreciSto;
 	private JButton btnCetvrtiSto;
 	private JButton btnPetiSto;
