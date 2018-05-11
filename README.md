@@ -1,24 +1,24 @@
 # project15-2018
 
-# SISTEM ZA KAFIC
+# SISTEM ZA KAFIC / COFFEE SHOP SYSTEM
 
-Sistem za kafic koji se koristi za upravljanje porudzbinama u kaficu i generisanje izvestaja na kraju rada.
+A system for coffee shop used to manage orders and generating report at the end of a work-session of an employee.
 
 
-Uputsvo za koriscenje:
+User guide:
 
-U login stranici unosi se username i password radnika koji je zaduzen za odgovarajucu smenu. Ukoliko je radnik admin otvara se poseban prozor za upravljanje bazom radnika i artikla.
+At the login page the user must enter username and password of an employee whose shift is starting. If the entered username belongs to an admin user, a different window will be opened.
 
-primer za obicnog korisnika: </br>
-username: nikola.vujic </br>
+example for a regular user: </br>
+username: nikola.vujic </b>
 password: lozinka </br>
 
-ako se pristupa admin stranici: </br>
+if the user wants to access the admin page: </br>
 username: rambo </br>
 password: 123123 </br>
 
-U glavnom prozoru se nalaze stolovi na koje radnik moze da pritisne kako bi ih selektovao. Pritiskom na Novi Racun dugme otvara se novi prozor u koje mogu da se biraju artikli koji idu na racun, racun je vezan za selektovani sto. Nakon dodavanja racuna, na desnoj strani programa se prikazuje racun crvene boje. Radnik pritiskom na taj racun moze da doda uplatu za racun. Nakon uspesne uplate racun menja boju u zelenu i ne moze se ponovo otvarati. Pritiskom na dugme Kraj Rada otvara se prozor sa primerom izvestaja, pritiskom na dugme Zavrsi svi racuni se beleze u bazu i radnik se automatski izloguje, pritiskom na LogOut dugme radnik moze da se izloguje bez pamcenja racuna.
+In the main window (if a regular user logged in) there are tables on which the user can click in order to select them. Pressing the Novi Racun dugme a new windows opens in which the user can choose articles that will be place on a receipt connected with the selected table. After adding a receipt, on the main page the user can see that a red colored receipt has been added to a list of receipts. By clicking on a red receipt, a new window appears where the user can process the receipt by adding the amount paid. If the amount entered is bigger than the total value of the recipt the user may finish processing the receipt. When a receipt has been successfully processed it will turn green and no longer be clickable. Pressing on the Kraj Rada button the user gets a preview of the report generated based on the receipts, clicking on the Zavrsi button the user gets logged out and the report gets saved in plain-text format. The user may not click on Kraj Rada button if there are no processed receipts. Clicking on the Logout button the user may log out without saving the receipts.
 
-Napomena: Ukoliko scroll na listi racuna ne radi, potrebno je pritisnuti jos jednom na bilo koji obradjen racun (racun zelene boje).
+In the Admin window there are options to add or remove an employee and options to add or remove an article. Clicking on either remove options (Obrisi ...) a list of employees or articles will appear, choosing one will open a window displaying employee or article info with a confirmation for deletion.
 
-U Admin prozoru nalaze se opcije za dodavanje/brisanje radnika/artikla.
+Note: the database is dynamic, which means after adding a new employee or article the admin does not need to close the program in order for the database to be updated.
