@@ -131,7 +131,7 @@ public class Artikal {
 		
 		for (int i = 0; i < zemljaPoreklaNiz.length; i++) {
 			if (!Kafic.sadrziSamoSlova(zemljaPoreklaNiz[i]))
-				throw new Exception("Zemlja porekla ne sme da sadrzi slovne karaktere");
+				throw new Exception("Zemlja porekla mora da ima samo slovne karaktere");
 		}
 		
 		this.zemljaPoreklaArtikla = zemljaPoreklaArtikla;

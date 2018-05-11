@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import kafic.Racun;
 import kafic.Radnik;
@@ -63,6 +64,8 @@ public class RacunProzor extends JFrame {
 		contentPane.add(getScrollPane_1(), BorderLayout.CENTER);
 		contentPane.add(getPanel_1_1(), BorderLayout.NORTH);
 		this.glavniProzor = glavniProzor;
+		contentPane.setBackground(new Color(215, 219, 221));
+		contentPane.setBorder(new LineBorder(new Color(26, 82, 118), 4));
 
 		this.radnik = radnik;
 		this.racun = new Racun();
@@ -93,6 +96,7 @@ public class RacunProzor extends JFrame {
 			panel.add(getBtnNapraviRacun());
 			panel.add(getSeparator());
 			panel.add(getBtnOdustani());
+			panel.setBackground(new Color(215, 219, 221));
 		}
 		return panel;
 	}
@@ -101,6 +105,7 @@ public class RacunProzor extends JFrame {
 		if (btnNapraviRacun == null) {
 			btnNapraviRacun = new JButton("Napravi Racun");
 			btnNapraviRacun.setBackground(new Color(229, 232, 232));
+			btnNapraviRacun.setBackground(new Color(46, 204, 113));
 			btnNapraviRacun.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (textArea.getText().isEmpty()) {
@@ -125,6 +130,7 @@ public class RacunProzor extends JFrame {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
 			btnOdustani.setBackground(new Color(229, 232, 232));
+			btnOdustani.setBackground(new Color(244, 208, 63));
 			btnOdustani.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
@@ -145,6 +151,7 @@ public class RacunProzor extends JFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setFont(new Font("DejaVu Sans", Font.BOLD, 14));
 			textArea.setEditable(false);
 		}
 		return textArea;
@@ -154,6 +161,7 @@ public class RacunProzor extends JFrame {
 		if (panelZaArtikle == null) {
 			panelZaArtikle = new JPanel();
 			panelZaArtikle.setPreferredSize(new Dimension(114, panelHeight));
+			panelZaArtikle.setBackground(new Color(215, 219, 221));
 		}
 		return panelZaArtikle;
 	}
@@ -161,6 +169,7 @@ public class RacunProzor extends JFrame {
 	private JPanel getPanel_1_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
+			panel_1.setBackground(new Color(215, 219, 221));
 			panel_1.add(getLblDodajteArtikle());
 		}
 		return panel_1;
@@ -170,7 +179,7 @@ public class RacunProzor extends JFrame {
 		if (lblDodajteArtikle == null) {
 			lblDodajteArtikle = new JLabel("Dodajte artikle");
 			lblDodajteArtikle.setAlignmentX(Component.CENTER_ALIGNMENT);
-			lblDodajteArtikle.setFont(new Font("DialogInput", Font.BOLD, 15));
+			lblDodajteArtikle.setFont(new Font("DejaVu Sans", Font.BOLD, 15));
 		}
 		return lblDodajteArtikle;
 	}

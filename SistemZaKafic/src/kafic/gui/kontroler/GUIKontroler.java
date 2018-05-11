@@ -413,7 +413,7 @@ public class GUIKontroler {
 
 		for (int i = 0; i < artikli.size(); i++) {
 			JButton button = new JButton(artikli.get(i).getNazivArtikla());
-			button.setBackground(new Color(242, 243, 244));
+			button.setBackground(new Color(245, 203, 167));
 			button.setActionCommand(artikli.get(i).getSifraArtikla());
 			button.setPreferredSize(new Dimension(120, 30));
 			button.setHorizontalAlignment(SwingConstants.LEFT);
@@ -600,7 +600,7 @@ public class GUIKontroler {
 
 		int ukupnoRacuna = Kafic.racuni.size();
 		double prosecanPazar = (double) ukupanPazar / (double) ukupnoRacuna;
-		
+
 		prosecanPazar = Math.round(prosecanPazar * 100) / 100.0;
 
 		izvestajString += "Paradiso Caffee\n" + "Radnik: " + Kafic.racuni.get(0).getRadnik().getIme() + " "

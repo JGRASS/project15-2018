@@ -380,7 +380,7 @@ public class GlavniProzor extends JFrame {
 	private JPanel getPanelZaRacune() {
 		if (panelZaRacune == null) {
 			panelZaRacune = new JPanel();
-			panelZaRacune.setPreferredSize(new Dimension(350, 10));
+			panelZaRacune.setPreferredSize(new Dimension(353, 10));
 		}
 		return panelZaRacune;
 	}
@@ -452,7 +452,7 @@ public class GlavniProzor extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 
 					int opcija = JOptionPane.showConfirmDialog(glavniProzor.contentPane,
-							"PAZNJA! Ukoliko se izlogujete iz programa, racuni nece biti sacuvani u bazu.\nDa li stvarno zelite da se izlogujete ?",
+							"PAZNJA! Ukoliko se izlogujete iz programa, racuni nece biti sacuvani u bazu.\nDa li stvarno zelite da se izlogujete?",
 							"LogOut", JOptionPane.YES_NO_OPTION);
 
 					if (opcija == JOptionPane.YES_OPTION) {

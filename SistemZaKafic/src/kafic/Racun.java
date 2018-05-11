@@ -232,7 +232,7 @@ public class Racun {
 		if (jeUplaceno < 0)
 			throw new Exception("Iznos ne moze biti negativan!");
 		if (jeUplaceno < zaUplatu)
-			throw new Exception("Ne moze biti uplaceno manje od potrosenog iznosa!");
+			throw new Exception("Ne moze biti uplaceno manje od ukupne cene artikala!");
 
 		this.kusur = jeUplaceno - zaUplatu;
 		this.jeUplaceno = jeUplaceno;
