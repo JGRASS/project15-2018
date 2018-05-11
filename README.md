@@ -10,7 +10,7 @@ User guide:
 At the login page the user must enter username and password of an employee whose shift is starting. If the entered username belongs to an admin user, a different window will be opened.
 
 example for a regular user: </br>
-username: nikola.vujic </b>
+username: nikola.vujic </br>
 password: lozinka </br>
 
 if the user wants to access the admin page: </br>
