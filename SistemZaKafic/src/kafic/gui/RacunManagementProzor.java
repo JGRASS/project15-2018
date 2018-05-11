@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +18,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import kafic.Racun;
 import kafic.Radnik;
@@ -28,7 +30,7 @@ public class RacunManagementProzor extends JFrame {
 
 	public JPanel contentPane;
 	private JPanel panel;
-	
+
 	private RacunManagementProzor rmp = this;
 	private JPanel panelGlavni;
 	private JPanel panel_1;
@@ -43,19 +45,18 @@ public class RacunManagementProzor extends JFrame {
 	public JTextField txtUplata;
 	private JButton btnUplati;
 	public JLabel lblKusur;
-	
+
 	public Racun racun;
 	private JScrollPane scrollPane;
 	public JTextArea textArea;
 	public JButton pritisnutoDugme;
-	
+
 	public boolean validan = false;
 
 	/**
 	 * Create the frame.
 	 */
-	public RacunManagementProzor(GlavniProzor glavniProzor, Sto sto,
-			Racun racun, JButton button, Radnik radnik) {
+	public RacunManagementProzor(GlavniProzor glavniProzor, Sto sto, Racun racun, JButton button, Radnik radnik) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 400);
 		contentPane = new JPanel();
@@ -67,6 +68,7 @@ public class RacunManagementProzor extends JFrame {
 		contentPane.add(getPanel(), BorderLayout.EAST);
 		contentPane.add(getPanelGlavni(), BorderLayout.CENTER);
 		contentPane.add(getPanel_1(), BorderLayout.SOUTH);
+		contentPane.setBorder(new LineBorder(new Color(26, 82, 118), 4));
 		this.pritisnutoDugme = button;
 		this.racun = racun;
 		racun.setRadnik(radnik);
@@ -78,21 +80,25 @@ public class RacunManagementProzor extends JFrame {
 		}
 		GUIKontroler.dodajArtikleUProzor(rmp, racun);
 		GUIKontroler.setOsnovnePodatkeRacun(rmp, racun, glavniProzor);
-		
+
 	}
+
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.setPreferredSize(new Dimension(200, 400));
+			panel.setBackground(new Color(215, 219, 221));
 			panel.add(getScrollPane());
 		}
 		return panel;
 	}
+
 	private JPanel getPanelGlavni() {
 		if (panelGlavni == null) {
 			panelGlavni = new JPanel();
 			panelGlavni.setPreferredSize(new Dimension(250, 10));
 			panelGlavni.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			panelGlavni.setBackground(new Color(215, 219, 221));
 			panelGlavni.add(getLblDatum());
 			panelGlavni.add(getLblRadnik());
 			panelGlavni.add(getLblBrojStola());
@@ -104,10 +110,12 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return panelGlavni;
 	}
+
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
-			panel_1.setPreferredSize(new Dimension(10, 50));
+			panel_1.setPreferredSize(new Dimension(450, 50));
+			panel_1.setBackground(new Color(215, 219, 221));
 			FlowLayout fl_panel_1 = new FlowLayout(FlowLayout.CENTER, 5, 5);
 			panel_1.setLayout(fl_panel_1);
 			panel_1.add(getBtnPotvrdi());
@@ -116,11 +124,12 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return panel_1;
 	}
+
 	private JButton getBtnPotvrdi() {
 		if (btnPotvrdi == null) {
 			btnPotvrdi = new JButton("Potvrdi");
 			btnPotvrdi.setFont(new Font("DialogInput", Font.BOLD, 16));
-			btnPotvrdi.setBackground(new Color(229, 232, 232));
+			btnPotvrdi.setBackground(new Color(46, 204, 113));
 			btnPotvrdi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.potvrdiKrajRacuna(rmp, pritisnutoDugme);
@@ -130,11 +139,12 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return btnPotvrdi;
 	}
+
 	private JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
 			btnOdustani.setFont(new Font("DialogInput", Font.BOLD, 16));
-			btnOdustani.setBackground(new Color(229, 232, 232));
+			btnOdustani.setBackground(new Color(244, 208, 63));
 			btnOdustani.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
@@ -144,14 +154,16 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return btnOdustani;
 	}
+
 	private JSeparator getSeparator() {
 		if (separator == null) {
 			separator = new JSeparator();
-			separator.setPreferredSize(new Dimension(120, 2));
+			separator.setPreferredSize(new Dimension(120, 20));
 			separator.setVisible(false);
 		}
 		return separator;
 	}
+
 	private JLabel getLblDatum() {
 		if (lblDatum == null) {
 			lblDatum = new JLabel("Datum");
@@ -160,6 +172,7 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return lblDatum;
 	}
+
 	private JLabel getLblRadnik() {
 		if (lblRadnik == null) {
 			lblRadnik = new JLabel("Radnik");
@@ -168,6 +181,7 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return lblRadnik;
 	}
+
 	private JLabel getLblBrojStola() {
 		if (lblBrojStola == null) {
 			lblBrojStola = new JLabel("Broj Stola");
@@ -176,6 +190,7 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return lblBrojStola;
 	}
+
 	private JLabel getLblZaUplatu() {
 		if (lblZaUplatu == null) {
 			lblZaUplatu = new JLabel("Za uplatu");
@@ -184,6 +199,7 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return lblZaUplatu;
 	}
+
 	private JLabel getLblUplata() {
 		if (lblUplata == null) {
 			lblUplata = new JLabel("Uplata:");
@@ -192,6 +208,7 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return lblUplata;
 	}
+
 	private JTextField getTxtUplata() {
 		if (txtUplata == null) {
 			txtUplata = new JTextField();
@@ -200,6 +217,7 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return txtUplata;
 	}
+
 	private JButton getBtnUplati() {
 		if (btnUplati == null) {
 			btnUplati = new JButton("Uplati");
@@ -215,6 +233,7 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return btnUplati;
 	}
+
 	private JLabel getLblKusur() {
 		if (lblKusur == null) {
 			lblKusur = new JLabel("Kusur:");
@@ -223,6 +242,7 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return lblKusur;
 	}
+
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
@@ -231,6 +251,7 @@ public class RacunManagementProzor extends JFrame {
 		}
 		return scrollPane;
 	}
+
 	private JTextArea getTextArea_1() {
 		if (textArea == null) {
 			textArea = new JTextArea();

@@ -75,7 +75,7 @@ public class GlavniProzor extends JFrame {
 	private JLabel lblRealUserName;
 
 	public static boolean imaJedanRacun = false;
-	
+
 	/**
 	 * Create the frame.
 	 */
@@ -331,8 +331,8 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnNoviRacun() {
 		if (btnNoviRacun == null) {
 			btnNoviRacun = new JButton("Novi Racun");
-			btnNoviRacun.setFont(new Font("Dialog", Font.BOLD, 16));
-			btnNoviRacun.setBackground(new Color(229, 232, 232));
+			btnNoviRacun.setFont(new Font("Dialog", Font.BOLD, 18));
+			btnNoviRacun.setBackground(new Color(46, 204, 113));
 			btnNoviRacun.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (selektovanSto == null) {
@@ -407,7 +407,7 @@ public class GlavniProzor extends JFrame {
 		if (lblRealIme == null) {
 			lblRealIme = new JLabel("");
 			lblRealIme.setFont(new Font("DejaVu Sans", Font.PLAIN, 20));
-			lblRealIme.setBounds(74, 26, 259, 26);
+			lblRealIme.setBounds(70, 26, 263, 26);
 		}
 		return lblRealIme;
 	}
@@ -429,12 +429,12 @@ public class GlavniProzor extends JFrame {
 			btnKrajRada.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (GlavniProzor.imaJedanRacun) {
-						IzvestajGUI izvestajGUI = new IzvestajGUI(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, radnik,
-								glavniProzor);
+						IzvestajGUI izvestajGUI = new IzvestajGUI(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8,
+								radnik, glavniProzor);
 						izvestajGUI.setVisible(true);
 					} else {
-						JOptionPane.showMessageDialog(contentPane, "Morate dodati bar jedan racun", "Obavestenje",
-								JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(contentPane, "Morate dodati bar jedan obradjen racun",
+								"Obavestenje", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			});

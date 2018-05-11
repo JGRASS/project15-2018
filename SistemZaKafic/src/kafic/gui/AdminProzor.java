@@ -39,7 +39,7 @@ public class AdminProzor extends JFrame {
 	public AdminProzor(Radnik radnik) {
 		setTitle("Admin stranica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 400);
+		setBounds(100, 100, 550, 380);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -159,6 +159,7 @@ public class AdminProzor extends JFrame {
 			btnLogout.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.startovanjePrograma();
+					dispose();
 				}
 			});
 			btnLogout.setFont(new Font("DejaVu Sans", Font.PLAIN, 18));

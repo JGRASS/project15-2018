@@ -468,7 +468,7 @@ public class GUIKontroler {
 
 		datum = sdf.format(racun.getDatum());
 
-		rmp.lblDatum.setText(datum);
+		rmp.lblDatum.setText("Datum: " + datum);
 		rmp.lblRadnik.setText("Radnik: " + racun.getRadnik().getIme() + " " + racun.getRadnik().getPrezime());
 		rmp.lblBrojStola.setText("Broj stola: " + racun.getBrojStola());
 		rmp.lblZaUplatu.setText("Za uplatu: " + racun.getZaUplatu());
