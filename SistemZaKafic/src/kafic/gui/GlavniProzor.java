@@ -445,7 +445,7 @@ public class GlavniProzor extends JFrame {
 
 	private JButton getBtnLogOut() {
 		if (btnLogOut == null) {
-			btnLogOut = new JButton("LogOut");
+			btnLogOut = new JButton("Logout");
 			btnLogOut.setFont(new Font("Dialog", Font.PLAIN, 18));
 			btnLogOut.setBackground(new Color(248, 196, 113));
 			btnLogOut.addActionListener(new ActionListener() {
@@ -453,7 +453,7 @@ public class GlavniProzor extends JFrame {
 
 					int opcija = JOptionPane.showConfirmDialog(glavniProzor.contentPane,
 							"PAZNJA! Ukoliko se izlogujete iz programa, racuni nece biti sacuvani u bazu.\nDa li stvarno zelite da se izlogujete?",
-							"LogOut", JOptionPane.YES_NO_OPTION);
+							"Logout", JOptionPane.YES_NO_OPTION);
 
 					if (opcija == JOptionPane.YES_OPTION) {
 						GUIKontroler.startovanjePrograma();

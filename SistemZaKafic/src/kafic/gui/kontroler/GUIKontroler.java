@@ -386,8 +386,10 @@ public class GUIKontroler {
 		button.setFont(new Font("DejaVu Sans", Font.PLAIN, 16));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (button.getText().startsWith("Sto"))
+				if (button.getText().startsWith("Sto")) {
 					GUIKontroler.otvoriRacunManagementProzor(glavniProzor, sto, racun, button, radnik);
+					glavniProzor.validate();
+				}
 			}
 		});
 		panelRacuniHeight += 55;

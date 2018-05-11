@@ -46,5 +46,11 @@
     "naziv": "Neko pivo",
     "cena": 180.0,
     "zemljaPorekla": "Tajna zemlja guter ljudi"
+  },
+  {
+    "sifra": "34tgef",
+    "naziv": "Voda",
+    "cena": 250.0,
+    "zemljaPorekla": "Lokalni potok"
   }
 ]

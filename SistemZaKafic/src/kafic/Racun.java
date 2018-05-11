@@ -235,6 +235,7 @@ public class Racun {
 			throw new Exception("Ne moze biti uplaceno manje od ukupne cene artikala!");
 
 		this.kusur = jeUplaceno - zaUplatu;
+		this.kusur = Math.round(this.kusur * 100) / 100.0;
 		this.jeUplaceno = jeUplaceno;
 	}
 

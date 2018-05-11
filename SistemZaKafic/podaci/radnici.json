@@ -21,13 +21,6 @@
     "admin": false
   },
   {
-    "ime": "Pingvini",
-    "prezime": "Sa Madagaskara",
-    "username": "kovalski",
-    "password": "lozinka",
-    "admin": false
-  },
-  {
     "ime": "Test",
     "prezime": "Testovic",
     "username": "tester",

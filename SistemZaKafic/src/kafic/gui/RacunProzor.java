@@ -118,7 +118,7 @@ public class RacunProzor extends JFrame {
 					sto.setRacuniNaStolu(racuni);
 					
 					GUIKontroler.dugmePritisnuto(sto, glavniProzor, racun, radnik, null);
-					
+					glavniProzor.validate();
 					dispose();
 				}
 			});
