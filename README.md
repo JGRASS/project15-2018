@@ -2,7 +2,7 @@
 
 # SISTEM ZA KAFIC / COFFEE SHOP SYSTEM
 
-A system for coffee shop used to manage orders and generating report at the end of a work-session of an employee.
+A system for coffee shop used to manage orders and to generate reports at the end of a work-session of an employee.
 
 
 User guide:
