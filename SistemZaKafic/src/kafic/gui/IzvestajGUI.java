@@ -60,8 +60,8 @@ public class IzvestajGUI extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(getJuzniPanel(), BorderLayout.SOUTH);
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
-		GUIKontroler.izvuciSveRacune(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, izvestaj);
 		pozvanoIz = glavniProzor;
+		GUIKontroler.izvuciSveRacune(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, izvestaj);
 	}
 
 	private JPanel getJuzniPanel() {

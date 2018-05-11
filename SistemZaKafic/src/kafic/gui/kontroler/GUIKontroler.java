@@ -506,6 +506,7 @@ public class GUIKontroler {
 					pritisnutoDugme.setText("Racun vec obradjen :)");
 				}
 			});
+			GlavniProzor.imaJedanRacun = true;
 			rmp.dispose();
 		} else {
 			JOptionPane.showMessageDialog(rmp.contentPane, "Morate uneti placenu vrednost", "Obavestenje",

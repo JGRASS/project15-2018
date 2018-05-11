@@ -74,6 +74,8 @@ public class GlavniProzor extends JFrame {
 	private JButton btnLogOut;
 	private JLabel lblRealUserName;
 
+	public static boolean imaJedanRacun = false;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -405,7 +407,7 @@ public class GlavniProzor extends JFrame {
 		if (lblRealIme == null) {
 			lblRealIme = new JLabel("");
 			lblRealIme.setFont(new Font("DejaVu Sans", Font.PLAIN, 20));
-			lblRealIme.setBounds(74, 26, 163, 26);
+			lblRealIme.setBounds(74, 26, 259, 26);
 		}
 		return lblRealIme;
 	}
@@ -414,7 +416,7 @@ public class GlavniProzor extends JFrame {
 		if (lblRealPrezime == null) {
 			lblRealPrezime = new JLabel("");
 			lblRealPrezime.setFont(new Font("DejaVu Sans", Font.PLAIN, 20));
-			lblRealPrezime.setBounds(119, 62, 163, 27);
+			lblRealPrezime.setBounds(112, 62, 395, 27);
 		}
 		return lblRealPrezime;
 	}
@@ -426,9 +428,14 @@ public class GlavniProzor extends JFrame {
 			btnKrajRada.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			btnKrajRada.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					IzvestajGUI izvestajGUI = new IzvestajGUI(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, radnik,
-							glavniProzor);
-					izvestajGUI.setVisible(true);
+					if (GlavniProzor.imaJedanRacun) {
+						IzvestajGUI izvestajGUI = new IzvestajGUI(sto1, sto2, sto3, sto4, sto5, sto6, sto7, sto8, radnik,
+								glavniProzor);
+						izvestajGUI.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(contentPane, "Morate dodati bar jedan racun", "Obavestenje",
+								JOptionPane.INFORMATION_MESSAGE);
+					}
 				}
 			});
 			btnKrajRada.setBounds(1105, 28, 115, 55);
@@ -448,8 +455,10 @@ public class GlavniProzor extends JFrame {
 							"PAZNJA! Ukoliko se izlogujete iz programa, racuni nece biti sacuvani u bazu.\nDa li stvarno zelite da se izlogujete ?",
 							"LogOut", JOptionPane.YES_NO_OPTION);
 
-					if (opcija == JOptionPane.YES_OPTION)
+					if (opcija == JOptionPane.YES_OPTION) {
 						GUIKontroler.startovanjePrograma();
+						dispose();
+					}
 				}
 			});
 			btnLogOut.setBounds(967, 28, 115, 55);
